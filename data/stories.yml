@@ -1,0 +1,32 @@
+version: "3.1"
+
+stories:
+
+- story: chao
+  steps:
+  - intent: chao_hoi
+  - action: utter_chao_hoi
+
+- story: cam on
+  steps:
+  - intent: cam_on
+  - action: utter_cam_on
+
+- story: xem_danh_sach_quy_dinh #liệt kê danh sách quy chế, quy định
+  steps:
+  - intent: xem_danh_sach_quy_dinh
+  - action: action_xem_danh_sach_quy_dinh
+
+- story: xem_quy_dinh_chi_tiet #xem chi tiết quy chế, quy định
+  steps:
+  - intent: xem_quy_dinh_chi_tiet
+  - action: action_tra_cuu_thong_tin_chi_tiet_quy_dinh
+
+#Hỏi điều kiện bảo lưu kết quả =======================================
+- story: Hỏi điều kiện lưu kết quả form
+  steps:
+  - intent: hoi_dieu_kien_bao_luu
+  - action: form_dieu_kien_bao_luu
+  - active_loop: form_dieu_kien_bao_luu
+  - active_loop: null
+  - action: action_tra_cuu_dieu_kien_bao_luu

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rasa Chatbot - Tư vấn Sinh Viên</title>
+    <style>
+       body {
+                font-family: Arial, sans-serif;
+                background-color: #f0f4f8;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+
+            .chat-container {
+                width: 80%; /* To gần hết màn hình */
+                max-width: 1000px;
+                background: #fff;
+                padding: 40px;
+                border-radius: 16px;
+                box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            }
+
+            #chat-box {
+                height: 600px; /* Rất cao */
+                overflow-y: auto;
+                border: 2px solid #ddd;
+                padding: 20px;
+                margin-bottom: 20px;
+                background-color: #fafafa;
+                font-size: 20px; /* Cỡ chữ to */
+                line-height: 1.6;
+            }
+
+            .user-msg {
+                text-align: right;
+                color: #1e88e5;
+                margin: 12px 0;
+                font-size: 20px;
+            }
+
+            .bot-msg {
+                text-align: left;
+                color: #43a047;
+                margin: 12px 0;
+                font-size: 20px;
+            }
+
+            #message {
+                width: 80%;
+                padding: 16px;
+                font-size: 20px;
+                border: 2px solid #ccc;
+                border-radius: 8px;
+            }
+
+            button {
+                padding: 16px 30px;
+                background-color: #1e88e5;
+                color: #fff;
+                border: none;
+                cursor: pointer;
+                border-radius: 8px;
+                font-size: 20px;
+            }
+
+            button:hover {
+                background-color: #1565c0;
+            }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <h2>🎓 Chatbot Tư vấn Sinh Viên</h2>
+        <div id="chat-box"></div>
+        <form id="chat-form">
+            <input type="text" id="message" placeholder="Nhập câu hỏi..." required />
+            <button type="submit">Gửi</button>
+        </form>
+    </div>
+
+    <script>
+        const chatForm = document.getElementById("chat-form");
+        const chatBox = document.getElementById("chat-box");
+        const messageInput = document.getElementById("message");
+
+        chatForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const userMessage = messageInput.value.trim();
+            if (!userMessage) return;
+
+            appendMessage(userMessage, "user-msg");
+            messageInput.value = "";
+
+            appendMessage("💬 Đang xử lý...", "bot-msg");
+
+            try {
+                const response = await fetch("/send_message", {
+                    method: "POST",
+                    body: new URLSearchParams({ message: userMessage })
+                });
+
+                const data = await response.json();
+                removeLoadingMessage();
+
+                data.responses.forEach(msg => appendMessage(msg, "bot-msg"));
+            } catch (error) {
+                removeLoadingMessage();
+                appendMessage("❌ Lỗi kết nối đến server.", "bot-msg");
+            }
+        });
+
+        function appendMessage(message, className) {
+            const msgDiv = document.createElement("div");
+            msgDiv.className = className;
+            msgDiv.innerHTML = message; // Cho phép chèn HTML từ Rasa
+            chatBox.appendChild(msgDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function removeLoadingMessage() {
+            const loadingMsg = document.querySelector(".bot-msg:last-child");
+            if (loadingMsg && loadingMsg.textContent === "💬 Đang xử lý...") {
+                chatBox.removeChild(loadingMsg);
+            }
+        }
+
+    </script>
+</body>
+</html>
