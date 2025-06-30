@@ -37,7 +37,7 @@ nlu:
     - đi đây
     - tôi sẽ qua đăng ký
     - gặp lại trung tâm
-    
+
 
 - intent: cam_on
   examples: |
@@ -91,14 +91,14 @@ nlu:
     - thông tin về [quy định học tập đối với học viên](chi_tiet_quy_dinh)
     - [quy định học tập đối với học viên](chi_tiet_quy_dinh) sao
     - [quy định học tập đối với học viên](chi_tiet_quy_dinh) như thế nào
-    - muốn biết [quy định học tập đối với học viên](chi_tiet_quy_dinh) 
+    - muốn biết [quy định học tập đối với học viên](chi_tiet_quy_dinh)
 
 - intent: hoi_dieu_kien_bao_luu
   examples: |
     - điều kiện bảo lưu sao
     - điều kiện bảo lưu như thế nào
     - làm sao mới được bảo lưu
-    - mấy điểm mới bảo lưu 
+    - mấy điểm mới bảo lưu
     - khi nào được bảo lưu
     - muốn bảo lưu kết quả phải làm sao
     - thời hạn bảo lưu kết quả là bao lâu
