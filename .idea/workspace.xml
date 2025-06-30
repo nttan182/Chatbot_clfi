@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5fd380d9-da2e-4754-a1be-e03b6dbff7f1" name="Changes" comment="30/5">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_sv.py" beforeDir="false" afterPath="$PROJECT_DIR$/app_sv.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/nlu.yml" beforeDir="false" afterPath="$PROJECT_DIR$/data/nlu.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index_sv.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index_sv.html" afterDir="false" />
-    </list>
+    <list default="true" id="5fd380d9-da2e-4754-a1be-e03b6dbff7f1" name="Changes" comment="30/6" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,12 +19,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;last_opened_file_path&quot;: &quot;E:/DoAn/DoAnTotNghiep/Chatbot_clfi&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "last_opened_file_path": "E:/DoAn/DoAnTotNghiep/Chatbot_clfi",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\DoAn\DoAnTotNghiep\Chatbot_clfi\public\images" />
@@ -80,7 +75,14 @@
       <option name="project" value="LOCAL" />
       <updated>1748588897028</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="30/6">
+      <created>1751273457226</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1751273457226</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -99,7 +101,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="30/5" />
-    <option name="LAST_COMMIT_MESSAGE" value="30/5" />
+    <MESSAGE value="30/6" />
+    <option name="LAST_COMMIT_MESSAGE" value="30/6" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
