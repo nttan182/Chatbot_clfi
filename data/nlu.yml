@@ -1,0 +1,161 @@
+version: "3.1"
+
+nlu:
+- intent: chao_hoi
+  examples: |
+    - hey
+    - hello
+    - hi
+    - xin chào
+    - chào
+    - chào buổi sáng
+    - kính chào
+    - ê
+    - chào buổi tối
+    - chào buổi chiều
+    - alo
+    - tôi muốn hỏi
+    - chào trung tâm
+    - hi trung tâm
+    - cho tôi hỏi
+    - tôi muốn hỏi
+    - trung tâm ơi
+
+- intent: tam_biet
+  examples: |
+    - chào tạm biệt
+    - tạm biệt
+    - bi bi
+    - bye
+    - goodbye
+    - hẹn gặp lại
+    - mong gặp lại bạn sớm
+    - bye bye
+    - tạm biệt bạn
+    - chúc một ngày vui vẻ
+    - hẹn mai gặp lại
+    - đi đây
+    - tôi sẽ qua đăng ký
+    - gặp lại trung tâm
+
+- intent: cam_on
+  examples: |
+    - thank you
+    - cám ơn bạn đã giải đáp thắc mắc của mình
+    - mình đã hiểu rõ hơn rồi, cám ơn nhé
+    - cám ơn vì thông tin hữu ích
+    - cám ơn bạn, mình không còn thắc mắc nữa
+    - mình đã có câu trả lời mong muốn, cám ơn nhiều
+    - cám ơn bạn đã hỗ trợ
+    - thanks trung tâm
+    - rất biết ơn khi bạn hỗ trợ
+    - cảm ơn trung tâm nhiều
+
+- intent: bot_challenge
+  examples: |
+    - bạn là ai
+    - giới thiệu về hệ thống
+    - bạn là gì
+
+- intent: hoi_chuong_trinh_giang_day
+  examples: |
+    - trung tâm có những chương trình giảng dạy nào
+    - cho tôi biết các chương trình học của trung tâm
+    - trung tâm dạy những khóa nào
+    - có những lớp học nào
+    - danh sách chương trình giảng dạy ở trung tâm
+
+- intent: hoi_danh_sach_quy_dinh
+  examples: |
+    - tôi muốn biết trung tâm có các quy định gì
+    - danh sách các quy định của trung tâm
+    - trung tâm có những quy định nào
+
+- intent: inform
+  examples: |
+    - [các khóa](khoa_hoc)
+    - [ud cntt cb](khoa_hoc)
+    - [ud cntt nc](khoa_hoc)
+    - [toeic 250](khoa_hoc)
+    - [toeic 350](khoa_hoc)
+    - [toeic 450](khoa_hoc)
+    - [a2 ctut](khoa_hoc)
+    - [b1 ctut](khoa_hoc)
+    - [n4 ctut](khoa_hoc)
+    - [toeic ctut](khoa_hoc)
+
+- intent: xem_quy_dinh_chi_tiet
+  examples: |
+    - [quy định điểm danh](chi_tiet_quy_dinh)
+    - thông tin về [quy định điểm danh](chi_tiet_quy_dinh)
+    - [quy định điểm danh](chi_tiet_quy_dinh) sao
+    - [quy định điểm danh](chi_tiet_quy_dinh) như thế nào
+    - muốn biết [quy định điểm danh](chi_tiet_quy_dinh)
+    - [quy định điều kiện bảo lưu](chi_tiet_quy_dinh)
+    - thông tin về [quy định điều kiện bảo lưu](chi_tiet_quy_dinh)
+    - [quy định điều kiện bảo lưu](chi_tiet_quy_dinh) sao
+    - [quy định điều kiện bảo lưu](chi_tiet_quy_dinh) như thế nào
+    - muốn biết [quy định điều kiện bảo lưu](chi_tiet_quy_dinh)
+    - [quy định điều kiện cấp chứng nhận](chi_tiet_quy_dinh)
+    - thông tin về [quy định điều kiện cấp chứng nhận](chi_tiet_quy_dinh)
+    - [quy định điều kiện cấp chứng nhận](chi_tiet_quy_dinh) sao
+    - [quy định điều kiện cấp chứng nhận](chi_tiet_quy_dinh) như thế nào
+    - muốn biết [quy định điều kiện cấp chứng nhận](chi_tiet_quy_dinh)
+    - [quy định giảng dạy đối với giáo viên](chi_tiet_quy_dinh)
+    - thông tin về [quy định giảng dạy đối với giáo viên](chi_tiet_quy_dinh)
+    - [quy định giảng dạy đối với giáo viên](chi_tiet_quy_dinh) sao
+    - [quy định giảng dạy đối với giáo viên](chi_tiet_quy_dinh) như thế nào
+    - muốn biết [quy định giảng dạy đối với giáo viên](chi_tiet_quy_dinh)
+    - [quy định học tập đối với học viên](chi_tiet_quy_dinh)
+    - thông tin về [quy định học tập đối với học viên](chi_tiet_quy_dinh)
+    - [quy định học tập đối với học viên](chi_tiet_quy_dinh) sao
+    - [quy định học tập đối với học viên](chi_tiet_quy_dinh) như thế nào
+    - muốn biết [quy định học tập đối với học viên](chi_tiet_quy_dinh)
+    - [quy định học tập đối với học viên](chi_tiet_quy_dinh)
+
+- intent: hoi_dieu_kien_bao_luu
+  examples: |
+    - điều kiện bảo lưu sao
+    - điều kiện bảo lưu như thế nào
+    - làm sao mới được bảo lưu
+    - mấy điểm mới bảo lưu 
+    - khi nào được bảo lưu
+    - muốn bảo lưu kết quả phải làm sao
+    - thời hạn bảo lưu kết quả là bao lâu
+    - kết quả anh văn bảo lưu được bao lâu
+    - điều kiện bảo lưu [ud cntt cb](khoa_hoc)
+    - quy định bảo lưu đối với khóa [ud cntt cb](khoa_hoc) tại trung tâm
+    - làm sao được bảo lưu khóa [ud cntt cb](khoa_hoc)
+    - muốn bảo lưu kết quả [ud cntt cb](khoa_hoc) thì làm như thế nào
+    - thời hạn bảo lưu kết quả [ud cntt cb](khoa_hoc) bao lâu
+    - điều kiện bảo lưu [ud cntt nc](khoa_hoc)
+    - quy định bảo lưu đối với khóa [ud cntt nc](khoa_hoc) tại trung tâm
+    - làm sao được bảo lưu khóa [ud cntt nc](khoa_hoc)
+    - muốn bảo lưu kết quả [ud cntt nc](khoa_hoc) thì làm như thế nào
+    - thời hạn bảo lưu kết quả [ud cntt nc](khoa_hoc) bao lâu
+    - điều kiện bảo lưu [toeic 250](khoa_hoc)
+    - quy định bảo lưu đối với khóa [toeic 250](khoa_hoc) tại trung tâm
+    - làm sao được bảo lưu khóa [toeic 250](khoa_hoc)
+    - muốn bảo lưu kết quả [toeic 250](khoa_hoc) thì làm như thế nào
+    - thời hạn bảo lưu kết quả [toeic 250](khoa_hoc) bao lâu
+    - điều kiện bảo lưu [toeic 350](khoa_hoc)
+    - quy định bảo lưu đối với khóa [toeic 350](khoa_hoc) tại trung tâm
+    - làm sao được bảo lưu khóa [toeic 350](khoa_hoc)
+    - muốn bảo lưu kết quả [toeic 350](khoa_hoc) thì làm như thế nào
+    - thời hạn bảo lưu kết quả [toeic 350](khoa_hoc) bao lâu
+    - điều kiện bảo lưu [toeic 450](khoa_hoc)
+    - quy định bảo lưu đối với khóa [toeic 450](khoa_hoc) tại trung tâm
+    - làm sao được bảo lưu khóa [toeic 450](khoa_hoc)
+    - muốn bảo lưu kết quả [toeic 450](khoa_hoc) thì làm như thế nào
+    - thời hạn bảo lưu kết quả [toeic 450](khoa_hoc) bao lâu
+    - điều kiện bảo lưu [a2 ctut](khoa_hoc)
+    - quy định bảo lưu đối với khóa [a2 ctut](khoa_hoc) tại trung tâm
+    - làm sao được bảo lưu khóa [a2 ctut](khoa_hoc)
+    - muốn bảo lưu kết quả [a2 ctut](khoa_hoc) thì làm như thế nào
+    - thời hạn bảo lưu kết quả [a2 ctut](khoa_hoc) bao lâu
+    - điều kiện bảo lưu [n4 ctut](khoa_hoc)
+    - quy định bảo lưu đối với khóa [n4 ctut](khoa_hoc) tại trung tâm
+    - làm sao được bảo lưu khóa [n4 ctut](khoa_hoc)
+    - muốn bảo lưu kết quả [n4 ctut](khoa_hoc) thì làm như thế nào
+    - thời hạn bảo lưu kết quả [n4 ctut](khoa_hoc) bao lâu
+    - điều kiện bảo lưu [b1 ctut](khoa_hoc)

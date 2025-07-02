@@ -1,0 +1,46 @@
+version: '3.1'
+
+stories:
+
+- story: chao
+  steps:
+  - intent: chao_hoi
+  - action: utter_chao_hoi
+
+- story: cam on
+  steps:
+  - intent: cam_on
+  - action: utter_cam_on
+
+- story: tam biet
+  steps:
+  - intent: tam_biet
+  - action: utter_tam_biet
+
+- story: ban la ai
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- story: Trả lời khi hỏi chương trình giảng dạy
+  steps:
+    - intent: hoi_chuong_trinh_giang_day
+    - action: action_xem_chuong_trinh_giang_day
+
+- story: xem_danh_sach_quy_dinh
+  steps:
+  - intent: hoi_danh_sach_quy_dinh
+  - action: action_xem_danh_sach_quy_dinh
+
+- story: xem_chi tiet_quy_dinh
+  steps:
+  - intent: xem_quy_dinh_chi_tiet
+  - action: action_tra_cuu_thong_tin_chi_tiet_quy_dinh
+
+- story: Hỏi điều kiện lưu kết quả form
+  steps:
+  - intent: hoi_dieu_kien_bao_luu
+  - action: form_dieu_kien_bao_luu
+  - active_loop: form_dieu_kien_bao_luu
+  - active_loop: null
+  - action: action_tra_cuu_dieu_kien_bao_luu

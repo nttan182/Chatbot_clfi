@@ -1,0 +1,28 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-chi_tiet_quy_dinh",
+      "2": "I-chi_tiet_quy_dinh",
+      "3": "L-chi_tiet_quy_dinh",
+      "4": "U-chi_tiet_quy_dinh",
+      "5": "B-khoa_hoc",
+      "6": "I-khoa_hoc",
+      "7": "L-khoa_hoc",
+      "8": "U-khoa_hoc",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-chi_tiet_quy_dinh": 1,
+      "I-chi_tiet_quy_dinh": 2,
+      "L-chi_tiet_quy_dinh": 3,
+      "U-chi_tiet_quy_dinh": 4,
+      "B-khoa_hoc": 5,
+      "I-khoa_hoc": 6,
+      "L-khoa_hoc": 7,
+      "U-khoa_hoc": 8,
+      "O": 0
+    },
+    "num_tags": 9
+  }
+]

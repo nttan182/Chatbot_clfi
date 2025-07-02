@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Tư Vấn Thông Tin - Trung Tâm Ngoại Ngữ Tin Học</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for Inter (main), Roboto, Source Sans 3, Playfair Display -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto:wght@400;700&family=Source+Sans+3:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for messages and font families */
+        body {
+            font-family: 'Inter', sans-serif; /* Default font */
+        }
+        .font-roboto {
+            font-family: 'Roboto', sans-serif;
+        }
+        .font-sourcesans {
+            font-family: 'Source Sans 3', sans-serif;
+        }
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        .message {
+            padding: 0.75rem; /* p-3 */
+            border-radius: 0.5rem; /* rounded-lg */
+            margin-bottom: 0.5rem; /* mb-2 */
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05); /* shadow-sm */
+            max-width: 80%; /* Limit message width */
+        }
+        .user-message {
+            background-color: #e0f2fe; /* blue-100 */
+            color: #1e40af; /* blue-800 */
+            margin-left: auto; /* Push to right */
+            align-self: flex-end; /* Align to end in flex container */
+        }
+        .bot-message {
+            background-color: #f0f9ff; /* sky-50 */
+            color: #0c4a6e; /* sky-900 */
+            margin-right: auto; /* Push to left */
+            align-self: flex-start; /* Align to start in flex container */
+        }
+        /* Custom text shadow effect for the title */
+        .text-shadow-effect {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen bg-gray-100">
+    <!-- Header section -->
+    <header class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-3 sm:py-4 px-4 shadow-xl rounded-b-3xl">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between">
+            <!-- Logo and University/Center Information -->
+            <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left mb-4 md:mb-0">
+                <!-- Adjusted logo size for better responsiveness -->
+                <img src="/public/images/logo.jpg" alt="Logo Trung tâm Ngoại ngữ Tin học" class="rounded-full w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain shadow-lg" onerror="this.onerror=null; this.src='https://placehold.co/96x96/ffffff/blue?text=Logo';">
+                <div class="text-content px-2">
+                    <p class="text-xs sm:text-sm md:text-base lg:text-lg font-sourcesans text-white">ỦY BAN NHÂN DÂN THÀNH PHỐ CẦN THƠ</p>
+                    <p class="text-xs sm:text-sm md:text-base lg:text-lg font-sourcesans text-white">TRƯỜNG ĐẠI HỌC KỸ THUẬT - CÔNG NGHỆ CẦN THƠ</p>
+                    <p class="text-sm sm:text-base md:text-lg lg:text-xl font-extrabold font-serif text-yellow-400 whitespace-nowrap">TRUNG TÂM NGOẠI NGỮ - TIN HỌC</p>
+                </div>
+            </div>
+            <!-- Chatbot Title -->
+            <div class="flex items-center text-center">
+                <div class="center px-2">
+                    <p class="text-base sm:text-lg md:text-2xl lg:text-3xl font-bold font-playfair text-yellow-400 text-shadow-effect whitespace-nowrap">CHATBOT TƯ VẤN THÔNG TIN</p>
+                    <p class="text-xs sm:text-sm md:text-base lg:text-lg opacity-90 text-white whitespace-nowrap">Tư vấn khóa học, lịch học và hỗ trợ kỹ thuật</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main content area -->
+    <main class="flex-grow container mx-auto p-4 max-w-xl md:max-w-2xl bg-white rounded-2xl shadow-2xl my-4 flex flex-col">
+        <p class="text-center mb-4 text-sm">
+            <a href="/public/HDSD.pdf" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline transition duration-300 ease-in-out">
+                Hướng dẫn sử dụng (ấn vào đây)
+            </a>
+        </p>
+        <!-- Chat window -->
+        <div id="chat-window" class="flex-grow overflow-y-auto p-4 border border-gray-300 rounded-lg bg-gray-50 mb-4 h-96 flex flex-col">
+            <!-- Initial bot message -->
+            <div class="message bot-message">Chào mừng bạn đến với Chatbot của Trung tâm Ngoại ngữ Tin học! Tôi có thể giúp bạn tìm hiểu về các khóa học ngoại ngữ, tin học, lịch khai giảng, hoặc các vấn đề khác. Bạn muốn tìm hiểu về gì?</div>
+        </div>
+        <!-- Input container for user messages -->
+        <div id="input-container" class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <input type="text" id="user-input" class="flex-grow p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm" placeholder="Nhập câu hỏi của bạn tại đây...">
+            <button id="send-button" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 active:scale-95">Gửi</button>
+        </div>
+        <p class="text-sm text-red-600 text-center mt-4">
+            Lưu ý: ChatBot chỉ hỗ trợ trả lời những câu hỏi liên quan đến trung tâm
+        </p>
+    </main>
+
+    <!-- Footer section -->
+    <footer class="bg-blue-800 text-gray-200 py-3 px-6 sm:py-4 md:py-6 text-center mt-auto shadow-inner rounded-t-3xl">
+        <p class="text-xs">Trung tâm Ngoại ngữ - Tin học &copy; 2025. All Rights Reserved.</p>
+        <p class="text-xs mt-2">
+            Mọi thắc mắc và góp ý, vui lòng liên hệ: 02923 890698
+        </p>
+    </footer>
+
+    <!-- JavaScript for chatbot functionality -->
+    <script>
+        // Lấy các phần tử DOM cần thiết
+        const chatBox = document.getElementById("chat-window"); // Khu vực hiển thị tin nhắn
+        const messageInput = document.getElementById("user-input"); // Ô nhập liệu tin nhắn
+        const sendButton = document.getElementById("send-button"); // Nút gửi tin nhắn
+
+        // Thêm sự kiện click cho nút gửi
+        sendButton.addEventListener("click", async (e) => {
+            e.preventDefault(); // Ngăn chặn hành vi mặc định của form (nếu có)
+            const userMessage = messageInput.value.trim(); // Lấy nội dung tin nhắn và loại bỏ khoảng trắng thừa
+            if (!userMessage) return; // Nếu tin nhắn rỗng thì không làm gì cả
+
+            // Hiển thị tin nhắn của người dùng lên giao diện
+            appendMessage(userMessage, "user-message");
+            messageInput.value = ""; // Xóa nội dung ô nhập liệu
+
+            // Hiển thị thông báo "Đang xử lý..." từ bot
+            appendMessage("Đang xử lý...", "bot-message");
+
+            try {
+                // Gửi tin nhắn đến server Rasa
+                const response = await fetch("/send_message", {
+                    method: "POST", // Phương thức HTTP POST
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded', // Định dạng dữ liệu gửi đi
+                    },
+                    body: new URLSearchParams({ message: userMessage }) // Dữ liệu tin nhắn
+                });
+
+                // Xử lý phản hồi từ server
+                const data = await response.json();
+                removeLoadingMessage(); // Xóa thông báo "Đang xử lý..."
+
+                // Hiển thị tất cả các phản hồi từ bot
+                if (data.responses && Array.isArray(data.responses)) {
+                    data.responses.forEach(msg => appendMessage(msg, "bot-message"));
+                } else if (data.response) { // Handle single response if API returns it differently
+                    appendMessage(data.response, "bot-message");
+                } else {
+                    appendMessage("Bot không có phản hồi phù hợp.", "bot-message");
+                }
+            } catch (error) {
+                // Xử lý lỗi nếu có vấn đề khi kết nối hoặc nhận phản hồi
+                console.error("Lỗi khi gửi tin nhắn:", error);
+                removeLoadingMessage();
+                appendMessage("Lỗi kết nối đến server. Vui lòng thử lại sau.", "bot-message");
+            }
+        });
+
+        // Cho phép gửi tin nhắn khi nhấn phím Enter trong ô nhập liệu
+        messageInput.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault(); // Ngăn chặn hành vi mặc định của phím Enter
+                sendButton.click(); // Kích hoạt sự kiện click của nút gửi
+            }
+        });
+
+        /**
+         * Thêm tin nhắn vào hộp thoại chat.
+         * @param {string} message Nội dung tin nhắn.
+         * @param {string} className Lớp CSS để định dạng tin nhắn (user-message hoặc bot-message).
+         */
+        function appendMessage(message, className) {
+            const msgDiv = document.createElement("div");
+            msgDiv.className = "message " + className; // Thêm lớp 'message' cơ bản và lớp định dạng cụ thể
+            msgDiv.innerHTML = message; // Cho phép chèn HTML từ phản hồi của Rasa
+            chatBox.appendChild(msgDiv); // Thêm tin nhắn vào chat box
+            chatBox.scrollTop = chatBox.scrollHeight; // Cuộn xuống cuối chat box để hiển thị tin nhắn mới nhất
+        }
+
+        /**
+         * Xóa tin nhắn "Đang xử lý..." khỏi chat box.
+         */
+        function removeLoadingMessage() {
+            // Tìm tin nhắn bot cuối cùng
+            const loadingMsg = chatBox.querySelector(".bot-message:last-child");
+            // Kiểm tra xem đó có phải là tin nhắn "Đang xử lý..." không
+            if (loadingMsg && loadingMsg.textContent.includes("Đang xử lý...")) {
+                chatBox.removeChild(loadingMsg); // Xóa tin nhắn đó
+            }
+        }
+    </script>
+</body>
+</html>
