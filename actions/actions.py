@@ -5,14 +5,14 @@ from rasa_sdk.executor import CollectingDispatcher
 import psycopg2
 from rasa_sdk.events import SlotSet, UserUtteranceReverted
 
-
 def get_db_connection():
     return psycopg2.connect(
         host="localhost",
         database="chatbot_clfi",
         user="postgres",
-        password="2101235"
+        password="13051989"
     )
+
 
 class ActionFallbackReset(Action):
     def name(self) -> str:

@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request, jsonify
 import requests
 
+from utils.word_replacer import load_replacement_data, replace_words
+
+
 app = Flask(__name__, static_folder='public')
 
 RASA_URL = "http://localhost:5005/webhooks/rest/webhook"
@@ -11,8 +14,11 @@ def index():
 
 @app.route("/send_message", methods=["POST"])
 def send_message():
+    replacements = load_replacement_data('data/standardization.txt')
     user_message = request.form.get("message")
-    payload = {"sender": "user", "message": user_message}
+    replaced = replace_words(user_message, replacements)
+    print(f"Replaced message: {replaced}")
+    payload = {"sender": "user", "message": replaced}
 
     try:
         response = requests.post(RASA_URL, json=payload)
