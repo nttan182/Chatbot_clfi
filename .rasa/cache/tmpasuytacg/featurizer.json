@@ -1,0 +1,67 @@
+{
+  "type": "IntentMaxHistoryTrackerFeaturizer",
+  "state_featurizer": {
+    "action_texts": [],
+    "entity_tag_specs": [],
+    "feature_states": {
+      "intent": {
+        "back": 0,
+        "bot_challenge": 1,
+        "cam_on": 2,
+        "chao_hoi": 3,
+        "hoi_chuong_trinh_giang_day": 4,
+        "hoi_danh_sach_quy_dinh": 5,
+        "hoi_dieu_kien_bao_luu": 6,
+        "hoi_thong_tin_lien_he": 7,
+        "inform": 8,
+        "nlu_fallback": 9,
+        "out_of_scope": 10,
+        "restart": 11,
+        "session_start": 12,
+        "tam_biet": 13,
+        "xem_quy_dinh_chi_tiet": 14
+      },
+      "action_name": {
+        "action_listen": 0,
+        "action_restart": 1,
+        "action_session_start": 2,
+        "action_default_fallback": 3,
+        "action_deactivate_loop": 4,
+        "action_revert_fallback_events": 5,
+        "action_default_ask_affirmation": 6,
+        "action_default_ask_rephrase": 7,
+        "action_two_stage_fallback": 8,
+        "action_unlikely_intent": 9,
+        "action_back": 10,
+        "...": 11,
+        "action_extract_slots": 12,
+        "action_check_postgre_connection": 13,
+        "action_fallback_reset": 14,
+        "action_xem_chuong_trinh_giang_day": 15,
+        "action_xem_danh_sach_quy_dinh": 16,
+        "action_tra_cuu_thong_tin_chi_tiet_quy_dinh": 17,
+        "validate_form_dieu_kien_bao_luu": 18,
+        "action_tra_cuu_dieu_kien_bao_luu": 19,
+        "utter_ask_khoa_hoc": 20,
+        "utter_cam_on": 21,
+        "utter_chao_hoi": 22,
+        "utter_iamabot": 23,
+        "utter_tam_biet": 24,
+        "form_dieu_kien_bao_luu": 25
+      },
+      "entities": {
+        "chi_tiet_quy_dinh": 0,
+        "khoa_hoc": 1
+      },
+      "slots": {
+        "khoa_hoc_0": 0,
+        "chi_tiet_quy_dinh_0": 1
+      },
+      "active_loop": {
+        "form_dieu_kien_bao_luu": 0
+      }
+    }
+  },
+  "remove_duplicates": true,
+  "max_history": 5
+}

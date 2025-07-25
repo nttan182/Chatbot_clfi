@@ -1,0 +1,44 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-chi_tiet_quy_dinh",
+      "2": "I-chi_tiet_quy_dinh",
+      "3": "L-chi_tiet_quy_dinh",
+      "4": "U-chi_tiet_quy_dinh",
+      "5": "B-khoa_hoc",
+      "6": "I-khoa_hoc",
+      "7": "L-khoa_hoc",
+      "8": "U-khoa_hoc",
+      "9": "B-lien_he",
+      "10": "I-lien_he",
+      "11": "L-lien_he",
+      "12": "U-lien_he",
+      "13": "B-thong_tin_lien_he",
+      "14": "I-thong_tin_lien_he",
+      "15": "L-thong_tin_lien_he",
+      "16": "U-thong_tin_lien_he",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-chi_tiet_quy_dinh": 1,
+      "I-chi_tiet_quy_dinh": 2,
+      "L-chi_tiet_quy_dinh": 3,
+      "U-chi_tiet_quy_dinh": 4,
+      "B-khoa_hoc": 5,
+      "I-khoa_hoc": 6,
+      "L-khoa_hoc": 7,
+      "U-khoa_hoc": 8,
+      "B-lien_he": 9,
+      "I-lien_he": 10,
+      "L-lien_he": 11,
+      "U-lien_he": 12,
+      "B-thong_tin_lien_he": 13,
+      "I-thong_tin_lien_he": 14,
+      "L-thong_tin_lien_he": 15,
+      "U-thong_tin_lien_he": 16,
+      "O": 0
+    },
+    "num_tags": 17
+  }
+]
