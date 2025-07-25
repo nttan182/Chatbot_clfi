@@ -1,6 +1,8 @@
-trung tâm: trung tâm ngoại ngữ, trung tâm tin học, cơ sở, nơi học, chỗ học, trung tâm học, tt, TT, trungtam, trug tam, trung tâm tiếng anh, trung tâm CNTT, trung tâm giáo dục, địa điểm học, tổ chức đào tạo, trung tâm thi, trung tâm luyện thi
+trung tâm: cơ sở, nơi học, chỗ học, tt, TT, trungtam
 
-ngoại ngữ: tiếng tây, tiếng nc ngoài, tiếng quốc tế, tiếng nước ngoài, ngôn ngữ khác, ngôn ngữ nc ngoài, n.ngữ, nn
+đăng ký: đăng kí
+
+ngoại ngữ: tiếng nc ngoài, tiếng nước ngoài, ngôn ngữ, n.ngữ, nn
 
 quy định: nội quy, luật, luật lệ, quy tắc, quy chuẩn, điều lệ, quy ước, quy chế, quy trình, quy định chung, quy định riêng, chỉ dẫn, quy đinh, quy dinh, quy đjnh, qui định, qui đinh, q.định, qd, qđ, rule
 
@@ -12,13 +14,13 @@ bảo lưu: giữ điểm, giữ kết quả, bảo lưu kết quả, bảo lưu
 
 cấp chứng nhận: cấp giấy chứng nhận, cấp bằng, cấp chứng chỉ, phát chứng nhận, phát bằng, phát chứng chỉ, nhận chứng nhận, cấp giấy, nhận giấy, cấp giấy tờ, chứng nhận hoàn thành, cấp CN, cấp CC, cap chung nhan, cấp chứng nhận khóa học, cấp chứng nhận tiếng anh, cấp chứng chỉ tin học, cấp CN TN, cấp giấy TN, cấp
 
-khóa học: lớp học, lớp, lớp đào tạo, chương trình học, lớp ngoại ngữ, lớp tin học, lớp tiếng anh, khóa đào tạo, khóa, khoá, học phần, khoá học, khoa hoc, lớp ôn, lớp luyện thi, l.học, k.học, k.h
+khóa học: lớp học, lớp, lớp đào tạo, khóa đào tạo, khoá học, khoa hoc, lớp ôn, lớp luyện thi, l.học, k.học, k.h
 
-ud cntt cb: ứng dụng cntt cb, ứng dụng công nghệ thông tin cơ bản, ud cntt, ud cntt cơ bản, ứng dụng tin học cơ bản, tin học cơ bản, tin cb, cntt cb, môn ud cntt cb, chứng chỉ ud cntt cb, chứng chỉ tin cb, chứng chỉ ud cntt, cc ud cntt cb, cc tin cb, cc tin cơ bản, cc ud cntt, ud cntt can ban, cc tin học cơ bản
+ud cntt cb: ứng dụng cntt cb, ứng dụng công nghệ thông tin cơ bản, ud cntt cơ bản, ứng dụng tin học cơ bản, tin học cơ bản, tin cb, chứng chỉ ud cntt cb, chứng chỉ tin cb, chứng chỉ ud cntt, cc ud cntt cb, cc tin cb, cc tin cơ bản, cc ud cntt, ud cntt can ban, cc tin học cơ bản, ứng dụng công nghệ thông tin căn bản, udcnttcb
 
-ud cntt nc: ứng dụng cntt nc, ứng dụng công nghệ thông tin nâng cao, ud cntt nâng cao, ứng dụng cntt nâng cao, ud cntt nc, tin học nâng cao, tin nc, cntt nc, chứng chỉ ud cntt nc, chứng chỉ tin nc, cc ud cntt nc, cc tin học nâng cao, thi ud cntt nc, bằng ud cntt nc, chứng chỉ ứng dụng cntt nâng cao, cc cntt nc, ud cntt nang cao, ud cntt nâng cao, cc tin nâng cao, cc nâng cao
+ud cntt nc: ứng dụng cntt nc, ứng dụng công nghệ thông tin nâng cao, ud cntt nâng cao, ứng dụng cntt nâng cao, tin học nâng cao, tin nc, chứng chỉ ud cntt nc, chứng chỉ tin nc, cc ud cntt nc, cc tin học nâng cao, thi ud cntt nc, bằng ud cntt nc, chứng chỉ ứng dụng cntt nâng cao, cc cntt nc, ud cntt nang cao, ud cntt nâng cao, cc tin nâng cao, cc nâng cao, udcnttnc
 
-toeic ctut: toeic trường, toeic trường ctut, toeic dhktcn , toeic bắt buộc, toeic đầu ra, toeic tốt nghiệp, toeic nội bộ, toeic nội bộ ctut, toeic trường cấp, toeic nội bộ trường, chứng nhận toeic, thi toeic nội bộ, thi toeic ở trường, thi ta tốt nghiệp, thi ta ctut, thi ta dau ra, thi ta tot nghiep
+toeic ctut: toeic trường, toeic trường ctut, toeic dhktcn , toeic bắt buộc, toeic đầu ra, toeic tốt nghiệp, toeic nội bộ, toeic nội bộ ctut, toeic trường cấp, toeic nội bộ trường, chứng nhận toeic, thi toeic nội bộ, thi toeic ở trường, thi ta tốt nghiệp, thi ta ctut, thi ta dau ra, thi ta tot nghiep, tiếng anh nội bộ
 
 toeic 250: điểm toeic 250, toeic đầu ra 250, thi toeic 250, toeic bắt buộc 250, toeic đạt 250, chứng chỉ toeic 250, bằng toeic 250, cc toeic 250, toeic tốt nghiệp 250, thi tiếng anh 250, 250 điểm tiếng anh, toeic mức 250
 
@@ -30,4 +32,4 @@ a2 ctut: chứng chỉ a2, bằng a2, tiếng anh a2, cc a2, cc a2 ctut, chứng
 
 b1 ctut: chứng chỉ b1, bằng b1, tiếng anh b1, cc b1, cc b1 ctut, chứng chỉ tiếng anh b1, thi b1 nội bộ, b1 nội bộ ctut, b1 đầu ra, b1 tốt nghiệp, b1 dh cntt, b1 dh công nghệ, học b1, luyện thi b1, b1 trường cấp, b1 nội bộ trường, thi ta b1, thi tiếng anh b1, b1 nội bộ, bang b1, chung chi b1, tieng anh b1
 
-n4: jlpt n4, tiếng nhật n4, bằng n4, chứng chỉ n4, cc n4, trình độ n4, cấp độ n4, n4 tiếng nhật, học n4, luyện thi n4, bằng tiếng nhật n4, chứng chỉ tiếng nhật n4, bang n4, chung chi n4, tieng nhat n4, thi tieng nhat n4, tieng nhat cap do n4, tieng nhat so cap, tieng nhat co ban
+jlpt n4: tiếng nhật n4, bằng n4, chứng chỉ n4, cc n4, trình độ n4, cấp độ n4, n4 tiếng nhật, học n4, luyện thi n4, bằng tiếng nhật n4, chứng chỉ tiếng nhật n4, bang n4, chung chi n4, tieng nhat n4, thi tieng nhat n4, tieng nhat cap do n4, tieng nhat so cap, tieng nhat co ban

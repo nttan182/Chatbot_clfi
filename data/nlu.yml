@@ -165,3 +165,190 @@ nlu:
     - muốn bảo lưu kết quả [n4 ctut](khoa_hoc) thì làm như thế nào
     - thời hạn bảo lưu kết quả [n4 ctut](khoa_hoc) bao lâu
     - điều kiện bảo lưu [b1 ctut](khoa_hoc)
+
+- intent: hoi_thong_tin_lien_he
+  examples: |
+    - [địa chỉ](thong_tin_lien_he) của trung tâm là gì?
+    - [số điện thoại](thong_tin_lien_he) của trung tâm là bao nhiêu?
+    - [email](thong_tin_lien_he) liên hệ của trung tâm là gì?
+    - [facebook](thong_tin_lien_he) của trung tâm là gì?
+    - [địa chỉ](lien_he) cụ thể của trung tâm nằm ở đâu?
+    - [số điện thoại](lien_he) liên lạc của trung tâm là gì?
+    - trung tâm có [địa chỉ](lien_he) nào gần đây không?
+    - tôi cần [số điện thoại](lien_he) để gọi hỏi thêm thông tin.
+    - [email](lien_he) nào tôi có thể gửi thắc mắc đến?
+    - [địa chỉ](lien_he) của chi nhánh chính là ở đâu?
+    - [số điện thoại](lien_he) của bộ phận tư vấn là gì?
+    - [email](lien_he) nào để hỏi về học phí?
+    - tôi muốn biết [địa chỉ](lien_he) để đến học trực tiếp.
+    - [số điện thoại](lien_he) nào tôi có thể liên hệ ngay bây giờ?
+    - [email](lien_he) để đăng ký khóa học là gì?
+    - [số điện thoại](lien_he) để báo cáo sự cố là gì?
+    - [email](lien_he) nào để gửi phản hồi?
+    - làm sao để liên hệ với trung tâm?
+    - tôi có thể tìm thông tin liên hệ ở đâu?
+    - trung tâm có thông tin liên hệ nào không?
+    - làm thế nào để biết cách liên lạc với trung tâm?
+    - tôi cần thông tin liên hệ của trung tâm?
+    - có cách nào để liên hệ với trung tâm không?
+    - trung tâm cung cấp thông tin liên hệ ở đâu?
+    - làm sao để nhận được thông tin liên hệ của trung tâm?
+
+- intent: hoi_thong_tin_khoa_hoc
+  examples: |
+    - trung tâm có những khóa học nào?
+    - thông tin về các khóa học là gì?
+    - danh sách các khóa học gồm những gì?
+    - có bao nhiêu khóa học đang mở?
+    - các khóa học dạy những nội dung nào?
+    - thời lượng của các khóa học là bao lâu?
+    - điều kiện cấp chứng nhận của các khóa học ra sao?
+    - chuẩn đầu ra của các khóa học như thế nào?
+    - thông tin về khóa học [a2 ctut](khoa_hoc)?
+    - [a2 ctut](khoa_hoc) dạy những gì?
+    - thời lượng của khóa học [a2 ctut](khoa_hoc) là bao nhiêu?
+    - [a2 ctut](khoa_hoc) học trong bao lâu?
+    - chuẩn đầu ra của [a2 ctut](khoa_hoc) như thế nào?
+    - điều kiện cấp chứng nhận của [a2 ctut](khoa_hoc) là gì?
+    - học phí [a2 ctut](khoa_hoc) là bao nhiêu?
+    - lịch học của [a2 ctut](khoa_hoc) như thế nào?
+    - thông tin về khóa học [b1 ctut](khoa_hoc)?
+    - [b1 ctut](khoa_hoc) dạy những gì?
+    - thời lượng của khóa học [b1 ctut](khoa_hoc) là bao nhiêu?
+    - [b1 ctut](khoa_hoc) học trong bao lâu?
+    - chuẩn đầu ra của [b1 ctut](khoa_hoc) như thế nào?
+    - điều kiện cấp chứng nhận của [b1 ctut](khoa_hoc) là gì?
+    - học phí [b1 ctut](khoa_hoc) là bao nhiêu?
+    - lịch học của [b1 ctut](khoa_hoc) như thế nào?
+    - thông tin về khóa học [n4 ctut](khoa_hoc)?
+    - [n4 ctut](khoa_hoc) dạy những gì?
+    - thời lượng của khóa học [n4 ctut](khoa_hoc) là bao nhiêu?
+    - [n4 ctut](khoa_hoc) học trong bao lâu?
+    - chuẩn đầu ra của [n4 ctut](khoa_hoc) như thế nào?
+    - điều kiện cấp chứng nhận của [n4 ctut](khoa_hoc) là gì?
+    - học phí [n4 ctut](khoa_hoc) là bao nhiêu?
+    - lịch học của [n4 ctut](khoa_hoc) như thế nào?
+    - thông tin về khóa học [n4 jlpt](khoa_hoc)?
+    - [n4 jlpt](khoa_hoc) dạy những gì?
+    - thời lượng của khóa học [n4 jlpt](khoa_hoc) là bao nhiêu?
+    - [n4 jlpt](khoa_hoc) học trong bao lâu?
+    - chuẩn đầu ra của [n4 jlpt](khoa_hoc) như thế nào?
+    - điều kiện cấp chứng nhận của [n4 jlpt](khoa_hoc) là gì?
+    - học phí [n4 jlpt](khoa_hoc) là bao nhiêu?
+    - lịch học của [n4 jlpt](khoa_hoc) như thế nào?
+    - thông tin về khóa học [toeic 250](khoa_hoc)?
+    - [toeic 250](khoa_hoc) dạy những gì?
+    - thời lượng của khóa học [toeic 250](khoa_hoc) là bao nhiêu?
+    - [toeic 250](khoa_hoc) học trong bao lâu?
+    - chuẩn đầu ra của [toeic 250](khoa_hoc) như thế nào?
+    - điều kiện cấp chứng nhận của [toeic 250](khoa_hoc) là gì?
+    - học phí [toeic 250](khoa_hoc) là bao nhiêu?
+    - lịch học của [toeic 250](khoa_hoc) như thế nào?
+    - thông tin về khóa học [toeic 350](khoa_hoc)?
+    - [toeic 350](khoa_hoc) dạy những gì?
+    - thời lượng của khóa học [toeic 350](khoa_hoc) là bao nhiêu?
+    - [toeic 350](khoa_hoc) học trong bao lâu?
+    - chuẩn đầu ra của [toeic 350](khoa_hoc) như thế nào?
+    - điều kiện cấp chứng nhận của [toeic 350](khoa_hoc) là gì?
+    - học phí [toeic 350](khoa_hoc) là bao nhiêu?
+    - lịch học của [toeic 350](khoa_hoc) như thế nào?
+    - thông tin về khóa học [toeic 450](khoa_hoc)?
+    - [toeic 450](khoa_hoc) dạy những gì?
+    - thời lượng của khóa học [toeic 450](khoa_hoc) là bao nhiêu?
+    - [toeic 450](khoa_hoc) học trong bao lâu?
+    - chuẩn đầu ra của [toeic 450](khoa_hoc) như thế nào?
+    - điều kiện cấp chứng nhận của [toeic 450](khoa_hoc) là gì?
+    - học phí [toeic 450](khoa_hoc) là bao nhiêu?
+    - lịch học của [toeic 450](khoa_hoc) như thế nào?
+    - thông tin về khóa học [toeic ctut](khoa_hoc)?
+    - [toeic ctut](khoa_hoc) dạy những gì?
+    - thời lượng của khóa học [toeic ctut](khoa_hoc) là bao nhiêu?
+    - [toeic ctut](khoa_hoc) học trong bao lâu?
+    - chuẩn đầu ra của [toeic ctut](khoa_hoc) như thế nào?
+    - điều kiện cấp chứng nhận của [toeic ctut](khoa_hoc) là gì?
+    - học phí [toeic ctut](khoa_hoc) là bao nhiêu?
+    - lịch học của [toeic ctut](khoa_hoc) như thế nào?
+    - thông tin về khóa học [ud cntt cb](khoa_hoc)?
+    - [ud cntt cb](khoa_hoc) dạy những gì?
+    - thời lượng của khóa học [ud cntt cb](khoa_hoc) là bao nhiêu?
+    - [ud cntt cb](khoa_hoc) học trong bao lâu?
+    - chuẩn đầu ra của [ud cntt cb](khoa_hoc) như thế nào?
+    - điều kiện cấp chứng nhận của [ud cntt cb](khoa_hoc) là gì?
+    - học phí [ud cntt cb](khoa_hoc) là bao nhiêu?
+    - lịch học của [ud cntt cb](khoa_hoc) như thế nào?
+    - thông tin về khóa học [ud cntt nc](khoa_hoc)?
+    - [ud cntt nc](khoa_hoc) dạy những gì?
+    - thời lượng của khóa học [ud cntt nc](khoa_hoc) là bao nhiêu?
+    - [ud cntt nc](khoa_hoc) học trong bao lâu?
+    - chuẩn đầu ra của [ud cntt nc](khoa_hoc) như thế nào?
+    - điều kiện cấp chứng nhận của [ud cntt nc](khoa_hoc) là gì?
+    - học phí [ud cntt nc](khoa_hoc) là bao nhiêu?
+    - lịch học của [ud cntt nc](khoa_hoc) như thế nào?
+
+- intent: hoi_lich_khai_giang
+  examples: |
+    - điều kiện bảo lưu sao
+
+- intent: hoi_quy_dinh
+  examples: |
+    - điều kiện bảo lưu sao
+
+- intent: hoi_mau_don_dang_ky
+  examples: |
+    - điều kiện bảo lưu sao
+
+- intent: hoi_ket_qua_thi
+  examples: |
+    - điều kiện bảo lưu sao
+
+- intent: hoi_dieu_kien_bao_luu
+  examples: |
+    - điều kiện bảo lưu sao
+
+- intent: hoi_can_bo_phu_trach
+  examples: |
+    - điều kiện bảo lưu sao
+
+- intent: hoi_hoc_phi
+  examples: |
+    - điều kiện bảo lưu sao
+
+- intent: hoi_phuong_thuc_hoc
+  examples: |
+    - điều kiện bảo lưu sao
+
+- intent: hoi_co_so_vat_chat
+  examples: |
+    - điều kiện bảo lưu sao
+
+- intent: hoi_quy_trinh_thi
+  examples: |
+    - điều kiện bảo lưu sao
+
+- intent: hoi_giao_vien
+  examples: |
+    - điều kiện bảo lưu sao
+
+- intent: hoi_ho_tro_hoc_vien
+  examples: |
+    - điều kiện bảo lưu sao
+
+- intent: hoi_dang_ky_hoc
+  examples: |
+    - điều kiện bảo lưu sao
+
+- intent: hoi_thoi_gian_hoc
+  examples: |
+    - điều kiện bảo lưu sao
+
+- intent: hoi_chat_luong_dao_tao
+  examples: |
+    - điều kiện bảo lưu sao
+
+- intent: hoi_thong_tin_chung_ve_trung_tam
+  examples: |
+    - điều kiện bảo lưu sao
+
+- intent: hoi_phan_hoi_gop_y_khieu_nai
+  examples: |
+    - điều kiện bảo lưu sao
