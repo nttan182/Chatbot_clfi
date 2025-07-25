@@ -57,13 +57,19 @@ nlu:
     - giới thiệu về hệ thống
     - bạn là gì
 
-- intent: hoi_chuong_trinh_giang_day
+- intent: hoi_chuong_trinh_dao_tao
   examples: |
-    - trung tâm có những chương trình giảng dạy nào
+    - trung tâm có những chương trình đào tạo nào
     - cho tôi biết các chương trình học của trung tâm
     - trung tâm dạy những khóa nào
     - có những lớp học nào
     - danh sách chương trình giảng dạy ở trung tâm
+
+- intent: hoi_chuong_trinh_giang_day
+  examples: |
+    - xem chương trình giảng dạy
+    - chương trình giảng dạy của [TOEIC CTUT](khoa_hoc)
+    - cho tôi biết chương trình giảng dạy của [B1 CTUT](khoa_hoc)
 
 - intent: hoi_danh_sach_quy_dinh
   examples: |

@@ -24,6 +24,11 @@ stories:
 
 - story: Trả lời khi hỏi chương trình giảng dạy
   steps:
+    - intent: hoi_chuong_trinh_dao_tao
+    - action: action_xem_chuong_trinh_dao_tao
+
+- story: Xem chương trình – trực tiếp có slot từ đầu
+  steps:
     - intent: hoi_chuong_trinh_giang_day
     - action: action_xem_chuong_trinh_giang_day
 
