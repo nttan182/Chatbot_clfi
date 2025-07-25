@@ -10,7 +10,7 @@ def get_db_connection():
         host="localhost",
         database="chatbot_clfi",
         user="postgres",
-        password="13051989"
+        password="2101235"
     )
 
 
@@ -48,9 +48,9 @@ class ActionCheckPostgreConnection(Action):
 
         return []
 
-class ActionXemChuongTrinhGiangDay(Action):
+class ActionXemChuongTrinhDaoTao(Action):
     def name(self):
-        return "action_xem_chuong_trinh_giang_day"
+        return "action_xem_chuong_trinh_dao_tao"
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
@@ -84,6 +84,125 @@ class ActionXemChuongTrinhGiangDay(Action):
                 conn.close()
 
         return []
+
+class ActionXemChuongTrinh(Action):
+    def name(self) -> Text:
+        return "action_xem_chuong_trinh_giang_day"
+
+    def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+
+        # Lấy slot khoa_hoc (vd: "toeic ctut")
+        khoa_hoc = tracker.get_slot("khoa_hoc")
+
+        # Nếu user chỉ nói chung chung, chưa có slot -> hỏi lại
+        if not khoa_hoc:
+            dispatcher.utter_message(response="utter_ask_khoa_hoc")
+            return []
+
+        # Nếu đã có slot, thực hiện truy vấn
+        try:
+            conn = get_db_connection()
+            cursor = conn.cursor()
+            cursor.execute(
+                """
+                SELECT chuong_trinh_giang_day
+                  FROM chuong_trinh_dao_tao
+                 WHERE ma_chuong_trinh ILIKE %s
+                """,
+                (khoa_hoc.strip(),)
+            )
+            row = cursor.fetchone()
+
+            if row and row[0]:
+                ten = row[0]
+                dispatcher.utter_message(text=(
+                    f"Thông tin chương trình giảng dạy:\n"
+                    f"- Tên chương trình: **{ten}**"
+                ))
+            else:
+                dispatcher.utter_message(text=(
+                    f"Không tìm thấy chương trình nào."
+                ))
+
+        except Exception as e:
+            logger.error(f"[ActionXemChuongTrinh] Lỗi khi truy vấn DB: {e}")
+            dispatcher.utter_message(text=(
+                "Đã xảy ra lỗi khi kết nối cơ sở dữ liệu. "
+                "Vui lòng thử lại sau."
+            ))
+        finally:
+            if 'cursor' in locals():
+                cursor.close()
+            if 'conn' in locals():
+                conn.close()
+
+        # Reset slot để lần sau user có thể tra tiếp
+        return [SlotSet("khoa_hoc", None)]
+
+class ActionXemChuongTrinhKhung(Action):
+    def name(self) -> Text:
+        return "action_xem_chuong_trinh_khung"
+
+    def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+
+        # Lấy slot ma_ct_khung (mã chương trình khung)
+        ma_ct = tracker.get_slot("ma_ct_khung")
+
+        if not ma_ct:
+            # Nếu user chưa cho mã, hỏi lại
+            dispatcher.utter_message(response="utter_ask_ma_ct_khung")
+            return []
+
+        try:
+            conn = get_db_connection()
+            cursor = conn.cursor()
+            cursor.execute(
+                """
+                SELECT ten_chuong_trinh
+                  FROM chuong_trinh
+                 WHERE ma_chuong_trinh = %s
+                """,
+                (ma_ct.strip(),)
+            )
+            row = cursor.fetchone()
+
+            if row and row[0]:
+                ten = row[0]
+                dispatcher.utter_message(text=(
+                    f"Chương trình khung* bạn yêu cầu:\n"
+                    f" • Mã: **{ma_ct.upper()}**\n"
+                    f" • Tên: **{ten}**"
+                ))
+            else:
+                dispatcher.utter_message(text=(
+                    f"Không tìm thấy chương trình khung với mã “{ma_ct}”. "
+                    "Vui lòng kiểm tra lại."
+                ))
+
+        except Exception as e:
+            logger.error(f"[ActionXemChuongTrinhKhung] Lỗi DB: {e}")
+            dispatcher.utter_message(text=(
+                "Có lỗi khi truy xuất cơ sở dữ liệu. "
+                "Bạn vui lòng thử lại sau."
+            ))
+        finally:
+            if 'cursor' in locals():
+                cursor.close()
+            if 'conn' in locals():
+                conn.close()
+
+        # Reset slot để lần sau có thể tra mã khác
+        return [SlotSet("ma_ct_khung", None)]
 
 class ActionXemDanhSachQuyDinh(Action):
     def name(self):
