@@ -1,5 +1,5 @@
 from typing import Any, Text, Dict, List
-from rasa_sdk import FormValidationAction
+from rasa_sdk import FormValidationAction, logger
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 import psycopg2
