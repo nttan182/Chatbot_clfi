@@ -11,10 +11,13 @@ intents:
   - xem_quy_dinh_chi_tiet
   - hoi_dieu_kien_bao_luu
   - inform
+  - hoi_thong_tin_lien_he
+  - hoi_thong_tin_khoa_hoc
 
 entities:
   - khoa_hoc
   - chi_tiet_quy_dinh
+  - lien_he
   #- gioi_thieu_trung_tam
 
 slots:
@@ -82,7 +85,6 @@ actions:
   - action_tra_cuu_thong_tin_chi_tiet_quy_dinh
   - validate_form_dieu_kien_bao_luu
   - action_tra_cuu_dieu_kien_bao_luu
-
 
 Session_config:
   session_expiration_time: 60

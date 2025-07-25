@@ -1,8 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import requests
 
-from utils.word_replacer import load_replacement_data, replace_words
-
+from utils.word_replacer import load_replacement_data, replace_words, load_stopwords
 
 app = Flask(__name__, static_folder='public')
 
@@ -15,8 +14,9 @@ def index():
 @app.route("/send_message", methods=["POST"])
 def send_message():
     replacements = load_replacement_data('data/standardization.txt')
+    stopwords = load_stopwords('data/stopwords.txt')
     user_message = request.form.get("message")
-    replaced = replace_words(user_message, replacements)
+    replaced = replace_words(user_message, replacements, stopwords)
     print(f"Replaced message: {replaced}")
     payload = {"sender": "user", "message": replaced}
 
