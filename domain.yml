@@ -13,7 +13,11 @@ intents:
   - hoi_dieu_kien_bao_luu
   - inform
   - hoi_thong_tin_lien_he
-  - hoi_thong_tin_khoa_hoc
+  - hoi_ten_chuong_trinh
+  - hoi_chuong_trinh_giang_day
+  - hoi_chuong_trinh_khung
+  - hoi_thoi_luong
+  - hoi_chuan_dau_ra
 
 entities:
   - khoa_hoc
