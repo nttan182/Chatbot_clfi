@@ -61,7 +61,8 @@ class ActionXemChuongTrinhDaoTao(Action):
             conn = get_db_connection()
             cursor = conn.cursor()
 
-            cursor.execute("SELECT ten_chuong_trinh FROM chuong_trinh_dao_tao;")
+            # SỬA LẠI tên bảng cho đúng
+            cursor.execute("SELECT ten_chuong_trinh FROM hoi_chuong_trinh_dao_tao;")
             records = cursor.fetchall()
 
             if records:
@@ -84,6 +85,7 @@ class ActionXemChuongTrinhDaoTao(Action):
                 conn.close()
 
         return []
+
 
 class ActionXemChuongTrinh(Action):
     def name(self) -> Text:
