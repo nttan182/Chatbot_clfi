@@ -64,9 +64,6 @@ nlu:
     - trung tâm dạy những khóa nào
     - có những lớp học nào
     - danh sách chương trình giảng dạy ở trung tâm
-    - trung tâm có những khóa học nào?
-    - danh sách các khóa học gồm những gì?
-    - có bao nhiêu khóa học đang mở?
 
 - intent: hoi_chuong_trinh_giang_day
   examples: |
@@ -199,6 +196,9 @@ nlu:
 
 - intent: hoi_ten_chuong_trinh
   examples: |
+    - trung tâm có những khóa học nào?
+    - danh sách các khóa học gồm những gì?
+    - có bao nhiêu khóa học đang mở?
     - khóa học [a2 ctut](khoa_hoc) là gì?
     - [a2 ctut](khoa_hoc) là khóa học như thế nào?
     - khóa học [b1 ctut](khoa_hoc) là gì?
