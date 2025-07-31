@@ -14,11 +14,11 @@ intents:
   - hoi_chuan_dau_ra
   - hoi_danh_sach_quy_dinh
   - xem_quy_dinh_chi_tiet
-  - hoi_ket_qua_thi
+  - diem_thi
   - hoi_ngay_khai_giang
   - hoi_ngay_thi
   - hoi_thong_tin_lien_he
-  - hoi_mau_don_dang_ky
+  - hoi_cach_dang_ky
   - hoi_dieu_kien_bao_luu
   - hoi_hoc_phi
   - hoi_phi_thi_lai
