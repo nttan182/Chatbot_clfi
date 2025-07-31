@@ -1,4 +1,4 @@
-version: "3.1"
+version: "31"
 
 nlu:
 - intent: chao_hoi
@@ -57,6 +57,10 @@ nlu:
     - giới thiệu về hệ thống
     - bạn là gì
 
+- intent: hoi_can_bo_phu_trach
+  examples: |
+    - điều kiện bảo lưu sao
+
 - intent: hoi_chuong_trinh_dao_tao
   examples: |
     - trung tâm có những chương trình đào tạo nào
@@ -65,38 +69,240 @@ nlu:
     - có những lớp học nào
     - danh sách chương trình giảng dạy ở trung tâm
 
+- intent: hoi_ten_chuong_trinh
+  examples: |
+    - trung tâm có những khóa học nào
+    - danh sách các khóa học gồm những gì
+    - có bao nhiêu khóa học đang mở
+    - khóa học [a2 ctut](khoa_hoc) là gì
+    - [a2 ctut](khoa_hoc) là khóa học như thế nào
+    - khóa học [b1 ctut](khoa_hoc) là gì
+    - [b1 ctut](khoa_hoc) là khóa học như thế nào
+    - khóa học [n4 ctut](khoa_hoc) là gì
+    - [n4 ctut](khoa_hoc) là khóa học như thế nào
+    - khóa học [n4 jlpt](khoa_hoc) là gì
+    - [n4 jlpt](khoa_hoc) là khóa học như thế nào
+    - khóa học [toeic 250](khoa_hoc) là gì
+    - [toeic 250](khoa_hoc) là khóa học như thế nào
+    - khóa học [toeic 350](khoa_hoc) là gì
+    - [toeic 350](khoa_hoc) là khóa học như thế nào
+    - khóa học [toeic 450](khoa_hoc) là gì
+    - [toeic 450](khoa_hoc) là khóa học như thế nào
+    - khóa học [toeic ctut](khoa_hoc) là gì
+    - [toeic ctut](khoa_hoc) là khóa học như thế nào
+    - khóa học [ud cntt cb](khoa_hoc) là gì
+    - [ud cntt cb](khoa_hoc) là khóa học như thế nào
+    - khóa học [ud cntt nc](khoa_hoc) là gì
+    - [ud cntt nc](khoa_hoc) là khóa học như thế nào
+
 - intent: hoi_chuong_trinh_giang_day
   examples: |
-    - xem chương trình giảng dạy
-    - chương trình giảng dạy của [TOEIC CTUT](khoa_hoc)
-    - cho tôi biết chương trình giảng dạy của [B1 CTUT](khoa_hoc)
+    - chương trình giảng dạy của trung tâm như thế nào
+    - chương trình đào tạo của trung tâm như thế nào
+    - nội dung học của các khóa học là gì
+    - tổng quan về các khóa học là gì
+    - mục tiêu của các chương trình đào tạo ra sao
+    - cấu trúc chương trình đào tạo được thiết kế thế nào
+    - tổng quan về khóa học [a2 ctut](khoa_hoc) là gì
+    - chương trình đào tạo [a2 ctut](khoa_hoc) như thế nào
+    - mục tiêu của khóa học [a2 ctut](khoa_hoc) là gì
+    - cấu trúc chương trình [a2 ctut](khoa_hoc) ra sao
+    - tổng quan về khóa học [b1 ctut](khoa_hoc) là gì
+    - chương trình đào tạo [b1 ctut](khoa_hoc) như thế nào
+    - mục tiêu của khóa học [b1 ctut](khoa_hoc) là gì
+    - cấu trúc chương trình [b1 ctut](khoa_hoc) ra sao
+    - tổng quan về khóa học [n4 ctut](khoa_hoc) là gì
+    - chương trình đào tạo [n4 ctut](khoa_hoc) như thế nào
+    - mục tiêu của khóa học [n4 ctut](khoa_hoc) là gì
+    - cấu trúc chương trình [n4 ctut](khoa_hoc) ra sao
+    - tổng quan về khóa học [n4 jlpt](khoa_hoc) là gì
+    - chương trình đào tạo [n4 jlpt](khoa_hoc) như thế nào
+    - mục tiêu của khóa học [n4 jlpt](khoa_hoc) là gì
+    - cấu trúc chương trình [n4 jlpt](khoa_hoc) ra sao
+    - tổng quan về khóa học [toeic 250](khoa_hoc) là gì
+    - chương trình đào tạo [toeic 250](khoa_hoc) như thế nào
+    - mục tiêu của khóa học [toeic 250](khoa_hoc) là gì
+    - cấu trúc chương trình [toeic 250](khoa_hoc) ra sao
+    - tổng quan về khóa học [toeic 350](khoa_hoc) là gì
+    - chương trình đào tạo [toeic 350](khoa_hoc) như thế nào
+    - mục tiêu của khóa học [toeic 350](khoa_hoc) là gì
+    - cấu trúc chương trình [toeic 350](khoa_hoc) ra sao
+    - tổng quan về khóa học [toeic 450](khoa_hoc) là gì
+    - chương trình đào tạo [toeic 450](khoa_hoc) như thế nào
+    - mục tiêu của khóa học [toeic 450](khoa_hoc) là gì
+    - cấu trúc chương trình [toeic 450](khoa_hoc) ra sao
+    - tổng quan về khóa học [toeic ctut](khoa_hoc) là gì
+    - chương trình đào tạo [toeic ctut](khoa_hoc) như thế nào
+    - mục tiêu của khóa học [toeic ctut](khoa_hoc) là gì
+    - cấu trúc chương trình [toeic ctut](khoa_hoc) ra sao
+    - tổng quan về khóa học [ud cntt cb](khoa_hoc) là gì
+    - chương trình đào tạo [ud cntt cb](khoa_hoc) như thế nào
+    - mục tiêu của khóa học [ud cntt cb](khoa_hoc) là gì
+    - cấu trúc chương trình [ud cntt cb](khoa_hoc) ra sao
+    - tổng quan về khóa học [ud cntt nc](khoa_hoc) là gì
+    - chương trình đào tạo [ud cntt nc](khoa_hoc) như thế nào
+    - mục tiêu của khóa học [ud cntt nc](khoa_hoc) là gì
+    - cấu trúc chương trình [ud cntt nc](khoa_hoc) ra sao
+
+- intent: hoi_chuong_trinh_khung
+  examples: |
+    - chương trình khung của trung tâm bao gồm những gì
+    - các khóa học tập trung vào kỹ năng nào
+    - nội dung chính trong chương trình khung là gì
+    - kỹ năng nào được phát triển trong các khóa học
+    - chương trình khung [a2 ctut](khoa_hoc) bao gồm những gì
+    - [a2 ctut](khoa_hoc) tập trung vào kỹ năng nào
+    - nội dung chính trong chương trình khung [a2 ctut](khoa_hoc) là gì
+    - kỹ năng nào được phát triển trong [a2 ctut](khoa_hoc)
+    - chương trình khung [b1 ctut](khoa_hoc) bao gồm những gì
+    - [b1 ctut](khoa_hoc) tập trung vào kỹ năng nào
+    - nội dung chính trong chương trình khung [b1 ctut](khoa_hoc) là gì
+    - kỹ năng nào được phát triển trong [b1 ctut](khoa_hoc)
+    - chương trình khung [n4 ctut](khoa_hoc) bao gồm những gì
+    - [n4 ctut](khoa_hoc) tập trung vào kỹ năng nào
+    - nội dung chính trong chương trình khung [n4 ctut](khoa_hoc) là gì
+    - kỹ năng nào được phát triển trong [n4 ctut](khoa_hoc)
+    - chương trình khung [n4 jlpt](khoa_hoc) bao gồm những gì
+    - [n4 jlpt](khoa_hoc) tập trung vào kỹ năng nào
+    - nội dung chính trong chương trình khung [n4 jlpt](khoa_hoc) là gì
+    - kỹ năng nào được phát triển trong [n4 jlpt](khoa_hoc)
+    - chương trình khung [toeic 250](khoa_hoc) bao gồm những gì
+    - [toeic 250](khoa_hoc) tập trung vào kỹ năng nào
+    - nội dung chính trong chương trình khung [toeic 250](khoa_hoc) là gì
+    - kỹ năng nào được phát triển trong [toeic 250](khoa_hoc)
+    - chương trình khung [toeic 350](khoa_hoc) bao gồm những gì
+    - [toeic 350](khoa_hoc) tập trung vào kỹ năng nào
+    - nội dung chính trong chương trình khung [toeic 350](khoa_hoc) là gì
+    - kỹ năng nào được phát triển trong [toeic 350](khoa_hoc)
+    - chương trình khung [toeic 450](khoa_hoc) bao gồm những gì
+    - [toeic 450](khoa_hoc) tập trung vào kỹ năng nào
+    - nội dung chính trong chương trình khung [toeic 450](khoa_hoc) là gì
+    - kỹ năng nào được phát triển trong [toeic 450](khoa_hoc)
+    - chương trình khung [toeic ctut](khoa_hoc) bao gồm những gì
+    - [toeic ctut](khoa_hoc) tập trung vào kỹ năng nào
+    - nội dung chính trong chương trình khung [toeic ctut](khoa_hoc) là gì
+    - kỹ năng nào được phát triển trong [toeic ctut](khoa_hoc)
+    - chương trình khung [ud cntt cb](khoa_hoc) bao gồm những gì
+    - [ud cntt cb](khoa_hoc) tập trung vào kỹ năng nào
+    - nội dung chính trong chương trình khung [ud cntt cb](khoa_hoc) là gì
+    - kỹ năng nào được phát triển trong [ud cntt cb](khoa_hoc)
+    - chương trình khung [ud cntt nc](khoa_hoc) bao gồm những gì
+    - [ud cntt nc](khoa_hoc) tập trung vào kỹ năng nào
+    - nội dung chính trong chương trình khung [ud cntt nc](khoa_hoc) là gì
+    - kỹ năng nào được phát triển trong [ud cntt nc](khoa_hoc)
+
+- intent: hoi_thoi_luong
+  examples: |
+    - thời lượng đào tạo của các khóa học là bao lâu
+    - số tiết học trong một khóa là bao nhiêu
+    - thời gian học tập của trung tâm kéo dài bao lâu
+    - tổng số tiết học của một khóa
+    - thời lượng đào tạo của [a2 ctut](khoa_hoc) là bao lâu
+    - số tiết học trong [a2 ctut](khoa_hoc) là bao nhiêu
+    - thời gian học tập của [a2 ctut](khoa_hoc) kéo dài bao lâu
+    - tổng số tiết học của [a2 ctut](khoa_hoc)
+    - thời lượng đào tạo của [b1 ctut](khoa_hoc) là bao lâu
+    - số tiết học trong [b1 ctut](khoa_hoc) là bao nhiêu
+    - thời gian học tập của [b1 ctut](khoa_hoc) kéo dài bao lâu
+    - tổng số tiết học của [b1 ctut](khoa_hoc)
+    - thời lượng đào tạo của [n4 ctut](khoa_hoc) là bao lâu
+    - số tiết học trong [n4 ctut](khoa_hoc) là bao nhiêu
+    - thời gian học tập của [n4 ctut](khoa_hoc) kéo dài bao lâu
+    - tổng số tiết học của [n4 ctut](khoa_hoc)
+    - thời lượng đào tạo của [n4 jlpt](khoa_hoc) là bao lâu
+    - số tiết học trong [n4 jlpt](khoa_hoc) là bao nhiêu
+    - thời gian học tập của [n4 jlpt](khoa_hoc) kéo dài bao lâu
+    - tổng số tiết học của [n4 jlpt](khoa_hoc)
+    - thời lượng đào tạo của [toeic 250](khoa_hoc) là bao lâu
+    - số tiết học trong [toeic 250](khoa_hoc) là bao nhiêu
+    - thời gian học tập của [toeic 250](khoa_hoc) kéo dài bao lâu
+    - tổng số tiết học của [toeic 250](khoa_hoc)
+    - thời lượng đào tạo của [toeic 350](khoa_hoc) là bao lâu
+    - số tiết học trong [toeic 350](khoa_hoc) là bao nhiêu
+    - thời gian học tập của [toeic 350](khoa_hoc) kéo dài bao lâu
+    - tổng số tiết học của [toeic 350](khoa_hoc)
+    - thời lượng đào tạo của [toeic 450](khoa_hoc) là bao lâu
+    - số tiết học trong [toeic 450](khoa_hoc) là bao nhiêu
+    - thời gian học tập của [toeic 450](khoa_hoc) kéo dài bao lâu
+    - tổng số tiết học của [toeic 450](khoa_hoc)
+    - thời lượng đào tạo của [toeic ctut](khoa_hoc) là bao lâu
+    - số tiết học trong [toeic ctut](khoa_hoc) là bao nhiêu
+    - thời gian học tập của [toeic ctut](khoa_hoc) kéo dài bao lâu
+    - tổng số tiết học của [toeic ctut](khoa_hoc)
+    - thời lượng đào tạo của [ud cntt cb](khoa_hoc) là bao lâu
+    - số tiết học trong [ud cntt cb](khoa_hoc) là bao nhiêu
+    - thời gian học tập của [ud cntt cb](khoa_hoc) kéo dài bao lâu
+    - tổng số tiết học của [ud cntt cb](khoa_hoc)
+    - thời lượng đào tạo của [ud cntt nc](khoa_hoc) là bao lâu
+    - số tiết học trong [ud cntt nc](khoa_hoc) là bao nhiêu
+    - thời gian học tập của [ud cntt nc](khoa_hoc) kéo dài bao lâu
+    - tổng số tiết học của [ud cntt nc](khoa_hoc)
+
+- intent: hoi_chuan_dau_ra
+  examples: |
+    - tiêu chuẩn đầu ra của các khóa học là gì
+    - điều kiện để cấp chứng nhận của các khóa học ra sao
+    - tiêu chuẩn hoàn thành khóa học được quy định thế nào
+    - yêu cầu để nhận chứng nhận là gì
+    - tiêu chuẩn đầu ra của [a2 ctut](khoa_hoc) là gì
+    - điều kiện cấp chứng nhận của [a2 ctut](khoa_hoc) ra sao
+    - tiêu chuẩn hoàn thành [a2 ctut](khoa_hoc) được quy định thế nào
+    - yêu cầu để nhận chứng nhận của [a2 ctut](khoa_hoc) là gì
+    - tiêu chuẩn đầu ra của [b1 ctut](khoa_hoc) là gì
+    - điều kiện cấp chứng nhận của [b1 ctut](khoa_hoc) ra sao
+    - tiêu chuẩn hoàn thành [b1 ctut](khoa_hoc) được quy định thế nào
+    - yêu cầu để nhận chứng nhận của [b1 ctut](khoa_hoc) là gì
+    - tiêu chuẩn đầu ra của [n4 ctut](khoa_hoc) là gì
+    - điều kiện cấp chứng nhận của [n4 ctut](khoa_hoc) ra sao
+    - tiêu chuẩn hoàn thành [n4 ctut](khoa_hoc) được quy định thế nào
+    - yêu cầu để nhận chứng nhận của [n4 ctut](khoa_hoc) là gì
+    - tiêu chuẩn đầu ra của [n4 jlpt](khoa_hoc) là gì
+    - điều kiện cấp chứng nhận của [n4 jlpt](khoa_hoc) ra sao
+    - tiêu chuẩn hoàn thành [n4 jlpt](khoa_hoc) được quy định thế nào
+    - yêu cầu để nhận chứng nhận của [n4 jlpt](khoa_hoc) là gì
+    - tiêu chuẩn đầu ra của [toeic 250](khoa_hoc) là gì
+    - điều kiện cấp chứng nhận của [toeic 250](khoa_hoc) ra sao
+    - tiêu chuẩn hoàn thành [toeic 250](khoa_hoc) được quy định thế nào
+    - yêu cầu để nhận chứng nhận của [toeic 250](khoa_hoc) là gì
+    - tiêu chuẩn đầu ra của [toeic 350](khoa_hoc) là gì
+    - điều kiện cấp chứng nhận của [toeic 350](khoa_hoc) ra sao
+    - tiêu chuẩn hoàn thành [toeic 350](khoa_hoc) được quy định thế nào
+    - yêu cầu để nhận chứng nhận của [toeic 350](khoa_hoc) là gì
+    - tiêu chuẩn đầu ra của [toeic 450](khoa_hoc) là gì
+    - điều kiện cấp chứng nhận của [toeic 450](khoa_hoc) ra sao
+    - tiêu chuẩn hoàn thành [toeic 450](khoa_hoc) được quy định thế nào
+    - yêu cầu để nhận chứng nhận của [toeic 450](khoa_hoc) là gì
+    - tiêu chuẩn đầu ra của [toeic ctut](khoa_hoc) là gì
+    - điều kiện cấp chứng nhận của [toeic ctut](khoa_hoc) ra sao
+    - tiêu chuẩn hoàn thành [toeic ctut](khoa_hoc) được quy định thế nào
+    - yêu cầu để nhận chứng nhận của [toeic ctut](khoa_hoc) là gì
+    - tiêu chuẩn đầu ra của [ud cntt cb](khoa_hoc) là gì
+    - điều kiện cấp chứng nhận của [ud cntt cb](khoa_hoc) ra sao
+    - tiêu chuẩn hoàn thành [ud cntt cb](khoa_hoc) được quy định thế nào
+    - yêu cầu để nhận chứng nhận của [ud cntt cb](khoa_hoc) là gì
+    - tiêu chuẩn đầu ra của [ud cntt nc](khoa_hoc) là gì
+    - điều kiện cấp chứng nhận của [ud cntt nc](khoa_hoc) ra sao
+    - tiêu chuẩn hoàn thành [ud cntt nc](khoa_hoc) được quy định thế nào
+    - yêu cầu để nhận chứng nhận của [ud cntt nc](khoa_hoc) là gì
 
 - intent: hoi_danh_sach_quy_dinh
   examples: |
     - tôi muốn biết trung tâm có các quy định gì
     - danh sách các quy định của trung tâm
     - trung tâm có những quy định nào
-
-- intent: inform
-  examples: |
-    - [các khóa](khoa_hoc)
-    - [ud cntt cb](khoa_hoc)
-    - [ud cntt nc](khoa_hoc)
-    - [toeic 250](khoa_hoc)
-    - [toeic 350](khoa_hoc)
-    - [toeic 450](khoa_hoc)
-    - [a2 ctut](khoa_hoc)
-    - [b1 ctut](khoa_hoc)
-    - [n4 ctut](khoa_hoc)
-    - [toeic ctut](khoa_hoc)
+    - quy định tại trung tâm bao gồm những gì
+    - quy định tại trung tâm được quy định ra sao
+    - quy định chung tại trung tâm là gì
+    - quy định tại trung tâm có những nội dung nào
+    - quy định tại trung tâm bao quát những gì
 
 - intent: xem_quy_dinh_chi_tiet
   examples: |
-    - [quy định điểm danh](chi_tiet_quy_dinh)
-    - thông tin về [quy định điểm danh](chi_tiet_quy_dinh)
-    - [quy định điểm danh](chi_tiet_quy_dinh) sao
-    - [quy định điểm danh](chi_tiet_quy_dinh) như thế nào
-    - muốn biết [quy định điểm danh](chi_tiet_quy_dinh)
+    - [quy định về đào tạo](chi_tiet_quy_dinh)
+    - thông tin về [quy định về đào tạo](chi_tiet_quy_dinh)
+    - [quy định về đào tạo](chi_tiet_quy_dinh) sao
+    - [quy định về đào tạo](chi_tiet_quy_dinh) như thế nào
+    - muốn biết [quy định về đào tạo](chi_tiet_quy_dinh)
     - [quy định điều kiện bảo lưu](chi_tiet_quy_dinh)
     - thông tin về [quy định điều kiện bảo lưu](chi_tiet_quy_dinh)
     - [quy định điều kiện bảo lưu](chi_tiet_quy_dinh) sao
@@ -117,14 +323,81 @@ nlu:
     - [quy định học tập đối với học viên](chi_tiet_quy_dinh) sao
     - [quy định học tập đối với học viên](chi_tiet_quy_dinh) như thế nào
     - muốn biết [quy định học tập đối với học viên](chi_tiet_quy_dinh)
-    - [quy định học tập đối với học viên](chi_tiet_quy_dinh)
+    - [quy định về xử lý vi phạm](chi_tiet_quy_dinh)
+    - thông tin về [quy định về xử lý vi phạm](chi_tiet_quy_dinh)
+    - [quy định về xử lý vi phạm](chi_tiet_quy_dinh) sao
+    - [quy định về xử lý vi phạm](chi_tiet_quy_dinh) như thế nào
+    - muốn biết [quy định về xử lý vi phạm](chi_tiet_quy_dinh)
+
+- intent: hoi_ket_qua_thi
+  examples: |
+    - điều kiện bảo lưu sao
+
+- intent: hoi_ngay_khai_giang
+  examples: |
+    - điều kiện bảo lưu sao
+
+- intent: hoi_ngay_thi
+  examples: |
+    - điều kiện bảo lưu sao
+
+- intent: hoi_thong_tin_lien_he
+  examples: |
+    - [địa chỉ](thong_tin_lien_he) của trung tâm là gì
+    - [số điện thoại](thong_tin_lien_he) của trung tâm là bao nhiêu
+    - [email](thong_tin_lien_he) liên hệ của trung tâm là gì
+    - [facebook](thong_tin_lien_he) của trung tâm là gì
+    - [địa chỉ](lien_he) cụ thể của trung tâm nằm ở đâu
+    - [số điện thoại](lien_he) liên lạc của trung tâm là gì
+    - trung tâm có [địa chỉ](lien_he) nào gần đây không
+    - tôi cần [số điện thoại](lien_he) để gọi hỏi thêm thông tin
+    - [email](lien_he) nào tôi có thể gửi thắc mắc đến
+    - [địa chỉ](lien_he) của chi nhánh chính là ở đâu
+    - [số điện thoại](lien_he) của bộ phận tư vấn là gì
+    - [email](lien_he) nào để hỏi về học phí
+    - tôi muốn biết [địa chỉ](lien_he) để đến học trực tiếp
+    - [số điện thoại](lien_he) nào tôi có thể liên hệ ngay bây giờ
+    - [email](lien_he) để đăng ký khóa học là gì
+    - [số điện thoại](lien_he) để báo cáo sự cố là gì
+    - [email](lien_he) nào để gửi phản hồi
+    - làm sao để liên hệ với trung tâm
+    - tôi có thể tìm thông tin liên hệ ở đâu
+    - trung tâm có thông tin liên hệ nào không
+    - làm thế nào để biết cách liên lạc với trung tâm
+    - tôi cần thông tin liên hệ của trung tâm
+    - có cách nào để liên hệ với trung tâm không
+    - trung tâm cung cấp thông tin liên hệ ở đâu
+    - làm sao để nhận được thông tin liên hệ của trung tâm
+
+- intent: hoi_mau_don_dang_ky
+  examples: |
+    - mẫu đơn ud cntt [md001](mau_don) ở đâu
+    - giấy tờ mẫu đơn ud cntt [md001](mau_don) là gì
+    - quy trình nộp mẫu đơn ud cntt [md001](mau_don) ra sao
+    - link tải mẫu đơn ud cntt [md001](mau_don) ở đâu
+    - mẫu đơn ud cntt [md001](mau_don) cần ảnh không
+    - cách điền mẫu đơn ud cntt [md001](mau_don) thế nào
+    - nơi cung cấp mẫu đơn ud cntt [md001](mau_don) là đâu
+    - yêu cầu ảnh thẻ mẫu đơn ud cntt [md001](mau_don) thế nào
+    - mẫu đơn ud cntt [md001](mau_don) cần 02 ảnh 3x4 không
+    - quy định nộp mẫu đơn ud cntt [md001](mau_don) thế nào
+    - cách tải mẫu đơn toeic ctut [md002](mau_don) thế nào
+    - mẫu đơn toeic ctut [md002](mau_don) tải ở đâu
+    - giấy tờ cần cho mẫu đơn toeic ctut [md002](mau_don)
+    - cách lấy mẫu đơn toeic ctut [md002](mau_don) ra sao
+    - thông tin mẫu đơn toeic ctut [md002](mau_don) gồm gì
+    - mẫu đơn toeic ctut [md002](mau_don) cần cmnd không
+    - mẫu đơn toeic ctut [md002](mau_don) có link không
+    - kiểm tra link mẫu đơn toeic ctut [md002](mau_don) ra sao
+    - thông tin chi tiết mẫu đơn toeic ctut [md002](mau_don) ở đâu
+    - mẫu đơn toeic ctut [md002](mau_don) cần giấy tờ gì
 
 - intent: hoi_dieu_kien_bao_luu
   examples: |
     - điều kiện bảo lưu sao
     - điều kiện bảo lưu như thế nào
     - làm sao mới được bảo lưu
-    - mấy điểm mới bảo lưu 
+    - mấy điểm mới bảo lưu
     - khi nào được bảo lưu
     - muốn bảo lưu kết quả phải làm sao
     - thời hạn bảo lưu kết quả là bao lâu
@@ -166,310 +439,31 @@ nlu:
     - thời hạn bảo lưu kết quả [n4 ctut](khoa_hoc) bao lâu
     - điều kiện bảo lưu [b1 ctut](khoa_hoc)
 
-- intent: hoi_thong_tin_lien_he
-  examples: |
-    - [địa chỉ](thong_tin_lien_he) của trung tâm là gì?
-    - [số điện thoại](thong_tin_lien_he) của trung tâm là bao nhiêu?
-    - [email](thong_tin_lien_he) liên hệ của trung tâm là gì?
-    - [facebook](thong_tin_lien_he) của trung tâm là gì?
-    - [địa chỉ](lien_he) cụ thể của trung tâm nằm ở đâu?
-    - [số điện thoại](lien_he) liên lạc của trung tâm là gì?
-    - trung tâm có [địa chỉ](lien_he) nào gần đây không?
-    - tôi cần [số điện thoại](lien_he) để gọi hỏi thêm thông tin.
-    - [email](lien_he) nào tôi có thể gửi thắc mắc đến?
-    - [địa chỉ](lien_he) của chi nhánh chính là ở đâu?
-    - [số điện thoại](lien_he) của bộ phận tư vấn là gì?
-    - [email](lien_he) nào để hỏi về học phí?
-    - tôi muốn biết [địa chỉ](lien_he) để đến học trực tiếp.
-    - [số điện thoại](lien_he) nào tôi có thể liên hệ ngay bây giờ?
-    - [email](lien_he) để đăng ký khóa học là gì?
-    - [số điện thoại](lien_he) để báo cáo sự cố là gì?
-    - [email](lien_he) nào để gửi phản hồi?
-    - làm sao để liên hệ với trung tâm?
-    - tôi có thể tìm thông tin liên hệ ở đâu?
-    - trung tâm có thông tin liên hệ nào không?
-    - làm thế nào để biết cách liên lạc với trung tâm?
-    - tôi cần thông tin liên hệ của trung tâm?
-    - có cách nào để liên hệ với trung tâm không?
-    - trung tâm cung cấp thông tin liên hệ ở đâu?
-    - làm sao để nhận được thông tin liên hệ của trung tâm?
-
-- intent: hoi_ten_chuong_trinh
-  examples: |
-    - trung tâm có những khóa học nào?
-    - danh sách các khóa học gồm những gì?
-    - có bao nhiêu khóa học đang mở?
-    - khóa học [a2 ctut](khoa_hoc) là gì?
-    - [a2 ctut](khoa_hoc) là khóa học như thế nào?
-    - khóa học [b1 ctut](khoa_hoc) là gì?
-    - [b1 ctut](khoa_hoc) là khóa học như thế nào?
-    - khóa học [n4 ctut](khoa_hoc) là gì?
-    - [n4 ctut](khoa_hoc) là khóa học như thế nào?
-    - khóa học [n4 jlpt](khoa_hoc) là gì?
-    - [n4 jlpt](khoa_hoc) là khóa học như thế nào?
-    - khóa học [toeic 250](khoa_hoc) là gì?
-    - [toeic 250](khoa_hoc) là khóa học như thế nào?
-    - khóa học [toeic 350](khoa_hoc) là gì?
-    - [toeic 350](khoa_hoc) là khóa học như thế nào?
-    - khóa học [toeic 450](khoa_hoc) là gì?
-    - [toeic 450](khoa_hoc) là khóa học như thế nào?
-    - khóa học [toeic ctut](khoa_hoc) là gì?
-    - [toeic ctut](khoa_hoc) là khóa học như thế nào?
-    - khóa học [ud cntt cb](khoa_hoc) là gì?
-    - [ud cntt cb](khoa_hoc) là khóa học như thế nào?
-    - khóa học [ud cntt nc](khoa_hoc) là gì?
-    - [ud cntt nc](khoa_hoc) là khóa học như thế nào?
-
-- intent: hoi_chuong_trinh_giang_day
-  examples: |
-    - chương trình giảng dạy của trung tâm như thế nào?
-    - chương trình đào tạo của trung tâm như thế nào?
-    - nội dung học của các khóa học là gì?
-    - tổng quan về các khóa học là gì?
-    - mục tiêu của các chương trình đào tạo ra sao?
-    - cấu trúc chương trình đào tạo được thiết kế thế nào?
-    - tổng quan về khóa học [a2 ctut](khoa_hoc) là gì?
-    - chương trình đào tạo [a2 ctut](khoa_hoc) như thế nào?
-    - mục tiêu của khóa học [a2 ctut](khoa_hoc) là gì?
-    - cấu trúc chương trình [a2 ctut](khoa_hoc) ra sao?
-    - tổng quan về khóa học [b1 ctut](khoa_hoc) là gì?
-    - chương trình đào tạo [b1 ctut](khoa_hoc) như thế nào?
-    - mục tiêu của khóa học [b1 ctut](khoa_hoc) là gì?
-    - cấu trúc chương trình [b1 ctut](khoa_hoc) ra sao?
-    - tổng quan về khóa học [n4 ctut](khoa_hoc) là gì?
-    - chương trình đào tạo [n4 ctut](khoa_hoc) như thế nào?
-    - mục tiêu của khóa học [n4 ctut](khoa_hoc) là gì?
-    - cấu trúc chương trình [n4 ctut](khoa_hoc) ra sao?
-    - tổng quan về khóa học [n4 jlpt](khoa_hoc) là gì?
-    - chương trình đào tạo [n4 jlpt](khoa_hoc) như thế nào?
-    - mục tiêu của khóa học [n4 jlpt](khoa_hoc) là gì?
-    - cấu trúc chương trình [n4 jlpt](khoa_hoc) ra sao?
-    - tổng quan về khóa học [toeic 250](khoa_hoc) là gì?
-    - chương trình đào tạo [toeic 250](khoa_hoc) như thế nào?
-    - mục tiêu của khóa học [toeic 250](khoa_hoc) là gì?
-    - cấu trúc chương trình [toeic 250](khoa_hoc) ra sao?
-    - tổng quan về khóa học [toeic 350](khoa_hoc) là gì?
-    - chương trình đào tạo [toeic 350](khoa_hoc) như thế nào?
-    - mục tiêu của khóa học [toeic 350](khoa_hoc) là gì?
-    - cấu trúc chương trình [toeic 350](khoa_hoc) ra sao?
-    - tổng quan về khóa học [toeic 450](khoa_hoc) là gì?
-    - chương trình đào tạo [toeic 450](khoa_hoc) như thế nào?
-    - mục tiêu của khóa học [toeic 450](khoa_hoc) là gì?
-    - cấu trúc chương trình [toeic 450](khoa_hoc) ra sao?
-    - tổng quan về khóa học [toeic ctut](khoa_hoc) là gì?
-    - chương trình đào tạo [toeic ctut](khoa_hoc) như thế nào?
-    - mục tiêu của khóa học [toeic ctut](khoa_hoc) là gì?
-    - cấu trúc chương trình [toeic ctut](khoa_hoc) ra sao?
-    - tổng quan về khóa học [ud cntt cb](khoa_hoc) là gì?
-    - chương trình đào tạo [ud cntt cb](khoa_hoc) như thế nào?
-    - mục tiêu của khóa học [ud cntt cb](khoa_hoc) là gì?
-    - cấu trúc chương trình [ud cntt cb](khoa_hoc) ra sao?
-    - tổng quan về khóa học [ud cntt nc](khoa_hoc) là gì?
-    - chương trình đào tạo [ud cntt nc](khoa_hoc) như thế nào?
-    - mục tiêu của khóa học [ud cntt nc](khoa_hoc) là gì?
-    - cấu trúc chương trình [ud cntt nc](khoa_hoc) ra sao?
-
-- intent: hoi_chuong_trinh_khung
-  examples: |
-    - chương trình khung của trung tâm bao gồm những gì?
-    - các khóa học tập trung vào kỹ năng nào?
-    - nội dung chính trong chương trình khung là gì?
-    - kỹ năng nào được phát triển trong các khóa học?
-    - chương trình khung [a2 ctut](khoa_hoc) bao gồm những gì?
-    - [a2 ctut](khoa_hoc) tập trung vào kỹ năng nào?
-    - nội dung chính trong chương trình khung [a2 ctut](khoa_hoc) là gì?
-    - kỹ năng nào được phát triển trong [a2 ctut](khoa_hoc)?
-    - chương trình khung [b1 ctut](khoa_hoc) bao gồm những gì?
-    - [b1 ctut](khoa_hoc) tập trung vào kỹ năng nào?
-    - nội dung chính trong chương trình khung [b1 ctut](khoa_hoc) là gì?
-    - kỹ năng nào được phát triển trong [b1 ctut](khoa_hoc)?
-    - chương trình khung [n4 ctut](khoa_hoc) bao gồm những gì?
-    - [n4 ctut](khoa_hoc) tập trung vào kỹ năng nào?
-    - nội dung chính trong chương trình khung [n4 ctut](khoa_hoc) là gì?
-    - kỹ năng nào được phát triển trong [n4 ctut](khoa_hoc)?
-    - chương trình khung [n4 jlpt](khoa_hoc) bao gồm những gì?
-    - [n4 jlpt](khoa_hoc) tập trung vào kỹ năng nào?
-    - nội dung chính trong chương trình khung [n4 jlpt](khoa_hoc) là gì?
-    - kỹ năng nào được phát triển trong [n4 jlpt](khoa_hoc)?
-    - chương trình khung [toeic 250](khoa_hoc) bao gồm những gì?
-    - [toeic 250](khoa_hoc) tập trung vào kỹ năng nào?
-    - nội dung chính trong chương trình khung [toeic 250](khoa_hoc) là gì?
-    - kỹ năng nào được phát triển trong [toeic 250](khoa_hoc)?
-    - chương trình khung [toeic 350](khoa_hoc) bao gồm những gì?
-    - [toeic 350](khoa_hoc) tập trung vào kỹ năng nào?
-    - nội dung chính trong chương trình khung [toeic 350](khoa_hoc) là gì?
-    - kỹ năng nào được phát triển trong [toeic 350](khoa_hoc)?
-    - chương trình khung [toeic 450](khoa_hoc) bao gồm những gì?
-    - [toeic 450](khoa_hoc) tập trung vào kỹ năng nào?
-    - nội dung chính trong chương trình khung [toeic 450](khoa_hoc) là gì?
-    - kỹ năng nào được phát triển trong [toeic 450](khoa_hoc)?
-    - chương trình khung [toeic ctut](khoa_hoc) bao gồm những gì?
-    - [toeic ctut](khoa_hoc) tập trung vào kỹ năng nào?
-    - nội dung chính trong chương trình khung [toeic ctut](khoa_hoc) là gì?
-    - kỹ năng nào được phát triển trong [toeic ctut](khoa_hoc)?
-    - chương trình khung [ud cntt cb](khoa_hoc) bao gồm những gì?
-    - [ud cntt cb](khoa_hoc) tập trung vào kỹ năng nào?
-    - nội dung chính trong chương trình khung [ud cntt cb](khoa_hoc) là gì?
-    - kỹ năng nào được phát triển trong [ud cntt cb](khoa_hoc)?
-    - chương trình khung [ud cntt nc](khoa_hoc) bao gồm những gì?
-    - [ud cntt nc](khoa_hoc) tập trung vào kỹ năng nào?
-    - nội dung chính trong chương trình khung [ud cntt nc](khoa_hoc) là gì?
-    - kỹ năng nào được phát triển trong [ud cntt nc](khoa_hoc)?
-
-- intent: hoi_thoi_luong
-  examples: |
-    - thời lượng đào tạo của các khóa học là bao lâu?
-    - số tiết học trong một khóa là bao nhiêu?
-    - thời gian học tập của trung tâm kéo dài bao lâu?
-    - tổng số tiết học của một khóa
-    - thời lượng đào tạo của [a2 ctut](khoa_hoc) là bao lâu?
-    - số tiết học trong [a2 ctut](khoa_hoc) là bao nhiêu?
-    - thời gian học tập của [a2 ctut](khoa_hoc) kéo dài bao lâu?
-    - tổng số tiết học của [a2 ctut](khoa_hoc)
-    - thời lượng đào tạo của [b1 ctut](khoa_hoc) là bao lâu?
-    - số tiết học trong [b1 ctut](khoa_hoc) là bao nhiêu?
-    - thời gian học tập của [b1 ctut](khoa_hoc) kéo dài bao lâu?
-    - tổng số tiết học của [b1 ctut](khoa_hoc)
-    - thời lượng đào tạo của [n4 ctut](khoa_hoc) là bao lâu?
-    - số tiết học trong [n4 ctut](khoa_hoc) là bao nhiêu?
-    - thời gian học tập của [n4 ctut](khoa_hoc) kéo dài bao lâu?
-    - tổng số tiết học của [n4 ctut](khoa_hoc)
-    - thời lượng đào tạo của [n4 jlpt](khoa_hoc) là bao lâu?
-    - số tiết học trong [n4 jlpt](khoa_hoc) là bao nhiêu?
-    - thời gian học tập của [n4 jlpt](khoa_hoc) kéo dài bao lâu?
-    - tổng số tiết học của [n4 jlpt](khoa_hoc)
-    - thời lượng đào tạo của [toeic 250](khoa_hoc) là bao lâu?
-    - số tiết học trong [toeic 250](khoa_hoc) là bao nhiêu?
-    - thời gian học tập của [toeic 250](khoa_hoc) kéo dài bao lâu?
-    - tổng số tiết học của [toeic 250](khoa_hoc)
-    - thời lượng đào tạo của [toeic 350](khoa_hoc) là bao lâu?
-    - số tiết học trong [toeic 350](khoa_hoc) là bao nhiêu?
-    - thời gian học tập của [toeic 350](khoa_hoc) kéo dài bao lâu?
-    - tổng số tiết học của [toeic 350](khoa_hoc)
-    - thời lượng đào tạo của [toeic 450](khoa_hoc) là bao lâu?
-    - số tiết học trong [toeic 450](khoa_hoc) là bao nhiêu?
-    - thời gian học tập của [toeic 450](khoa_hoc) kéo dài bao lâu?
-    - tổng số tiết học của [toeic 450](khoa_hoc)
-    - thời lượng đào tạo của [toeic ctut](khoa_hoc) là bao lâu?
-    - số tiết học trong [toeic ctut](khoa_hoc) là bao nhiêu?
-    - thời gian học tập của [toeic ctut](khoa_hoc) kéo dài bao lâu?
-    - tổng số tiết học của [toeic ctut](khoa_hoc)
-    - thời lượng đào tạo của [ud cntt cb](khoa_hoc) là bao lâu?
-    - số tiết học trong [ud cntt cb](khoa_hoc) là bao nhiêu?
-    - thời gian học tập của [ud cntt cb](khoa_hoc) kéo dài bao lâu?
-    - tổng số tiết học của [ud cntt cb](khoa_hoc)
-    - thời lượng đào tạo của [ud cntt nc](khoa_hoc) là bao lâu?
-    - số tiết học trong [ud cntt nc](khoa_hoc) là bao nhiêu?
-    - thời gian học tập của [ud cntt nc](khoa_hoc) kéo dài bao lâu?
-    - tổng số tiết học của [ud cntt nc](khoa_hoc)
-
-- intent: hoi_chuan_dau_ra
-  examples: |
-    - tiêu chuẩn đầu ra của các khóa học là gì?
-    - điều kiện để cấp chứng nhận của các khóa học ra sao?
-    - tiêu chuẩn hoàn thành khóa học được quy định thế nào?
-    - yêu cầu để nhận chứng nhận là gì?
-    - tiêu chuẩn đầu ra của [a2 ctut](khoa_hoc) là gì?
-    - điều kiện cấp chứng nhận của [a2 ctut](khoa_hoc) ra sao?
-    - tiêu chuẩn hoàn thành [a2 ctut](khoa_hoc) được quy định thế nào?
-    - yêu cầu để nhận chứng nhận của [a2 ctut](khoa_hoc) là gì?
-    - tiêu chuẩn đầu ra của [b1 ctut](khoa_hoc) là gì?
-    - điều kiện cấp chứng nhận của [b1 ctut](khoa_hoc) ra sao?
-    - tiêu chuẩn hoàn thành [b1 ctut](khoa_hoc) được quy định thế nào?
-    - yêu cầu để nhận chứng nhận của [b1 ctut](khoa_hoc) là gì?
-    - tiêu chuẩn đầu ra của [n4 ctut](khoa_hoc) là gì?
-    - điều kiện cấp chứng nhận của [n4 ctut](khoa_hoc) ra sao?
-    - tiêu chuẩn hoàn thành [n4 ctut](khoa_hoc) được quy định thế nào?
-    - yêu cầu để nhận chứng nhận của [n4 ctut](khoa_hoc) là gì?
-    - tiêu chuẩn đầu ra của [n4 jlpt](khoa_hoc) là gì?
-    - điều kiện cấp chứng nhận của [n4 jlpt](khoa_hoc) ra sao?
-    - tiêu chuẩn hoàn thành [n4 jlpt](khoa_hoc) được quy định thế nào?
-    - yêu cầu để nhận chứng nhận của [n4 jlpt](khoa_hoc) là gì?
-    - tiêu chuẩn đầu ra của [toeic 250](khoa_hoc) là gì?
-    - điều kiện cấp chứng nhận của [toeic 250](khoa_hoc) ra sao?
-    - tiêu chuẩn hoàn thành [toeic 250](khoa_hoc) được quy định thế nào?
-    - yêu cầu để nhận chứng nhận của [toeic 250](khoa_hoc) là gì?
-    - tiêu chuẩn đầu ra của [toeic 350](khoa_hoc) là gì?
-    - điều kiện cấp chứng nhận của [toeic 350](khoa_hoc) ra sao?
-    - tiêu chuẩn hoàn thành [toeic 350](khoa_hoc) được quy định thế nào?
-    - yêu cầu để nhận chứng nhận của [toeic 350](khoa_hoc) là gì?
-    - tiêu chuẩn đầu ra của [toeic 450](khoa_hoc) là gì?
-    - điều kiện cấp chứng nhận của [toeic 450](khoa_hoc) ra sao?
-    - tiêu chuẩn hoàn thành [toeic 450](khoa_hoc) được quy định thế nào?
-    - yêu cầu để nhận chứng nhận của [toeic 450](khoa_hoc) là gì?
-    - tiêu chuẩn đầu ra của [toeic ctut](khoa_hoc) là gì?
-    - điều kiện cấp chứng nhận của [toeic ctut](khoa_hoc) ra sao?
-    - tiêu chuẩn hoàn thành [toeic ctut](khoa_hoc) được quy định thế nào?
-    - yêu cầu để nhận chứng nhận của [toeic ctut](khoa_hoc) là gì?
-    - tiêu chuẩn đầu ra của [ud cntt cb](khoa_hoc) là gì?
-    - điều kiện cấp chứng nhận của [ud cntt cb](khoa_hoc) ra sao?
-    - tiêu chuẩn hoàn thành [ud cntt cb](khoa_hoc) được quy định thế nào?
-    - yêu cầu để nhận chứng nhận của [ud cntt cb](khoa_hoc) là gì?
-    - tiêu chuẩn đầu ra của [ud cntt nc](khoa_hoc) là gì?
-    - điều kiện cấp chứng nhận của [ud cntt nc](khoa_hoc) ra sao?
-    - tiêu chuẩn hoàn thành [ud cntt nc](khoa_hoc) được quy định thế nào?
-    - yêu cầu để nhận chứng nhận của [ud cntt nc](khoa_hoc) là gì?
-
-- intent: hoi_quy_dinh
-  examples: |
-    - điều kiện bảo lưu sao
-
-- intent: hoi_mau_don_dang_ky
-  examples: |
-    - điều kiện bảo lưu sao
-
-- intent: hoi_ket_qua_thi
-  examples: |
-    - điều kiện bảo lưu sao
-
-- intent: hoi_dieu_kien_bao_luu
-  examples: |
-    - điều kiện bảo lưu sao
-
-- intent: hoi_can_bo_phu_trach
-  examples: |
-    - điều kiện bảo lưu sao
-
 - intent: hoi_hoc_phi
   examples: |
     - điều kiện bảo lưu sao
 
-- intent: hoi_phuong_thuc_hoc
+- intent: hoi_phi_thi_lai
   examples: |
     - điều kiện bảo lưu sao
 
-- intent: hoi_co_so_vat_chat
+- intent: hoi_dieu_kien_du_thi
   examples: |
     - điều kiện bảo lưu sao
 
-- intent: hoi_quy_trinh_thi
+- intent: hoi_xu_ly_vi_pham
   examples: |
     - điều kiện bảo lưu sao
 
-- intent: hoi_giao_vien
+- intent: inform
   examples: |
-    - điều kiện bảo lưu sao
-
-- intent: hoi_ho_tro_hoc_vien
-  examples: |
-    - điều kiện bảo lưu sao
-
-- intent: hoi_dang_ky_hoc
-  examples: |
-    - điều kiện bảo lưu sao
-
-- intent: hoi_thoi_gian_hoc
-  examples: |
-    - điều kiện bảo lưu sao
-
-- intent: hoi_chat_luong_dao_tao
-  examples: |
-    - điều kiện bảo lưu sao
-
-- intent: hoi_thong_tin_chung_ve_trung_tam
-  examples: |
-    - điều kiện bảo lưu sao
-
-- intent: hoi_phan_hoi_gop_y_khieu_nai
-  examples: |
-    - điều kiện bảo lưu sao
+    - [các khóa](khoa_hoc)
+    - [ud cntt cb](khoa_hoc)
+    - [ud cntt nc](khoa_hoc)
+    - [toeic 250](khoa_hoc)
+    - [toeic 350](khoa_hoc)
+    - [toeic 450](khoa_hoc)
+    - [a2 ctut](khoa_hoc)
+    - [b1 ctut](khoa_hoc)
+    - [n4 ctut](khoa_hoc)
+    - [toeic ctut](khoa_hoc)

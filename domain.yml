@@ -4,26 +4,33 @@ intents:
   - chao_hoi
   - tam_biet
   - cam_on
-  - nlu_fallback
   - bot_challenge
+  - hoi_can_bo_phu_trach
   - hoi_chuong_trinh_dao_tao
-  - hoi_chuong_trinh_giang_day
-  - hoi_danh_sach_quy_dinh
-  - xem_quy_dinh_chi_tiet
-  - hoi_dieu_kien_bao_luu
-  - inform
-  - hoi_thong_tin_lien_he
   - hoi_ten_chuong_trinh
   - hoi_chuong_trinh_giang_day
   - hoi_chuong_trinh_khung
   - hoi_thoi_luong
   - hoi_chuan_dau_ra
+  - hoi_danh_sach_quy_dinh
+  - xem_quy_dinh_chi_tiet
+  - hoi_ket_qua_thi
+  - hoi_ngay_khai_giang
+  - hoi_ngay_thi
+  - hoi_thong_tin_lien_he
+  - hoi_mau_don_dang_ky
+  - hoi_dieu_kien_bao_luu
+  - hoi_hoc_phi
+  - hoi_phi_thi_lai
+  - hoi_dieu_kien_du_thi
+  - hoi_xu_ly_vi_pham
+  - inform
 
 entities:
   - khoa_hoc
   - chi_tiet_quy_dinh
   - lien_he
-  #- gioi_thieu_trung_tam
+  - mau_don
 
 slots:
   khoa_hoc:
