@@ -27,6 +27,13 @@ stories:
     - intent: hoi_chuong_trinh_dao_tao
     - action: action_xem_chuong_trinh_dao_tao
 
+- story: Hỏi điều kiện lưu kết quả form
+  steps:
+  - intent: hoi_dieu_kien_bao_luu
+  - action: form_dieu_kien_bao_luu
+  - active_loop: form_dieu_kien_bao_luu
+  - active_loop: null
+  - action: action_tra_cuu_dieu_kien_bao_luu
 #- story: Xem chương trình – trực tiếp có slot từ đầu
 #  steps:
 #    - intent: hoi_chuong_trinh_giang_day
@@ -42,10 +49,3 @@ stories:
 #  - intent: xem_quy_dinh_chi_tiet
 #  - action: action_tra_cuu_thong_tin_chi_tiet_quy_dinh
 #
-#- story: Hỏi điều kiện lưu kết quả form
-#  steps:
-#  - intent: hoi_dieu_kien_bao_luu
-#  - action: form_dieu_kien_bao_luu
-#  - active_loop: form_dieu_kien_bao_luu
-#  - active_loop: null
-#  - action: action_tra_cuu_dieu_kien_bao_luu

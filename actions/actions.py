@@ -314,8 +314,8 @@ class ActionTraCuuDieuKienBaoLuu(Action):
             cursor = conn.cursor()
 
             cursor.execute("""
-                SELECT dieu_kien_bao_luu 
-                FROM thong_tin_chuong_trinh 
+                SELECT mo_ta 
+                FROM hoi_dieu_kien_bao_luu 
                 WHERE ma_chuong_trinh ILIKE %s
             """, (f"%{khoa_hoc}%",))
 
