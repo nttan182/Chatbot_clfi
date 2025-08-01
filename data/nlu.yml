@@ -59,7 +59,7 @@ nlu:
 
 - intent: hoi_can_bo_phu_trach
   examples: |
-    - điều kiện bảo lưu sao
+    - cán bộ phụ trách
 
 - intent: hoi_chuong_trinh_dao_tao
   examples: |
@@ -68,80 +68,69 @@ nlu:
     - trung tâm dạy những khóa nào
     - có những lớp học nào
     - danh sách chương trình giảng dạy ở trung tâm
-
-- intent: hoi_ten_chuong_trinh
-  examples: |
-    - trung tâm có những khóa học nào
-    - danh sách các khóa học gồm những gì
-    - có bao nhiêu khóa học đang mở
-    - khóa học [a2 ctut](khoa_hoc) là gì
-    - [a2 ctut](khoa_hoc) là khóa học như thế nào
-    - khóa học [b1 ctut](khoa_hoc) là gì
-    - [b1 ctut](khoa_hoc) là khóa học như thế nào
-    - khóa học [n4 ctut](khoa_hoc) là gì
-    - [n4 ctut](khoa_hoc) là khóa học như thế nào
-    - khóa học [n4 jlpt](khoa_hoc) là gì
-    - [n4 jlpt](khoa_hoc) là khóa học như thế nào
-    - khóa học [toeic 250](khoa_hoc) là gì
-    - [toeic 250](khoa_hoc) là khóa học như thế nào
-    - khóa học [toeic 350](khoa_hoc) là gì
-    - [toeic 350](khoa_hoc) là khóa học như thế nào
-    - khóa học [toeic 450](khoa_hoc) là gì
-    - [toeic 450](khoa_hoc) là khóa học như thế nào
-    - khóa học [toeic ctut](khoa_hoc) là gì
-    - [toeic ctut](khoa_hoc) là khóa học như thế nào
-    - khóa học [ud cntt cb](khoa_hoc) là gì
-    - [ud cntt cb](khoa_hoc) là khóa học như thế nào
-    - khóa học [ud cntt nc](khoa_hoc) là gì
-    - [ud cntt nc](khoa_hoc) là khóa học như thế nào
+    - chương trình giảng dạy của trung tâm như thế nào
+    - chương trình đào tạo của trung tâm như thế nào
 
 - intent: hoi_chuong_trinh_giang_day
   examples: |
-    - chương trình giảng dạy của trung tâm như thế nào
-    - chương trình đào tạo của trung tâm như thế nào
-    - nội dung học của các khóa học là gì
-    - tổng quan về các khóa học là gì
-    - mục tiêu của các chương trình đào tạo ra sao
-    - cấu trúc chương trình đào tạo được thiết kế thế nào
-    - tổng quan về khóa học [a2 ctut](khoa_hoc) là gì
+    - tổng quan về khóa học [a2 ctut](khoa_hoc)
     - chương trình đào tạo [a2 ctut](khoa_hoc) như thế nào
-    - mục tiêu của khóa học [a2 ctut](khoa_hoc) là gì
+    - [a2 ctut](khoa_hoc) đào tạo những gì
     - cấu trúc chương trình [a2 ctut](khoa_hoc) ra sao
-    - tổng quan về khóa học [b1 ctut](khoa_hoc) là gì
+    - tôi muốn biết về khóa học [a2 ctut](khoa_hoc)
+    - tổng quan về khóa học [b1 ctut](khoa_hoc)
     - chương trình đào tạo [b1 ctut](khoa_hoc) như thế nào
-    - mục tiêu của khóa học [b1 ctut](khoa_hoc) là gì
+    - mục tiêu của khóa học [b1 ctut](khoa_hoc)
+    - [b1 ctut](khoa_hoc) đào tạo những gì
+    - tôi muốn biết về khóa học [b1 ctut](khoa_hoc)
     - cấu trúc chương trình [b1 ctut](khoa_hoc) ra sao
-    - tổng quan về khóa học [n4 ctut](khoa_hoc) là gì
+    - tổng quan về khóa học [n4 ctut](khoa_hoc)
     - chương trình đào tạo [n4 ctut](khoa_hoc) như thế nào
-    - mục tiêu của khóa học [n4 ctut](khoa_hoc) là gì
+    - mục tiêu của khóa học [n4 ctut](khoa_hoc)
+    - [n4 ctut](khoa_hoc) đào tạo những gì
+    - tôi muốn biết về khóa học [n4 ctut](khoa_hoc)
     - cấu trúc chương trình [n4 ctut](khoa_hoc) ra sao
-    - tổng quan về khóa học [n4 jlpt](khoa_hoc) là gì
+    - tổng quan về khóa học [n4 jlpt](khoa_hoc)
     - chương trình đào tạo [n4 jlpt](khoa_hoc) như thế nào
-    - mục tiêu của khóa học [n4 jlpt](khoa_hoc) là gì
+    - mục tiêu của khóa học [n4 jlpt](khoa_hoc)
+    - [n4 jlpt](khoa_hoc) đào tạo những gì
+    - tôi muốn biết về khóa học [n4 jlpt](khoa_hoc)
     - cấu trúc chương trình [n4 jlpt](khoa_hoc) ra sao
-    - tổng quan về khóa học [toeic 250](khoa_hoc) là gì
+    - tổng quan về khóa học [toeic 250](khoa_hoc)
     - chương trình đào tạo [toeic 250](khoa_hoc) như thế nào
-    - mục tiêu của khóa học [toeic 250](khoa_hoc) là gì
+    - mục tiêu của khóa học [toeic 250](khoa_hoc)
+    - [toeic 250](khoa_hoc) đào tạo những gì
+    - tôi muốn biết về khóa học [toeic 250](khoa_hoc)
     - cấu trúc chương trình [toeic 250](khoa_hoc) ra sao
-    - tổng quan về khóa học [toeic 350](khoa_hoc) là gì
+    - tổng quan về khóa học [toeic 350](khoa_hoc)
     - chương trình đào tạo [toeic 350](khoa_hoc) như thế nào
-    - mục tiêu của khóa học [toeic 350](khoa_hoc) là gì
+    - [toeic 350](khoa_hoc) đào tạo những gì
+    - mục tiêu của khóa học [toeic 350](khoa_hoc)
+    - tôi muốn biết về khóa học [toeic 350](khoa_hoc)
     - cấu trúc chương trình [toeic 350](khoa_hoc) ra sao
-    - tổng quan về khóa học [toeic 450](khoa_hoc) là gì
+    - tổng quan về khóa học [toeic 450](khoa_hoc)
     - chương trình đào tạo [toeic 450](khoa_hoc) như thế nào
-    - mục tiêu của khóa học [toeic 450](khoa_hoc) là gì
+    - [toeic 450](khoa_hoc) đào tạo những gì
+    - mục tiêu của khóa học [toeic 450](khoa_hoc)
+    - tôi muốn biết về khóa học [toeic 450](khoa_hoc)
     - cấu trúc chương trình [toeic 450](khoa_hoc) ra sao
-    - tổng quan về khóa học [toeic ctut](khoa_hoc) là gì
+    - tổng quan về khóa học [toeic ctut](khoa_hoc)
     - chương trình đào tạo [toeic ctut](khoa_hoc) như thế nào
-    - mục tiêu của khóa học [toeic ctut](khoa_hoc) là gì
+    - [toeic ctut](khoa_hoc) đào tạo những gì
+    - mục tiêu của khóa học [toeic ctut](khoa_hoc)
+    - tôi muốn biết về khóa học [toeic ctut](khoa_hoc)
     - cấu trúc chương trình [toeic ctut](khoa_hoc) ra sao
-    - tổng quan về khóa học [ud cntt cb](khoa_hoc) là gì
+    - tổng quan về khóa học [ud cntt cb](khoa_hoc)
     - chương trình đào tạo [ud cntt cb](khoa_hoc) như thế nào
-    - mục tiêu của khóa học [ud cntt cb](khoa_hoc) là gì
+    - [ud cntt cb](khoa_hoc) đào tạo những gì
+    - mục tiêu của khóa học [ud cntt cb](khoa_hoc)
+    - tôi muốn biết về khóa học [ud cntt cb](khoa_hoc)
     - cấu trúc chương trình [ud cntt cb](khoa_hoc) ra sao
-    - tổng quan về khóa học [ud cntt nc](khoa_hoc) là gì
+    - tổng quan về khóa học [ud cntt nc](khoa_hoc)
     - chương trình đào tạo [ud cntt nc](khoa_hoc) như thế nào
-    - mục tiêu của khóa học [ud cntt nc](khoa_hoc) là gì
+    - [ud cntt nc](khoa_hoc) đào tạo những gì
+    - mục tiêu của khóa học [ud cntt nc](khoa_hoc)
+    - tôi muốn biết về khóa học [ud cntt nc](khoa_hoc)
     - cấu trúc chương trình [ud cntt nc](khoa_hoc) ra sao
 
 - intent: hoi_chuong_trinh_khung
@@ -329,17 +318,239 @@ nlu:
     - [quy định về xử lý vi phạm](chi_tiet_quy_dinh) như thế nào
     - muốn biết [quy định về xử lý vi phạm](chi_tiet_quy_dinh)
 
-- intent: diem_thi
+- intent: hoi_lich_dao_tao
   examples: |
-    - điều kiện bảo lưu sao
+    - lịch đào tạo của trung tâm
+    - tôi muốn biết lịch đào tạo
+    - lịch học tập trung tâm
+    - lịch đào tạo gần đây nhất
+    - cho tôi xem lịch đào tạo
+    - lịch đào tạo của khóa học
+    - lịch đào tạo của trung tâm là gì
+
+- intent: lich_dao_tao_theo_chuong_trinh
+  examples: |
+    - tôi muốn biết lịch đào tạo [a2 ctut](khoa_hoc)
+    - lịch đào tạo [a2 ctut](khoa_hoc)
+    - cho tôi xem lịch đào tạo [a2 ctut](khoa_hoc) gần đây
+    - lịch đào tạo [a2 ctut](khoa_hoc) gần đây nhất
+    - tôi muốn biết lịch đào tạo [b1 ctut](khoa_hoc)
+    - lịch đào tạo [b1 ctut](khoa_hoc)
+    - cho tôi xem lịch đào tạo [b1 ctut](khoa_hoc) gần đây
+    - lịch đào tạo [b1 ctut](khoa_hoc) gần đây nhất
+    - tôi muốn biết lịch đào tạo [n4 ctut](khoa_hoc)
+    - lịch đào tạo [n4 ctut](khoa_hoc)
+    - cho tôi xem lịch đào tạo [n4 ctut](khoa_hoc) gần đây
+    - lịch đào tạo [n4 ctut](khoa_hoc) gần đây nhất
+    - tôi muốn biết lịch đào tạo [n4 jlpt](khoa_hoc)
+    - lịch đào tạo [n4 jlpt](khoa_hoc)
+    - cho tôi xem lịch đào tạo [n4 jlpt](khoa_hoc) gần đây
+    - lịch đào tạo [n4 jlpt](khoa_hoc) gần đây nhất
+    - tôi muốn biết lịch đào tạo [toeic 250](khoa_hoc)
+    - lịch đào tạo [toeic 250](khoa_hoc)
+    - cho tôi xem lịch đào tạo [toeic 250](khoa_hoc) gần đây
+    - lịch đào tạo [toeic 250](khoa_hoc) gần đây nhất
+    - tôi muốn biết lịch đào tạo [toeic 350](khoa_hoc)
+    - lịch đào tạo [toeic 350](khoa_hoc)
+    - cho tôi xem lịch đào tạo [toeic 350](khoa_hoc) gần đây
+    - lịch đào tạo [toeic 350](khoa_hoc) gần đây nhất
+    - tôi muốn biết lịch đào tạo [toeic 450](khoa_hoc)
+    - lịch đào tạo [toeic 450](khoa_hoc)
+    - cho tôi xem lịch đào tạo [toeic 450](khoa_hoc) gần đây
+    - lịch đào tạo [toeic 450](khoa_hoc) gần đây nhất
+    - tôi muốn biết lịch đào tạo [toeic ctut](khoa_hoc)
+    - lịch đào tạo [toeic ctut](khoa_hoc)
+    - cho tôi xem lịch đào tạo [toeic ctut](khoa_hoc) gần đây
+    - lịch đào tạo [toeic ctut](khoa_hoc) gần đây nhất
+    - tôi muốn biết lịch đào tạo [ud cntt cb](khoa_hoc)
+    - lịch đào tạo [ud cntt cb](khoa_hoc)
+    - cho tôi xem lịch đào tạo [ud cntt cb](khoa_hoc) gần đây
+    - lịch đào tạo [ud cntt cb](khoa_hoc) gần đây nhất
+    - tôi muốn biết lịch đào tạo [ud cntt nc](khoa_hoc)
+    - lịch đào tạo [ud cntt nc](khoa_hoc)
+    - cho tôi xem lịch đào tạo [ud cntt nc](khoa_hoc) gần đây
+    - lịch đào tạo [ud cntt nc](khoa_hoc) gần đây nhất
+
+- intent: lich_dao_tao_theo_khoa
+  examples: |
+    - lịch đào tạo theo khóa
+
+- intent: hoi_diem_thi
+  examples: |
+    - tôi muốn biết điểm thi
+    - điểm thi của tôi là bao nhiêu
+    - kết quả thi của tôi thế nào
+    - điểm thi gần đây nhất của tôi
+    - tôi muốn tra điểm thi
+    - kết quả thi của tôi ra sao
+    - điểm thi của tôi có thể xem ở đâu
+    - điểm thi của tôi đã được cập nhật chưa
+
+- intent: diem_thi_theo_chuong_trinh
+  examples: |
+    - tôi muốn biết điểm thi [a2 ctut](khoa_hoc)
+    - tra điểm thi [a2 ctut](khoa_hoc)
+    - cho tôi xem điểm thi [a2 ctut](khoa_hoc) gần đây
+    - kết quả thi [a2 ctut](khoa_hoc) thế nào
+    - tôi muốn biết điểm thi [b1 ctut](khoa_hoc)
+    - tra điểm thi [b1 ctut](khoa_hoc)
+    - cho tôi xem điểm thi [b1 ctut](khoa_hoc) gần đây
+    - kết quả thi [b1 ctut](khoa_hoc) thế nào
+    - tôi muốn biết điểm thi [n4 ctut](khoa_hoc)
+    - tra điểm thi [n4 ctut](khoa_hoc)
+    - cho tôi xem điểm thi [n4 ctut](khoa_hoc) gần đây
+    - kết quả thi [n4 ctut](khoa_hoc) thế nào
+    - tôi muốn biết điểm thi [n4 jlpt](khoa_hoc)
+    - tra điểm thi [n4 jlpt](khoa_hoc)
+    - cho tôi xem điểm thi [n4 jlpt](khoa_hoc) gần đây
+    - kết quả thi [n4 jlpt](khoa_hoc) thế nào
+    - tôi muốn biết điểm thi [toeic 250](khoa_hoc)
+    - tra điểm thi [toeic 250](khoa_hoc)
+    - cho tôi xem điểm thi [toeic 250](khoa_hoc) gần đây
+    - kết quả thi [toeic 250](khoa_hoc) thế nào
+    - tôi muốn biết điểm thi [toeic 350](khoa_hoc)
+    - tra điểm thi [toeic 350](khoa_hoc)
+    - cho tôi xem điểm thi [toeic 350](khoa_hoc) gần đây
+    - kết quả thi [toeic 350](khoa_hoc) thế nào
+    - tôi muốn biết điểm thi [toeic 450](khoa_hoc)
+    - tra điểm thi [toeic 450](khoa_hoc)
+    - cho tôi xem điểm thi [toeic 450](khoa_hoc) gần đây
+    - kết quả thi [toeic 450](khoa_hoc) thế nào
+    - tôi muốn biết điểm thi [toeic ctut](khoa_hoc)
+    - tra điểm thi [toeic ctut](khoa_hoc)
+    - cho tôi xem điểm thi [toeic ctut](khoa_hoc) gần đây
+    - kết quả thi [toeic ctut](khoa_hoc) thế nào
+    - tôi muốn biết điểm thi [ud cntt cb](khoa_hoc)
+    - tra điểm thi [ud cntt cb](khoa_hoc)
+    - cho tôi xem điểm thi [ud cntt cb](khoa_hoc) gần đây
+    - kết quả thi [ud cntt cb](khoa_hoc) thế nào
+    - tôi muốn biết điểm thi [ud cntt nc](khoa_hoc)
+    - tra điểm thi [ud cntt nc](khoa_hoc)
+    - cho tôi xem điểm thi [ud cntt nc](khoa_hoc) gần đây
+    - kết quả thi [ud cntt nc](khoa_hoc) thế nào
+
+- intent: diem_thi_theo_khoa
+  examples: |
+    - điểm thi theo khóa
 
 - intent: hoi_ngay_khai_giang
   examples: |
-    - điều kiện bảo lưu sao
+    - lịch khai giảng sắp tới
+    - cho tôi biết ngày khai giảng
+    - tôi muốn hỏi ngày khai giảng
+    - ngày khai giảng gần đây nhất
+    - cho tôi xem ngày khai giảng
+    - khi nào khóa học bắt đầu khai giảng
+    - ngày khai giảng tiếp theo là bao giờ
+    - ngày khai giảng của khóa học là ngày nào
+    - hỏi xem ngày khai giảng là khi nào
+    - tôi muốn xem lịch khai giảng
+
+- intent: ngay_khai_giang_theo_chuong_trinh
+  examples: |
+    - ngày khai giảng [a2 ctut](khoa_hoc) là khi nào
+    - cho tôi biết ngày khai giảng [a2 ctut](khoa_hoc)
+    - lịch khai giảng [a2 ctut](khoa_hoc) sắp tới
+    - ngày khai giảng [a2 ctut](khoa_hoc) gần đây nhất
+    - ngày khai giảng [b1 ctut](khoa_hoc) là khi nào
+    - cho tôi biết ngày khai giảng [b1 ctut](khoa_hoc)
+    - lịch khai giảng [b1 ctut](khoa_hoc) sắp tới
+    - ngày khai giảng [b1 ctut](khoa_hoc) gần đây nhất
+    - ngày khai giảng [n4 ctut](khoa_hoc) là khi nào
+    - cho tôi biết ngày khai giảng [n4 ctut](khoa_hoc)
+    - lịch khai giảng [n4 ctut](khoa_hoc) sắp tới
+    - ngày khai giảng [n4 ctut](khoa_hoc) gần đây nhất
+    - ngày khai giảng [n4 jlpt](khoa_hoc) là khi nào
+    - cho tôi biết ngày khai giảng [n4 jlpt](khoa_hoc)
+    - lịch khai giảng [n4 jlpt](khoa_hoc) sắp tới
+    - ngày khai giảng [n4 jlpt](khoa_hoc) gần đây nhất
+    - ngày khai giảng [toeic 250](khoa_hoc) là khi nào
+    - cho tôi biết ngày khai giảng [toeic 250](khoa_hoc)
+    - lịch khai giảng [toeic 250](khoa_hoc) sắp tới
+    - ngày khai giảng [toeic 250](khoa_hoc) gần đây nhất
+    - ngày khai giảng [toeic 350](khoa_hoc) là khi nào
+    - cho tôi biết ngày khai giảng [toeic 350](khoa_hoc)
+    - lịch khai giảng [toeic 350](khoa_hoc) sắp tới
+    - ngày khai giảng [toeic 350](khoa_hoc) gần đây nhất
+    - ngày khai giảng [toeic 450](khoa_hoc) là khi nào
+    - cho tôi biết ngày khai giảng [toeic 450](khoa_hoc)
+    - lịch khai giảng [toeic 450](khoa_hoc) sắp tới
+    - ngày khai giảng [toeic 450](khoa_hoc) gần đây nhất
+    - ngày khai giảng [toeic ctut](khoa_hoc) là khi nào
+    - cho tôi biết ngày khai giảng [toeic ctut](khoa_hoc)
+    - lịch khai giảng [toeic ctut](khoa_hoc) sắp tới
+    - ngày khai giảng [toeic ctut](khoa_hoc) gần đây nhất
+    - ngày khai giảng [ud cntt cb](khoa_hoc) là khi nào
+    - cho tôi biết ngày khai giảng [ud cntt cb](khoa_hoc)
+    - lịch khai giảng [ud cntt cb](khoa_hoc) sắp tới
+    - ngày khai giảng [ud cntt cb](khoa_hoc) gần đây nhất
+    - ngày khai giảng [ud cntt nc](khoa_hoc) là khi nào
+    - cho tôi biết ngày khai giảng [ud cntt nc](khoa_hoc)
+    - lịch khai giảng [ud cntt nc](khoa_hoc) sắp tới
+    - ngày khai giảng [ud cntt nc](khoa_hoc) gần đây nhất
+
+- intent: ngay_khai_giang_theo_khoa
+  examples: |
+    - ngày khai giảng theo khóa
 
 - intent: hoi_ngay_thi
   examples: |
-    - điều kiện bảo lưu sao
+    - lịch thi sắp tới
+    - cho tôi biết ngày thi
+    - tôi muốn hỏi ngày thi
+    - cho tôi xem ngày thi
+    - khi nào khóa học bắt đầu thi
+    - ngày thi tiếp theo là bao giờ
+    - ngày thi của khóa học là ngày nào
+    - hỏi xem ngày thi là khi nào
+    - tôi muốn xem lịch thi
+
+- intent: ngay_thi_theo_chuong_trinh
+  examples: |
+    - ngày thi [a2 ctut](khoa_hoc) là khi nào
+    - cho tôi biết ngày thi [a2 ctut](khoa_hoc)
+    - lịch thi [a2 ctut](khoa_hoc) sắp tới
+    - ngày thi [a2 ctut](khoa_hoc) gần đây nhất
+    - ngày thi [b1 ctut](khoa_hoc) là khi nào
+    - cho tôi biết ngày thi [b1 ctut](khoa_hoc)
+    - lịch thi [b1 ctut](khoa_hoc) sắp tới
+    - ngày thi [b1 ctut](khoa_hoc) gần đây nhất
+    - ngày thi [n4 ctut](khoa_hoc) là khi nào
+    - cho tôi biết ngày thi [n4 ctut](khoa_hoc)
+    - lịch thi [n4 ctut](khoa_hoc) sắp tới
+    - ngày thi [n4 ctut](khoa_hoc) gần đây nhất
+    - ngày thi [n4 jlpt](khoa_hoc) là khi nào
+    - cho tôi biết ngày thi [n4 jlpt](khoa_hoc)
+    - lịch thi [n4 jlpt](khoa_hoc) sắp tới
+    - ngày thi [n4 jlpt](khoa_hoc) gần đây nhất
+    - ngày thi [toeic 250](khoa_hoc) là khi nào
+    - cho tôi biết ngày thi [toeic 250](khoa_hoc)
+    - lịch thi [toeic 250](khoa_hoc) sắp tới
+    - ngày thi [toeic 250](khoa_hoc) gần đây nhất
+    - ngày thi [toeic 350](khoa_hoc) là khi nào
+    - cho tôi biết ngày thi [toeic 350](khoa_hoc)
+    - lịch thi [toeic 350](khoa_hoc) sắp tới
+    - ngày thi [toeic 350](khoa_hoc) gần đây nhất
+    - ngày thi [toeic 450](khoa_hoc) là khi nào
+    - cho tôi biết ngày thi [toeic 450](khoa_hoc)
+    - lịch thi [toeic 450](khoa_hoc) sắp tới
+    - ngày thi [toeic 450](khoa_hoc) gần đây nhất
+    - ngày thi [toeic ctut](khoa_hoc) là khi nào
+    - cho tôi biết ngày thi [toeic ctut](khoa_hoc)
+    - lịch thi [toeic ctut](khoa_hoc) sắp tới
+    - ngày thi [toeic ctut](khoa_hoc) gần đây nhất
+    - ngày thi [ud cntt cb](khoa_hoc) là khi nào
+    - cho tôi biết ngày thi [ud cntt cb](khoa_hoc)
+    - lịch thi [ud cntt cb](khoa_hoc) sắp tới
+    - ngày thi [ud cntt cb](khoa_hoc) gần đây nhất
+    - ngày thi [ud cntt nc](khoa_hoc) là khi nào
+    - cho tôi biết ngày thi [ud cntt nc](khoa_hoc)
+    - lịch thi [ud cntt nc](khoa_hoc) sắp tới
+    - ngày thi [ud cntt nc](khoa_hoc) gần đây nhất
+
+intent: hoi_ngay_thi_theo_khoa
+  examples: |
+    - ngày thi theo khóa
 
 - intent: hoi_thong_tin_lien_he
   examples: |
@@ -371,26 +582,7 @@ nlu:
 
 - intent: hoi_cach_dang_ky
   examples: |
-    - mẫu đơn ud cntt [md001](mau_don) ở đâu
-    - giấy tờ mẫu đơn ud cntt [md001](mau_don) là gì
-    - quy trình nộp mẫu đơn ud cntt [md001](mau_don) ra sao
-    - link tải mẫu đơn ud cntt [md001](mau_don) ở đâu
-    - mẫu đơn ud cntt [md001](mau_don) cần ảnh không
-    - cách điền mẫu đơn ud cntt [md001](mau_don) thế nào
-    - nơi cung cấp mẫu đơn ud cntt [md001](mau_don) là đâu
-    - yêu cầu ảnh thẻ mẫu đơn ud cntt [md001](mau_don) thế nào
-    - mẫu đơn ud cntt [md001](mau_don) cần 02 ảnh 3x4 không
-    - quy định nộp mẫu đơn ud cntt [md001](mau_don) thế nào
-    - cách tải mẫu đơn toeic ctut [md002](mau_don) thế nào
-    - mẫu đơn toeic ctut [md002](mau_don) tải ở đâu
-    - giấy tờ cần cho mẫu đơn toeic ctut [md002](mau_don)
-    - cách lấy mẫu đơn toeic ctut [md002](mau_don) ra sao
-    - thông tin mẫu đơn toeic ctut [md002](mau_don) gồm gì
-    - mẫu đơn toeic ctut [md002](mau_don) cần cmnd không
-    - mẫu đơn toeic ctut [md002](mau_don) có link không
-    - kiểm tra link mẫu đơn toeic ctut [md002](mau_don) ra sao
-    - thông tin chi tiết mẫu đơn toeic ctut [md002](mau_don) ở đâu
-    - mẫu đơn toeic ctut [md002](mau_don) cần giấy tờ gì
+    - hỏi cách đăng ký
 
 - intent: hoi_dieu_kien_bao_luu
   examples: |
@@ -402,16 +594,26 @@ nlu:
     - muốn bảo lưu kết quả phải làm sao
     - thời hạn bảo lưu kết quả là bao lâu
     - kết quả anh văn bảo lưu được bao lâu
-    - điều kiện bảo lưu [ud cntt cb](khoa_hoc)
-    - quy định bảo lưu đối với khóa [ud cntt cb](khoa_hoc) tại trung tâm
-    - làm sao được bảo lưu khóa [ud cntt cb](khoa_hoc)
-    - muốn bảo lưu kết quả [ud cntt cb](khoa_hoc) thì làm như thế nào
-    - thời hạn bảo lưu kết quả [ud cntt cb](khoa_hoc) bao lâu
-    - điều kiện bảo lưu [ud cntt nc](khoa_hoc)
-    - quy định bảo lưu đối với khóa [ud cntt nc](khoa_hoc) tại trung tâm
-    - làm sao được bảo lưu khóa [ud cntt nc](khoa_hoc)
-    - muốn bảo lưu kết quả [ud cntt nc](khoa_hoc) thì làm như thế nào
-    - thời hạn bảo lưu kết quả [ud cntt nc](khoa_hoc) bao lâu
+    - điều kiện bảo lưu [a2 ctut](khoa_hoc)
+    - quy định bảo lưu đối với khóa [a2 ctut](khoa_hoc) tại trung tâm
+    - làm sao được bảo lưu khóa [a2 ctut](khoa_hoc)
+    - muốn bảo lưu kết quả [a2 ctut](khoa_hoc) thì làm như thế nào
+    - thời hạn bảo lưu kết quả [a2 ctut](khoa_hoc) bao lâu
+    - điều kiện bảo lưu [b1 ctut](khoa_hoc)
+    - quy định bảo lưu đối với khóa [b1 ctut](khoa_hoc) tại trung tâm
+    - làm sao được bảo lưu khóa [b1 ctut](khoa_hoc)
+    - muốn bảo lưu kết quả [b1 ctut](khoa_hoc) thì làm như thế nào
+    - thời hạn bảo lưu kết quả [b1 ctut](khoa_hoc) bao lâu
+    - điều kiện bảo lưu [n4 ctut](khoa_hoc)
+    - quy định bảo lưu đối với khóa [n4 ctut](khoa_hoc) tại trung tâm
+    - làm sao được bảo lưu khóa [n4 ctut](khoa_hoc)
+    - muốn bảo lưu kết quả [n4 ctut](khoa_hoc) thì làm như thế nào
+    - thời hạn bảo lưu kết quả [n4 ctut](khoa_hoc) bao lâu
+    - điều kiện bảo lưu [n4 jlpt](khoa_hoc)
+    - quy định bảo lưu đối với khóa [n4 jlpt](khoa_hoc) tại trung tâm
+    - làm sao được bảo lưu khóa [n4 jlpt](khoa_hoc)
+    - muốn bảo lưu kết quả [n4 jlpt](khoa_hoc) thì làm như thế nào
+    - thời hạn bảo lưu kết quả [n4 jlpt](khoa_hoc) bao lâu
     - điều kiện bảo lưu [toeic 250](khoa_hoc)
     - quy định bảo lưu đối với khóa [toeic 250](khoa_hoc) tại trung tâm
     - làm sao được bảo lưu khóa [toeic 250](khoa_hoc)
@@ -427,33 +629,195 @@ nlu:
     - làm sao được bảo lưu khóa [toeic 450](khoa_hoc)
     - muốn bảo lưu kết quả [toeic 450](khoa_hoc) thì làm như thế nào
     - thời hạn bảo lưu kết quả [toeic 450](khoa_hoc) bao lâu
-    - điều kiện bảo lưu [a2 ctut](khoa_hoc)
-    - quy định bảo lưu đối với khóa [a2 ctut](khoa_hoc) tại trung tâm
-    - làm sao được bảo lưu khóa [a2 ctut](khoa_hoc)
-    - muốn bảo lưu kết quả [a2 ctut](khoa_hoc) thì làm như thế nào
-    - thời hạn bảo lưu kết quả [a2 ctut](khoa_hoc) bao lâu
-    - điều kiện bảo lưu [n4 ctut](khoa_hoc)
-    - quy định bảo lưu đối với khóa [n4 ctut](khoa_hoc) tại trung tâm
-    - làm sao được bảo lưu khóa [n4 ctut](khoa_hoc)
-    - muốn bảo lưu kết quả [n4 ctut](khoa_hoc) thì làm như thế nào
-    - thời hạn bảo lưu kết quả [n4 ctut](khoa_hoc) bao lâu
-    - điều kiện bảo lưu [b1 ctut](khoa_hoc)
+    - điều kiện bảo lưu [toeic ctut](khoa_hoc)
+    - quy định bảo lưu đối với khóa [toeic ctut](khoa_hoc) tại trung tâm
+    - làm sao được bảo lưu khóa [toeic ctut](khoa_hoc)
+    - muốn bảo lưu kết quả [toeic ctut](khoa_hoc) thì làm như thế nào
+    - thời hạn bảo lưu kết quả [toeic ctut](khoa_hoc) bao lâu
+    - điều kiện bảo lưu [ud cntt cb](khoa_hoc)
+    - quy định bảo lưu đối với khóa [ud cntt cb](khoa_hoc) tại trung tâm
+    - làm sao được bảo lưu khóa [ud cntt cb](khoa_hoc)
+    - muốn bảo lưu kết quả [ud cntt cb](khoa_hoc) thì làm như thế nào
+    - thời hạn bảo lưu kết quả [ud cntt cb](khoa_hoc) bao lâu
+    - điều kiện bảo lưu [ud cntt nc](khoa_hoc)
+    - quy định bảo lưu đối với khóa [ud cntt nc](khoa_hoc) tại trung tâm
+    - làm sao được bảo lưu khóa [ud cntt nc](khoa_hoc)
+    - muốn bảo lưu kết quả [ud cntt nc](khoa_hoc) thì làm như thế nào
+    - thời hạn bảo lưu kết quả [ud cntt nc](khoa_hoc) bao lâu
 
 - intent: hoi_hoc_phi
   examples: |
-    - điều kiện bảo lưu sao
+    - tôi muốn hỏi học phí
+    - học phí của khóa học là bao nhiêu
+    - học phí trung tâm ngoại ngữ ra sao
+    - bao nhiêu tiền cho một khóa học ở trung tâm
+    - khóa học tốn khoảng bao nhiêu tiền
+    - tôi muốn hỏi học phí [a2 ctut](khoa_hoc)
+    - học phí [a2 ctut](khoa_hoc) là bao nhiêu
+    - học phí [a2 ctut](khoa_hoc) ra sao
+    - bao nhiêu tiền cho khóa học [a2 ctut](khoa_hoc)
+    - [a2 ctut](khoa_hoc) tốn khoảng bao nhiêu tiền
+    - tôi muốn hỏi học phí [b1 ctut](khoa_hoc)
+    - học phí [b1 ctut](khoa_hoc) là bao nhiêu
+    - học phí [b1 ctut](khoa_hoc) ra sao
+    - bao nhiêu tiền cho khóa học [b1 ctut](khoa_hoc)
+    - [b1 ctut](khoa_hoc) tốn khoảng bao nhiêu tiền
+    - tôi muốn hỏi học phí [n4 ctut](khoa_hoc)
+    - học phí [n4 ctut](khoa_hoc) là bao nhiêu
+    - học phí [n4 ctut](khoa_hoc) ra sao
+    - bao nhiêu tiền cho khóa học [n4 ctut](khoa_hoc)
+    - [n4 ctut](khoa_hoc) tốn khoảng bao nhiêu tiền
+    - tôi muốn hỏi học phí [n4 jlpt](khoa_hoc)
+    - học phí [n4 jlpt](khoa_hoc) là bao nhiêu
+    - học phí [n4 jlpt](khoa_hoc) ra sao
+    - bao nhiêu tiền cho khóa học [n4 jlpt](khoa_hoc)
+    - [n4 jlpt](khoa_hoc) tốn khoảng bao nhiêu tiền
+    - tôi muốn hỏi học phí [toeic 250](khoa_hoc)
+    - học phí [toeic 250](khoa_hoc) là bao nhiêu
+    - học phí [toeic 250](khoa_hoc) ra sao
+    - bao nhiêu tiền cho khóa học [toeic 250](khoa_hoc)
+    - [toeic 250](khoa_hoc) tốn khoảng bao nhiêu tiền
+    - tôi muốn hỏi học phí [toeic 350](khoa_hoc)
+    - học phí [toeic 350](khoa_hoc) là bao nhiêu
+    - học phí [toeic 350](khoa_hoc) ra sao
+    - bao nhiêu tiền cho khóa học [toeic 350](khoa_hoc)
+    - [toeic 350](khoa_hoc) tốn khoảng bao nhiêu tiền
+    - tôi muốn hỏi học phí [toeic 450](khoa_hoc)
+    - học phí [toeic 450](khoa_hoc) là bao nhiêu
+    - học phí [toeic 450](khoa_hoc) ra sao
+    - bao nhiêu tiền cho khóa học [toeic 450](khoa_hoc)
+    - [toeic 450](khoa_hoc) tốn khoảng bao nhiêu tiền
+    - tôi muốn hỏi học phí [toeic ctut](khoa_hoc)
+    - học phí [toeic ctut](khoa_hoc) là bao nhiêu
+    - học phí [toeic ctut](khoa_hoc) ra sao
+    - bao nhiêu tiền cho khóa học [toeic ctut](khoa_hoc)
+    - [toeic ctut](khoa_hoc) tốn khoảng bao nhiêu tiền
+    - tôi muốn hỏi học phí [ud cntt cb](khoa_hoc)
+    - học phí [ud cntt cb](khoa_hoc) là bao nhiêu
+    - học phí [ud cntt cb](khoa_hoc) ra sao
+    - bao nhiêu tiền cho khóa học [ud cntt cb](khoa_hoc)
+    - [ud cntt cb](khoa_hoc) tốn khoảng bao nhiêu tiền
+    - tôi muốn hỏi học phí [ud cntt nc](khoa_hoc)
+    - học phí [ud cntt nc](khoa_hoc) là bao nhiêu
+    - học phí [ud cntt nc](khoa_hoc) ra sao
+    - bao nhiêu tiền cho khóa học [ud cntt nc](khoa_hoc)
+    - [ud cntt nc](khoa_hoc) tốn khoảng bao nhiêu tiền
 
 - intent: hoi_phi_thi_lai
   examples: |
-    - điều kiện bảo lưu sao
+    - cho tôi biết mức phí thi lại tại trung tâm
+    - tôi muốn hỏi về phí thi lại
+    - phí thi lại của khóa học là bao nhiêu
+    - mức phí thi lại cho khóa học này
+    - tôi muốn thi lại thì cần đóng bao nhiêu tiền
+    - cho tôi biết phí thi lại [a2 ctut](khoa_hoc)
+    - tôi muốn hỏi phí thi lại [a2 ctut](khoa_hoc)
+    - phí thi lại [a2 ctut](khoa_hoc) là bao nhiêu
+    - mức phí thi lại cho khóa học [a2 ctut](khoa_hoc)
+    - tôi muốn thi lại [a2 ctut](khoa_hoc) thì cần đóng bao nhiêu tiền
+    - cho tôi biết phí thi lại [b1 ctut](khoa_hoc)
+    - tôi muốn hỏi phí thi lại [b1 ctut](khoa_hoc)
+    - phí thi lại [b1 ctut](khoa_hoc) là bao nhiêu
+    - mức phí thi lại cho khóa học [b1 ctut](khoa_hoc)
+    - tôi muốn thi lại [b1 ctut](khoa_hoc) thì cần đóng bao nhiêu tiền
+    - cho tôi biết phí thi lại [n4 ctut](khoa_hoc)
+    - tôi muốn hỏi phí thi lại [n4 ctut](khoa_hoc)
+    - phí thi lại [n4 ctut](khoa_hoc) là bao nhiêu
+    - mức phí thi lại cho khóa học [n4 ctut](khoa_hoc)
+    - tôi muốn thi lại [n4 ctut](khoa_hoc) thì cần đóng bao nhiêu tiền
+    - cho tôi biết phí thi lại [n4 jlpt](khoa_hoc)
+    - tôi muốn hỏi phí thi lại [n4 jlpt](khoa_hoc)
+    - phí thi lại [n4 jlpt](khoa_hoc) là bao nhiêu
+    - mức phí thi lại cho khóa học [n4 jlpt](khoa_hoc)
+    - tôi muốn thi lại [n4 jlpt](khoa_hoc) thì cần đóng bao nhiêu tiền
+    - cho tôi biết phí thi lại [toeic 250](khoa_hoc)
+    - tôi muốn hỏi phí thi lại [toeic 250](khoa_hoc)
+    - phí thi lại [toeic 250](khoa_hoc) là bao nhiêu
+    - mức phí thi lại cho khóa học [toeic 250](khoa_hoc)
+    - tôi muốn thi lại [toeic 250](khoa_hoc) thì cần đóng bao nhiêu tiền
+    - cho tôi biết phí thi lại [toeic 350](khoa_hoc)
+    - tôi muốn hỏi phí thi lại [toeic 350](khoa_hoc)
+    - phí thi lại [toeic 350](khoa_hoc) là bao nhiêu
+    - mức phí thi lại cho khóa học [toeic 350](khoa_hoc)
+    - tôi muốn thi lại [toeic 350](khoa_hoc) thì cần đóng bao nhiêu tiền
+    - cho tôi biết phí thi lại [toeic 450](khoa_hoc)
+    - tôi muốn hỏi phí thi lại [toeic 450](khoa_hoc)
+    - phí thi lại [toeic 450](khoa_hoc) là bao nhiêu
+    - mức phí thi lại cho khóa học [toeic 450](khoa_hoc)
+    - tôi muốn thi lại [toeic 450](khoa_hoc) thì cần đóng bao nhiêu tiền
+    - cho tôi biết phí thi lại [toeic ctut](khoa_hoc)
+    - tôi muốn hỏi phí thi lại [toeic ctut](khoa_hoc)
+    - phí thi lại [toeic ctut](khoa_hoc) là bao nhiêu
+    - mức phí thi lại cho khóa học [toeic ctut](khoa_hoc)
+    - tôi muốn thi lại [toeic ctut](khoa_hoc) thì cần đóng bao nhiêu tiền
+    - cho tôi biết phí thi lại [ud cntt cb](khoa_hoc)
+    - tôi muốn hỏi phí thi lại [ud cntt cb](khoa_hoc)
+    - phí thi lại [ud cntt cb](khoa_hoc) là bao nhiêu
+    - mức phí thi lại cho khóa học [ud cntt cb](khoa_hoc)
+    - tôi muốn thi lại [ud cntt cb](khoa_hoc) thì cần đóng bao nhiêu tiền
+    - cho tôi biết phí thi lại [ud cntt nc](khoa_hoc)
+    - tôi muốn hỏi phí thi lại [ud cntt nc](khoa_hoc)
+    - phí thi lại [ud cntt nc](khoa_hoc) là bao nhiêu
+    - mức phí thi lại cho khóa học [ud cntt nc](khoa_hoc)
+    - tôi muốn thi lại [ud cntt nc](khoa_hoc) thì cần đóng bao nhiêu tiền
 
 - intent: hoi_dieu_kien_du_thi
   examples: |
-    - điều kiện bảo lưu sao
+    - điều kiện dự thi là gì
+    - tôi cần đáp ứng điều kiện gì để dự thi
+    - để dự thi cần có những điều kiện gì
+    - tôi muốn biết điều kiện dự thi
 
 - intent: hoi_xu_ly_vi_pham
   examples: |
-    - điều kiện bảo lưu sao
+    - xử lý vi phạm như thế nào
+    - tôi muốn biết cách xử lý vi phạm
+    - có quy định gì về xử lý vi phạm không
+    - tôi cần biết quy trình xử lý vi phạm
+    - các mức độ vi phạm
+
+- intent: xem_chi_tiet_xu_ly_vi_pham
+  examples: |
+    - [không được dự thi](vi_pham)
+    - xử lý vi phạm [không được dự thi](vi_pham) như thế nào
+    - tôi muốn biết cách xử lý vi phạm [không được dự thi](vi_pham)
+    - có quy định gì về xử lý vi phạm [không được dự thi](vi_pham) không
+    - tôi cần biết quy trình xử lý vi phạm [không được dự thi](vi_pham)
+    - [khiển trách](vi_pham)
+    - xử lý vi phạm [khiển trách](vi_pham) như thế nào
+    - tôi muốn biết cách xử lý vi phạm [khiển trách](vi_pham)
+    - có quy định gì về xử lý vi phạm [khiển trách](vi_pham) không
+    - tôi cần biết quy trình xử lý vi phạm [khiển trách](vi_pham)
+    - [cảnh cáo](vi_pham)
+    - xử lý vi phạm [cảnh cáo](vi_pham) như thế nào
+    - tôi muốn biết cách xử lý vi phạm [cảnh cáo](vi_pham)
+    - có quy định gì về xử lý vi phạm [cảnh cáo](vi_pham) không
+    - tôi cần biết quy trình xử lý vi phạm [cảnh cáo](vi_pham)
+    - [đình chỉ kiểm tra](vi_pham)
+    - xử lý vi phạm [đình chỉ kiểm tra](vi_pham) như thế nào
+    - tôi muốn biết cách xử lý vi phạm [đình chỉ kiểm tra](vi_pham)
+    - có quy định gì về xử lý vi phạm [đình chỉ kiểm tra](vi_pham) không
+    - tôi cần biết quy trình xử lý vi phạm [đình chỉ kiểm tra](vi_pham)
+    - [trừ điểm bài kiểm tra](vi_pham)
+    - xử lý vi phạm [trừ điểm bài kiểm tra](vi_pham) như thế nào
+    - tôi muốn biết cách xử lý vi phạm [trừ điểm bài kiểm tra](vi_pham)
+    - có quy định gì về xử lý vi phạm [trừ điểm bài kiểm tra](vi_pham) không
+    - tôi cần biết quy trình xử lý vi phạm [trừ điểm bài kiểm tra](vi_pham)
+    - [cho điểm 0](vi_pham)
+    - xử lý vi phạm [cho điểm 0](vi_pham) như thế nào
+    - tôi muốn biết cách xử lý vi phạm [cho điểm 0](vi_pham)
+    - có quy định gì về xử lý vi phạm [cho điểm 0](vi_pham) không
+    - tôi cần biết quy trình xử lý vi phạm [cho điểm 0](vi_pham)
+    - [hủy kết quả bài kiểm tra](vi_pham)
+    - xử lý vi phạm [hủy kết quả bài kiểm tra](vi_pham) như thế nào
+    - tôi muốn biết cách xử lý vi phạm [hủy kết quả bài kiểm tra](vi_pham)
+    - có quy định gì về xử lý vi phạm [hủy kết quả bài kiểm tra](vi_pham) không
+    - tôi cần biết quy trình xử lý vi phạm [hủy kết quả bài kiểm tra](vi_pham)
+    - [các vi phạm khác](vi_pham)
+    - xử lý vi phạm [các vi phạm khác](vi_pham) như thế nào
+    - tôi muốn biết cách xử lý vi phạm [các vi phạm khác](vi_pham)
+    - có quy định gì về xử lý vi phạm [các vi phạm khác](vi_pham) không
+    - tôi cần biết quy trình xử lý vi phạm [các vi phạm khác](vi_pham)
 
 - intent: inform
   examples: |
