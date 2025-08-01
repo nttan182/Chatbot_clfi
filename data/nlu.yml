@@ -582,7 +582,72 @@ intent: hoi_ngay_thi_theo_khoa
 
 - intent: hoi_cach_dang_ky
   examples: |
-    - hỏi cách đăng ký
+    - làm sao để đăng ký khóa học
+    - tôi muốn biết cách đăng ký khóa học
+    - hướng dẫn đăng ký khóa học
+    - làm thế nào để đăng ký học
+    - làm sao để tôi có thể đăng ký khóa học
+    - hướng dẫn chi tiết cách đăng ký khóa học
+    - làm sao để đăng ký [a2 ctut](khoa_hoc)
+    - tôi muốn biết cách đăng ký [a2 ctut](khoa_hoc)
+    - hướng dẫn đăng ký [a2 ctut](khoa_hoc)
+    - làm thế nào để đăng ký học [a2 ctut](khoa_hoc)
+    - làm sao để tôi có thể đăng ký [a2 ctut](khoa_hoc)
+    - hướng dẫn chi tiết cách đăng ký [a2 ctut](khoa_hoc)
+    - làm sao để đăng ký [b1 ctut](khoa_hoc)
+    - tôi muốn biết cách đăng ký [b1 ctut](khoa_hoc)
+    - hướng dẫn đăng ký [b1 ctut](khoa_hoc)
+    - làm thế nào để đăng ký học [b1 ctut](khoa_hoc)
+    - làm sao để tôi có thể đăng ký [b1 ctut](khoa_hoc)
+    - hướng dẫn chi tiết cách đăng ký [b1 ctut](khoa_hoc)
+    - làm sao để đăng ký [n4 ctut](khoa_hoc)
+    - tôi muốn biết cách đăng ký [n4 ctut](khoa_hoc)
+    - hướng dẫn đăng ký [n4 ctut](khoa_hoc)
+    - làm thế nào để đăng ký học [n4 ctut](khoa_hoc)
+    - làm sao để tôi có thể đăng ký [n4 ctut](khoa_hoc)
+    - hướng dẫn chi tiết cách đăng ký [n4 ctut](khoa_hoc)
+    - làm sao để đăng ký [n4 jlpt](khoa_hoc)
+    - tôi muốn biết cách đăng ký [n4 jlpt](khoa_hoc)
+    - hướng dẫn đăng ký [n4 jlpt](khoa_hoc)
+    - làm thế nào để đăng ký học [n4 jlpt](khoa_hoc)
+    - làm sao để tôi có thể đăng ký [n4 jlpt](khoa_hoc)
+    - hướng dẫn chi tiết cách đăng ký [n4 jlpt](khoa_hoc)
+    - làm sao để đăng ký [toeic 250](khoa_hoc)
+    - tôi muốn biết cách đăng ký [toeic 250](khoa_hoc)
+    - hướng dẫn đăng ký [toeic 250](khoa_hoc)
+    - làm thế nào để đăng ký học [toeic 250](khoa_hoc)
+    - làm sao để tôi có thể đăng ký [toeic 250](khoa_hoc)
+    - hướng dẫn chi tiết cách đăng ký [toeic 250](khoa_hoc)
+    - làm sao để đăng ký [toeic 350](khoa_hoc)
+    - tôi muốn biết cách đăng ký [toeic 350](khoa_hoc)
+    - hướng dẫn đăng ký [toeic 350](khoa_hoc)
+    - làm thế nào để đăng ký học [toeic 350](khoa_hoc)
+    - làm sao để tôi có thể đăng ký [toeic 350](khoa_hoc)
+    - hướng dẫn chi tiết cách đăng ký [toeic 350](khoa_hoc)
+    - làm sao để đăng ký [toeic 450](khoa_hoc)
+    - tôi muốn biết cách đăng ký [toeic 450](khoa_hoc)
+    - hướng dẫn đăng ký [toeic 450](khoa_hoc)
+    - làm thế nào để đăng ký học [toeic 450](khoa_hoc)
+    - làm sao để tôi có thể đăng ký [toeic 450](khoa_hoc)
+    - hướng dẫn chi tiết cách đăng ký [toeic 450](khoa_hoc)
+    - làm sao để đăng ký [toeic ctut](khoa_hoc)
+    - tôi muốn biết cách đăng ký [toeic ctut](khoa_hoc)
+    - hướng dẫn đăng ký [toeic ctut](khoa_hoc)
+    - làm thế nào để đăng ký học [toeic ctut](khoa_hoc)
+    - làm sao để tôi có thể đăng ký [toeic ctut](khoa_hoc)
+    - hướng dẫn chi tiết cách đăng ký [toeic ctut](khoa_hoc)
+    - làm sao để đăng ký [ud cntt cb](khoa_hoc)
+    - tôi muốn biết cách đăng ký [ud cntt cb](khoa_hoc)
+    - hướng dẫn đăng ký [ud cntt cb](khoa_hoc)
+    - làm thế nào để đăng ký học [ud cntt cb](khoa_hoc)
+    - làm sao để tôi có thể đăng ký [ud cntt cb](khoa_hoc)
+    - hướng dẫn chi tiết cách đăng ký [ud cntt cb](khoa_hoc)
+    - làm sao để đăng ký [ud cntt nc](khoa_hoc)
+    - tôi muốn biết cách đăng ký [ud cntt nc](khoa_hoc)
+    - hướng dẫn đăng ký [ud cntt nc](khoa_hoc)
+    - làm thế nào để đăng ký học [ud cntt nc](khoa_hoc)
+    - làm sao để tôi có thể đăng ký [ud cntt nc](khoa_hoc)
+    - hướng dẫn chi tiết cách đăng ký [ud cntt nc](khoa_hoc)
 
 - intent: hoi_dieu_kien_bao_luu
   examples: |
