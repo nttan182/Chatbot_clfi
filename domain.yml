@@ -4,6 +4,7 @@ intents:
   - chao_hoi
   - tam_biet
   - cam_on
+  - nlu_fallback
   - bot_challenge
   - hoi_can_bo_phu_trach
   - hoi_chuong_trinh_dao_tao
@@ -109,6 +110,6 @@ actions:
   - action_tra_cuu_dieu_kien_bao_luu
 
 Session_config:
-  session_expiration_time: 30
+  session_expiration_time: 60
   carry_over_slots_to_new_session: true
 
