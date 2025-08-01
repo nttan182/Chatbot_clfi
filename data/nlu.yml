@@ -1,4 +1,4 @@
-version: "31"
+version: "3.1"
 
 nlu:
 - intent: chao_hoi
@@ -548,7 +548,7 @@ nlu:
     - lịch thi [ud cntt nc](khoa_hoc) sắp tới
     - ngày thi [ud cntt nc](khoa_hoc) gần đây nhất
 
-intent: hoi_ngay_thi_theo_khoa
+- intent: hoi_ngay_thi_theo_khoa
   examples: |
     - ngày thi theo khóa
 
