@@ -4,26 +4,44 @@ intents:
   - chao_hoi
   - tam_biet
   - cam_on
+  - yeu_cau_tro_giup
   - nlu_fallback
   - bot_challenge
+  - hoi_ban_lanh_dao
   - hoi_chuong_trinh_dao_tao
-#  - hoi_chuong_trinh_giang_day
-#  - hoi_danh_sach_quy_dinh
-#  - xem_quy_dinh_chi_tiet
-#  - hoi_dieu_kien_bao_luu
-#  - inform
-#  - hoi_thong_tin_lien_he
-#  - hoi_ten_chuong_trinh
-#  - hoi_chuong_trinh_giang_day
-#  - hoi_chuong_trinh_khung
-#  - hoi_thoi_luong
-#  - hoi_chuan_dau_ra
+  - hoi_chuong_trinh_giang_day
+  - hoi_chuong_trinh_khung
+  - hoi_thoi_luong
+  - hoi_chuan_dau_ra
+  - hoi_danh_sach_quy_dinh
+  - xem_quy_dinh_chi_tiet
+  - hoi_lich_dao_tao
+  - lich_dao_tao_theo_chuong_trinh
+  - lich_dao_tao_theo_khoa
+  - hoi_diem_thi
+  - diem_thi_theo_chuong_trinh
+  - diem_thi_theo_khoa
+  - hoi_ngay_khai_giang
+  - ngay_khai_giang_theo_chuong_trinh
+  - ngay_khai_giang_theo_khoa
+  - hoi_ngay_thi
+  - ngay_thi_theo_chuong_trinh
+  - ngay_thi_theo_khoa
+  - hoi_thong_tin_lien_he
+  - hoi_cach_dang_ky
+  - hoi_dieu_kien_bao_luu
+  - hoi_hoc_phi
+  - hoi_phi_thi_lai
+  - hoi_dieu_kien_du_thi
+  - hoi_xu_ly_vi_pham
+  - xem_chi_tiet_xu_ly_vi_pham
+  - inform
 
 entities:
   - khoa_hoc
   - chi_tiet_quy_dinh
   - lien_he
-  #- gioi_thieu_trung_tam
+  - vi_pham
 
 slots:
   khoa_hoc:
@@ -72,6 +90,12 @@ responses:
   - text: Rất vui được hỗ trợ bạn. Nếu có thắc mắc khác, đừng ngần ngại liên hệ với mình nhé.
   - text: Cám ơn bạn. Đừng quên theo dõi website để cập nhật các khóa học mới nhất từ Trung tâm.
 
+  utter_yeu_cau_tro_giup:
+  - text: Mình có thể giúp gì cho bạn?
+  - text: Bạn cần mình hỗ trợ gì?
+  - text: Bạn cần biết thêm thông tin gì?
+  - text: Bạn cần mình hỗ trợ gì về Trung tâm Ngoại ngữ - Tin học?
+
   utter_iamabot:
   - text: Mình là hệ thống Hỏi đáp các nội dung về hoạt động của Trung tâm Ngoại ngữ - Tin học.
 #  utter_default:
@@ -86,11 +110,11 @@ actions:
   - action_check_postgre_connection
   - action_fallback_reset
   - action_xem_chuong_trinh_dao_tao
-#  - action_xem_chuong_trinh_giang_day
-#  - action_xem_danh_sach_quy_dinh
-#  - action_tra_cuu_thong_tin_chi_tiet_quy_dinh
-#  - validate_form_dieu_kien_bao_luu
-#  - action_tra_cuu_dieu_kien_bao_luu
+  - action_xem_chuong_trinh_giang_day
+  - action_xem_danh_sach_quy_dinh
+  - action_tra_cuu_thong_tin_chi_tiet_quy_dinh
+  - validate_form_dieu_kien_bao_luu
+  - action_tra_cuu_dieu_kien_bao_luu
 
 Session_config:
   session_expiration_time: 60
