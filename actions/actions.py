@@ -10,7 +10,7 @@ def get_db_connection():
         host="localhost",
         database="chatbot_clfi",
         user="postgres",
-        password="2101235"
+        password="13051989"
     )
 
 
