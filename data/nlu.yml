@@ -51,15 +51,38 @@ nlu:
     - rất biết ơn khi bạn hỗ trợ
     - cảm ơn trung tâm nhiều
 
+- intent: yeu_cau_tro_giup
+  examples: |
+    - tôi cần giúp đỡ
+    - tôi cần hỗ trợ
+    - tôi cần trợ giúp
+    - tôi cần thông tin
+    - tôi cần giải đáp thắc mắc
+    - tôi muốn hỏi về trung tâm
+    - tôi muốn biết thêm thông tin
+    - tôi muốn hỏi cái này được không
+    - tôi có câu hỏi cần giải đáp
+    - tôi cần bạn giúp tôi
+
 - intent: bot_challenge
   examples: |
     - bạn là ai
     - giới thiệu về hệ thống
     - bạn là gì
 
-- intent: hoi_can_bo_phu_trach
+- intent: hoi_ban_lanh_dao
   examples: |
-    - cán bộ phụ trách
+    - tôi muốn biết về ban lãnh đạo của trung tâm
+    - ai là người đứng đầu trung tâm
+    - ban lãnh đạo trung tâm là ai
+    - trung tâm do ai quản lý
+    - ai là người điều hành trung tâm
+    - tôi muốn biết về [giám đốc](ban_lanh_dao)
+    - ai là [giám đốc](ban_lanh_dao) của trung tâm
+    - [giám đốc](ban_lanh_dao) của trung tâm là ai
+    - tôi muốn biết về [phó giám đốc](ban_lanh_dao)
+    - ai là [phó giám đốc](ban_lanh_dao) của trung tâm
+    - [phó giám đốc](ban_lanh_dao) của trung tâm là ai
 
 - intent: hoi_chuong_trinh_dao_tao
   examples: |

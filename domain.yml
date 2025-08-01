@@ -4,9 +4,10 @@ intents:
   - chao_hoi
   - tam_biet
   - cam_on
+  - yeu_cau_tro_giup
   - nlu_fallback
   - bot_challenge
-  - hoi_can_bo_phu_trach
+  - hoi_ban_lanh_dao
   - hoi_chuong_trinh_dao_tao
   - hoi_chuong_trinh_giang_day
   - hoi_chuong_trinh_khung
@@ -88,6 +89,12 @@ responses:
   - text: Cám ơn bạn đã quan tâm đến Trung tâm Ngoại ngữ - Tin học. Chúc bạn một ngày tốt lành.
   - text: Rất vui được hỗ trợ bạn. Nếu có thắc mắc khác, đừng ngần ngại liên hệ với mình nhé.
   - text: Cám ơn bạn. Đừng quên theo dõi website để cập nhật các khóa học mới nhất từ Trung tâm.
+
+  utter_yeu_cau_tro_giup:
+  - text: Mình có thể giúp gì cho bạn?
+  - text: Bạn cần mình hỗ trợ gì?
+  - text: Bạn cần biết thêm thông tin gì?
+  - text: Bạn cần mình hỗ trợ gì về Trung tâm Ngoại ngữ - Tin học?
 
   utter_iamabot:
   - text: Mình là hệ thống Hỏi đáp các nội dung về hoạt động của Trung tâm Ngoại ngữ - Tin học.
