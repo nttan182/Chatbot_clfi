@@ -1,2 +1,3 @@
 ud cntt: ứng dụng công nghệ thông tin, ud công nghệ thông tin, ưd công nghệ thông tin, ứng dụng cntt
 cb: cơ bản, căn bản
+điều kiện: dk
