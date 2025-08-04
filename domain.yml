@@ -105,12 +105,21 @@ forms:
   form_dieu_kien_bao_luu:
     required_slots:
       - khoa_hoc
+  form_chuong_trinh_giang_day:
+    required_slots:
+      - khoa_hoc
+  form_chuong_trinh_khung:
+    required_slots:
+      - khoa_hoc
 
 actions:
   - action_check_postgre_connection
   - action_fallback_reset
   - action_xem_chuong_trinh_dao_tao
+  - validate_form_chuong_trinh_giang_day
   - action_xem_chuong_trinh_giang_day
+  - validate_form_chuong_trinh_khung
+  - action_xem_chuong_trinh_khung
   - action_xem_danh_sach_quy_dinh
   - action_tra_cuu_thong_tin_chi_tiet_quy_dinh
   - validate_form_dieu_kien_bao_luu

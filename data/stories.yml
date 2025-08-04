@@ -22,6 +22,11 @@ stories:
   - intent: bot_challenge
   - action: utter_iamabot
 
+- story: giup do
+  steps:
+  - intent: yeu_cau_tro_giup
+  - action: utter_yeu_cau_tro_giup
+
 - story: Trả lời khi hỏi chương trình đào tạo
   steps:
     - intent: hoi_chuong_trinh_dao_tao
@@ -34,18 +39,23 @@ stories:
   - active_loop: form_dieu_kien_bao_luu
   - active_loop: null
   - action: action_tra_cuu_dieu_kien_bao_luu
-#- story: Xem chương trình – trực tiếp có slot từ đầu
-#  steps:
-#    - intent: hoi_chuong_trinh_giang_day
-#    - action: action_xem_chuong_trinh_giang_day
-#
-#- story: xem_danh_sach_quy_dinh
-#  steps:
-#  - intent: hoi_danh_sach_quy_dinh
-#  - action: action_xem_danh_sach_quy_dinh
-#
-#- story: xem_chi tiet_quy_dinh
-#  steps:
-#  - intent: xem_quy_dinh_chi_tiet
-#  - action: action_tra_cuu_thong_tin_chi_tiet_quy_dinh
-#
+
+- story: Xem chương trình giảng dạy
+  steps:
+    - intent: hoi_chuong_trinh_giang_day
+    - action: action_xem_chuong_trinh_giang_day
+
+- story: Xem chương trình khung
+  steps:
+    - intent: hoi_chuong_trinh_khung
+    - action: action_xem_chuong_trinh_khung
+
+- story: xem_danh_sach_quy_dinh
+  steps:
+  - intent: hoi_danh_sach_quy_dinh
+  - action: action_xem_danh_sach_quy_dinh
+
+- story: xem_chi tiet_quy_dinh
+  steps:
+  - intent: xem_quy_dinh_chi_tiet
+  - action: action_tra_cuu_thong_tin_chi_tiet_quy_dinh
