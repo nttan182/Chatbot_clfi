@@ -15,8 +15,8 @@ language: vi
 pipeline:
 - name: WhitespaceTokenizer
 - name: LanguageModelFeaturizer
-  model_name: “bert”
-  model_weight: “rasa/LaBSE”
+  model_name: 'bert'
+  model_weight: 'rasa/LaBSE'
   cache_dir: null
 - name: RegexFeaturizer
 - name: LexicalSyntacticFeaturizer
