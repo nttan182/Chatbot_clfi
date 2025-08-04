@@ -85,6 +85,7 @@ class ActionXemChuongTrinhDaoTao(Action):
         dispatcher.utter_message(text=message)
         return []
 
+
 class ValidateFormChuongTrinhGiangDay(FormValidationAction):
     def name(self) -> Text:
         return "validate_form_chuong_trinh_giang_day"
@@ -119,8 +120,9 @@ def fetch_chuong_trinh_giang_day(khoa_hoc: str) -> str | None:
                     (f"%{khoa_hoc.strip()}%",),
                 )
                 row = cursor.fetchone()
-                if row and row[0]:
-                    return row[0]
+                if row and row[0] and row[1]:
+                    return row[0], row[1]
+                return row[0], "Liên hệ trực tiếp trung tâm để biết thêm chi tiết."
     except Exception:
         logger.exception("Lỗi khi truy vấn chương trình giảng dạy")
     return None
@@ -141,14 +143,15 @@ class ActionXemChuongTrinhGiangDay(Action):
             dispatcher.utter_message(response="utter_ask_khoa_hoc")
             return []
 
-        noi_dung = fetch_chuong_trinh_giang_day(khoa_hoc)
+        ten, noi_dung = fetch_chuong_trinh_giang_day(khoa_hoc)
         if noi_dung:
             dispatcher.utter_message(
-                text=f"Thông tin chương trình giảng dạy: {noi_dung}"
+                text=f"{ten}: {noi_dung}"
             )
         else:
             dispatcher.utter_message(text="Không tìm thấy chương trình nào.")
         return [SlotSet("khoa_hoc", None)]
+
 
 class ValidateFormChuongTrinhKhung(FormValidationAction):
     def name(self) -> Text:
@@ -168,7 +171,6 @@ class ValidateFormChuongTrinhKhung(FormValidationAction):
             return {"khoa_hoc": None}
         return {"khoa_hoc": khoa_hoc}
 
-
 def fetch_chuong_trinh_khung(khoa_hoc: str) -> Optional[Tuple[str, str, str]]:
     normalized = khoa_hoc.strip()
     try:
@@ -177,21 +179,21 @@ def fetch_chuong_trinh_khung(khoa_hoc: str) -> Optional[Tuple[str, str, str]]:
                 # Thử match theo mã chương trình khung
                 cursor.execute(
                     """
-                    SELECT n.ma_chuong_trinh, n.ten_chuong_trinh, h.noi_dung
-                      FROM hoi_chuong_trinh_khung h
-                      JOIN noi_chuong_trinh_dao_tao n
-                        ON n.ma_chuong_trinh = h.ma_chuong_trinh
-                     WHERE h.ma_chuong_trinh ILIKE %s
+                    SELECT dt.ten_chuong_trinh, k.noi_dung
+                      FROM hoi_chuong_trinh_khung k
+                      JOIN hoi_chuong_trinh_dao_tao dt
+                        ON dt.ma_chuong_trinh = k.ma_chuong_trinh
+                     WHERE k.ma_chuong_trinh ILIKE %s
                     """,
                     (f"%{normalized}%",),
                 )
                 row = cursor.fetchone()
-                if row and row[0] and row[2]:
-                    return row[0], row[1], row[2]
+                if row and row[0] and row[1]:
+                    return row[0], row[1]
+                return row[0], "Không có thông tin."
     except Exception:
         logger.exception("[fetch_chuong_trinh_khung] Lỗi khi truy vấn chương trình khung")
     return None
-
 
 class ActionXemChuongTrinhKhung(Action):
     def name(self) -> Text:
@@ -210,21 +212,98 @@ class ActionXemChuongTrinhKhung(Action):
 
         result = fetch_chuong_trinh_khung(khoa_hoc)
         if result:
-            ma, ten, noi_dung = result
+            ten, noi_dung = result
             dispatcher.utter_message(
                 text=(
-                    f"Thông tin chương trình khung **{ten}**: {noi_dung}"
+                    f"{ten}: {noi_dung}"
                 )
             )
         else:
             dispatcher.utter_message(
                 text=(
-                    f"Không tìm thấy chương trình khung phù hợp với “{khoa_hoc}”. "
+                    f"Không tìm thấy chương trình khung phù hợp. "
                     "Vui lòng kiểm tra lại mã hoặc tên."
                 )
             )
 
         return [SlotSet("khoa_hoc", None)]
+
+
+class ValidateFormThoiGianDaoTao(FormValidationAction):
+    def name(self) -> Text:
+        return "validate_form_thoi_gian_dao_tao"
+
+    def validate_khoa_hoc(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+        # Dùng same slot tên "khoa_hoc" để nhận input mã hoặc tên chương trình khung
+        khoa_hoc = (slot_value or "").strip()
+        if not khoa_hoc:
+            dispatcher.utter_message(text="Bạn vui lòng cung cấp mã hoặc tên chương trình khung nhé!")
+            return {"khoa_hoc": None}
+        return {"khoa_hoc": khoa_hoc}
+
+def fetch_thoi_gian_dao_tao(khoa_hoc: str) -> Optional[Tuple[str, str, str]]:
+    normalized = khoa_hoc.strip()
+    try:
+        with get_db_connection() as conn:
+            with conn.cursor() as cursor:
+                # Thử match theo mã chương trình khung
+                cursor.execute(
+                    """
+                    SELECT dt.ten_chuong_trinh, tg.thoi_luong, tg.thoi_gian_hoc
+                      FROM thoi_gian_dao_tao tg
+                      JOIN hoi_chuong_trinh_dao_tao dt
+                        ON dt.ma_chuong_trinh = tg.ma_chuong_trinh
+                     WHERE tg.ma_chuong_trinh ILIKE %s
+                    """,
+                    (f"%{normalized}%",),
+                )
+                row = cursor.fetchone()
+                if row and row[0] and row[1] and row[2]:
+                    return row[0], row[1], row[2]
+                return "Chưa có thông tin."
+    except Exception:
+        logger.exception("[fetch_thoi_gian_dao_tao] Lỗi khi truy vấn chương trình khung")
+    return None
+
+class ActionXemThoiLuong(Action):
+    def name(self) -> Text:
+        return "action_xem_thoi_luong"
+
+    def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> List[Dict[Text, Any]]:
+        khoa_hoc = tracker.get_slot("khoa_hoc")
+        if not khoa_hoc:
+            dispatcher.utter_message(response="utter_ask_khoa_hoc")
+            return []
+
+        result = fetch_chuong_trinh_khung(khoa_hoc)
+        if result:
+            ten, thoi_luong, thoi_gian_hoc = result
+            dispatcher.utter_message(
+                text=(
+                    f"{ten} được đào tạo: {thoi_gian_hoc}, với tổng cộng {thoi_luong} học."
+                )
+            )
+        else:
+            dispatcher.utter_message(
+                text=(
+                    f"Không tìm thấy chương trình khung phù hợp."
+                    "Vui lòng kiểm tra lại mã hoặc tên."
+                )
+            )
+
+        return [SlotSet("khoa_hoc", None)]
+
 
 class ActionXemDanhSachQuyDinh(Action):
     def name(self):

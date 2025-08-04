@@ -50,6 +50,11 @@ stories:
     - intent: hoi_chuong_trinh_khung
     - action: action_xem_chuong_trinh_khung
 
+- story: thoi gian dao tao
+  steps:
+    - intent: hoi_thoi_luong
+    - action: action_xem_thoi_luong
+
 - story: xem_danh_sach_quy_dinh
   steps:
   - intent: hoi_danh_sach_quy_dinh
