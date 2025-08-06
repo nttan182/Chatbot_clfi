@@ -1,7 +1,8 @@
-from typing import Any, Text, Dict, List
+from typing import Any, Text, Dict, List, Optional, Tuple
 from rasa_sdk import FormValidationAction, logger
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.types import DomainDict
 import psycopg2
 from rasa_sdk.events import SlotSet, UserUtteranceReverted
 
@@ -10,7 +11,7 @@ def get_db_connection():
         host="localhost",
         database="chatbot_clfi",
         user="postgres",
-        password="13051989"
+        password="2101235"
     )
 
 
@@ -61,33 +62,72 @@ class ActionXemChuongTrinhDaoTao(Action):
             conn = get_db_connection()
             cursor = conn.cursor()
 
-            # SỬA LẠI tên bảng cho đúng
-            cursor.execute("SELECT ten_chuong_trinh FROM hoi_chuong_trinh_dao_tao;")
-            records = cursor.fetchall()
+            # Truy vấn danh sách các quy định
+            cursor.execute("SELECT ten_chuong_trinh FROM hoi_chuong_trinh_dao_tao ORDER BY ten_chuong_trinh ASC")
+            results = cursor.fetchall()
 
-            if records:
-                message = "Trung tâm hiện có các chương trình giảng dạy:<br>"
-                for row in records:
-                    message += f"- {row[0]}<br>"
+            if results:
+                message = "Danh sách các chương trình hiện có: <br>"
+                for idx, row in enumerate(results, start=1):
+                    message += f"&nbsp &nbsp &nbsp{idx}. {row[0]}<br>"
+                message += "Bạn có thể truy cập để xem chi tiết các thông tin qua liên kết: <a href='https://trungtamnnth.ctuet.edu.vn/'> https://trungtamnnth.ctuet.edu.vn/</a>. Bạn có muốn hỏi thêm chi tiết về chương trình nào không?"
             else:
-                message = "Hiện trung tâm chưa có chương trình giảng dạy nào."
+                message = "Hiện chưa có thông tin chương trình bạn đang hỏi."
 
-            dispatcher.utter_message(text=message)
-
-        except (Exception, psycopg2.Error) as error:
-            dispatcher.utter_message(text="Đã xảy ra lỗi khi kết nối CSDL.")
-            print("Lỗi kết nối CSDL:", error)
-
+        except Exception as e:
+            message = f"Đã xảy ra lỗi khi kết nối CSDL: {str(e)}"
         finally:
             if 'cursor' in locals():
                 cursor.close()
             if 'conn' in locals():
                 conn.close()
 
+        dispatcher.utter_message(text=message)
         return []
 
 
-class ActionXemChuongTrinh(Action):
+class ValidateFormChuongTrinhGiangDay(FormValidationAction):
+    def name(self) -> Text:
+        return "validate_form_chuong_trinh_giang_day"
+
+    def validate_khoa_hoc(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+        khoa_hoc = (slot_value or "").strip()
+        if not khoa_hoc:
+            dispatcher.utter_message(text="Bạn vui lòng cung cấp chính xác tên khóa học nhé!")
+            return {"khoa_hoc": None}
+        # Nếu cần, thêm kiểm tra tồn tại trong DB ở đây rồi normalize tên
+        return {"khoa_hoc": khoa_hoc}
+
+def fetch_chuong_trinh_giang_day(khoa_hoc: str) -> str | None:
+
+    try:
+        with get_db_connection() as conn:
+            with conn.cursor() as cursor:
+                cursor.execute(
+                    """
+                    SELECT dt.ten_chuong_trinh, gd.noi_dung
+                      FROM hoi_chuong_trinh_giang_day gd
+                      JOIN hoi_chuong_trinh_dao_tao dt
+                        ON dt.ma_chuong_trinh = gd.ma_chuong_trinh
+                     WHERE gd.ma_chuong_trinh ILIKE %s
+                    """,
+                    (f"%{khoa_hoc.strip()}%",),
+                )
+                row = cursor.fetchone()
+                if row and row[0] and row[1]:
+                    return row[0], row[1]
+                return row[0], "Liên hệ trực tiếp trung tâm để biết thêm chi tiết."
+    except Exception:
+        logger.exception("Lỗi khi truy vấn chương trình giảng dạy")
+    return None
+
+class ActionXemChuongTrinhGiangDay(Action):
     def name(self) -> Text:
         return "action_xem_chuong_trinh_giang_day"
 
@@ -95,56 +135,65 @@ class ActionXemChuongTrinh(Action):
         self,
         dispatcher: CollectingDispatcher,
         tracker: Tracker,
-        domain: Dict[Text, Any],
+        domain: DomainDict,
     ) -> List[Dict[Text, Any]]:
 
-        # Lấy slot khoa_hoc (vd: "toeic ctut")
         khoa_hoc = tracker.get_slot("khoa_hoc")
-
-        # Nếu user chỉ nói chung chung, chưa có slot -> hỏi lại
         if not khoa_hoc:
             dispatcher.utter_message(response="utter_ask_khoa_hoc")
             return []
 
-        # Nếu đã có slot, thực hiện truy vấn
-        try:
-            conn = get_db_connection()
-            cursor = conn.cursor()
-            cursor.execute(
-                """
-                SELECT chuong_trinh_giang_day
-                  FROM chuong_trinh_dao_tao
-                 WHERE ma_chuong_trinh ILIKE %s
-                """,
-                (khoa_hoc.strip(),)
+        ten, noi_dung = fetch_chuong_trinh_giang_day(khoa_hoc)
+        if noi_dung:
+            dispatcher.utter_message(
+                text=f"{ten}: {noi_dung}"
             )
-            row = cursor.fetchone()
-
-            if row and row[0]:
-                ten = row[0]
-                dispatcher.utter_message(text=(
-                    f"Thông tin chương trình giảng dạy:\n"
-                    f"- Tên chương trình: **{ten}**"
-                ))
-            else:
-                dispatcher.utter_message(text=(
-                    f"Không tìm thấy chương trình nào."
-                ))
-
-        except Exception as e:
-            logger.error(f"[ActionXemChuongTrinh] Lỗi khi truy vấn DB: {e}")
-            dispatcher.utter_message(text=(
-                "Đã xảy ra lỗi khi kết nối cơ sở dữ liệu. "
-                "Vui lòng thử lại sau."
-            ))
-        finally:
-            if 'cursor' in locals():
-                cursor.close()
-            if 'conn' in locals():
-                conn.close()
-
-        # Reset slot để lần sau user có thể tra tiếp
+        else:
+            dispatcher.utter_message(text="Không tìm thấy chương trình nào.")
         return [SlotSet("khoa_hoc", None)]
+
+
+class ValidateFormChuongTrinhKhung(FormValidationAction):
+    def name(self) -> Text:
+        return "validate_form_chuong_trinh_khung"
+
+    def validate_khoa_hoc(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+        # Dùng same slot tên "khoa_hoc" để nhận input mã hoặc tên chương trình khung
+        khoa_hoc = (slot_value or "").strip()
+        if not khoa_hoc:
+            dispatcher.utter_message(text="Bạn vui lòng cung cấp mã hoặc tên chương trình khung nhé!")
+            return {"khoa_hoc": None}
+        return {"khoa_hoc": khoa_hoc}
+
+def fetch_chuong_trinh_khung(khoa_hoc: str) -> Optional[Tuple[str, str, str]]:
+    normalized = khoa_hoc.strip()
+    try:
+        with get_db_connection() as conn:
+            with conn.cursor() as cursor:
+                # Thử match theo mã chương trình khung
+                cursor.execute(
+                    """
+                    SELECT dt.ten_chuong_trinh, k.noi_dung
+                      FROM hoi_chuong_trinh_khung k
+                      JOIN hoi_chuong_trinh_dao_tao dt
+                        ON dt.ma_chuong_trinh = k.ma_chuong_trinh
+                     WHERE k.ma_chuong_trinh ILIKE %s
+                    """,
+                    (f"%{normalized}%",),
+                )
+                row = cursor.fetchone()
+                if row and row[0] and row[1]:
+                    return row[0], row[1]
+                return row[0], "Không có thông tin."
+    except Exception:
+        logger.exception("[fetch_chuong_trinh_khung] Lỗi khi truy vấn chương trình khung")
+    return None
 
 class ActionXemChuongTrinhKhung(Action):
     def name(self) -> Text:
@@ -154,57 +203,107 @@ class ActionXemChuongTrinhKhung(Action):
         self,
         dispatcher: CollectingDispatcher,
         tracker: Tracker,
-        domain: Dict[Text, Any],
+        domain: DomainDict,
     ) -> List[Dict[Text, Any]]:
-
-        # Lấy slot ma_ct_khung (mã chương trình khung)
-        ma_ct = tracker.get_slot("ma_ct_khung")
-
-        if not ma_ct:
-            # Nếu user chưa cho mã, hỏi lại
-            dispatcher.utter_message(response="utter_ask_ma_ct_khung")
+        khoa_hoc = tracker.get_slot("khoa_hoc")
+        if not khoa_hoc:
+            dispatcher.utter_message(response="utter_ask_khoa_hoc")
             return []
 
-        try:
-            conn = get_db_connection()
-            cursor = conn.cursor()
-            cursor.execute(
-                """
-                SELECT ten_chuong_trinh
-                  FROM chuong_trinh
-                 WHERE ma_chuong_trinh = %s
-                """,
-                (ma_ct.strip(),)
+        result = fetch_chuong_trinh_khung(khoa_hoc)
+        if result:
+            ten, noi_dung = result
+            dispatcher.utter_message(
+                text=(
+                    f"{ten}: {noi_dung}"
+                )
             )
-            row = cursor.fetchone()
+        else:
+            dispatcher.utter_message(
+                text=(
+                    f"Không tìm thấy chương trình khung phù hợp. "
+                    "Vui lòng kiểm tra lại mã hoặc tên."
+                )
+            )
 
-            if row and row[0]:
-                ten = row[0]
-                dispatcher.utter_message(text=(
-                    f"Chương trình khung* bạn yêu cầu:\n"
-                    f" • Mã: **{ma_ct.upper()}**\n"
-                    f" • Tên: **{ten}**"
-                ))
-            else:
-                dispatcher.utter_message(text=(
-                    f"Không tìm thấy chương trình khung với mã “{ma_ct}”. "
-                    "Vui lòng kiểm tra lại."
-                ))
+        return [SlotSet("khoa_hoc", None)]
 
-        except Exception as e:
-            logger.error(f"[ActionXemChuongTrinhKhung] Lỗi DB: {e}")
-            dispatcher.utter_message(text=(
-                "Có lỗi khi truy xuất cơ sở dữ liệu. "
-                "Bạn vui lòng thử lại sau."
-            ))
-        finally:
-            if 'cursor' in locals():
-                cursor.close()
-            if 'conn' in locals():
-                conn.close()
 
-        # Reset slot để lần sau có thể tra mã khác
-        return [SlotSet("ma_ct_khung", None)]
+class ValidateFormThoiGianDaoTao(FormValidationAction):
+    def name(self) -> Text:
+        return "validate_form_thoi_gian_dao_tao"
+
+    def validate_khoa_hoc(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+        # Dùng same slot tên "khoa_hoc" để nhận input mã hoặc tên chương trình khung
+        khoa_hoc = (slot_value or "").strip()
+        if not khoa_hoc:
+            dispatcher.utter_message(text="Bạn vui lòng cung cấp mã hoặc tên chương trình khung nhé!")
+            return {"khoa_hoc": None}
+        return {"khoa_hoc": khoa_hoc}
+
+def fetch_thoi_gian_dao_tao(khoa_hoc: str) -> Optional[Tuple[str, str, str]]:
+    normalized = khoa_hoc.strip()
+    try:
+        with get_db_connection() as conn:
+            with conn.cursor() as cursor:
+                # Thử match theo mã chương trình khung
+                cursor.execute(
+                    """
+                    SELECT dt.ten_chuong_trinh, tg.thoi_luong, tg.thoi_gian_hoc
+                      FROM thoi_gian_dao_tao tg
+                      JOIN hoi_chuong_trinh_dao_tao dt
+                        ON dt.ma_chuong_trinh = tg.ma_chuong_trinh
+                     WHERE tg.ma_chuong_trinh ILIKE %s
+                    """,
+                    (f"%{normalized}%",),
+                )
+                row = cursor.fetchone()
+                if row and row[0] and row[1] and row[2]:
+                    return row[0], row[1], row[2]
+                return "Chưa có thông tin."
+    except Exception:
+        logger.exception("[fetch_thoi_gian_dao_tao] Lỗi khi truy vấn chương trình khung")
+    return None
+
+class ActionXemThoiLuong(Action):
+    def name(self) -> Text:
+        return "action_xem_thoi_luong"
+
+    def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> List[Dict[Text, Any]]:
+        khoa_hoc = tracker.get_slot("khoa_hoc")
+        if not khoa_hoc:
+            dispatcher.utter_message(response="utter_ask_khoa_hoc")
+            return []
+
+        result = fetch_chuong_trinh_khung(khoa_hoc)
+        if result:
+            ten, thoi_luong, thoi_gian_hoc = result
+            dispatcher.utter_message(
+                text=(
+                    f"{ten} được đào tạo: {thoi_gian_hoc}, với tổng cộng {thoi_luong} học."
+                )
+            )
+        else:
+            dispatcher.utter_message(
+                text=(
+                    f"Không tìm thấy chương trình khung phù hợp."
+                    "Vui lòng kiểm tra lại mã hoặc tên."
+                )
+            )
+
+        return [SlotSet("khoa_hoc", None)]
+
 
 class ActionXemDanhSachQuyDinh(Action):
     def name(self):
@@ -260,8 +359,8 @@ class ActionXemQuyDinhChiTiet(Action):
 
             cursor.execute("""
                 SELECT mo_ta 
-                FROM danh_sach_quy_dinh 
-                WHERE ten_quy_dinh ILIKE %s
+                FROM danh_sach_qui_dinh 
+                WHERE ten_qui_dinh ILIKE %s
             """, (f"%{chi_tiet_quy_dinh}%",))
 
             result = cursor.fetchone()
