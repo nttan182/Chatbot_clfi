@@ -11,7 +11,7 @@ def get_db_connection():
         host="localhost",
         database="chatbot_clfi",
         user="postgres",
-        password="2101235"
+        password="13051989"
     )
 
 
@@ -264,12 +264,11 @@ def fetch_thoi_gian_dao_tao(khoa_hoc: str) -> Optional[Tuple[str, str, str]]:
                     (f"%{normalized}%",),
                 )
                 row = cursor.fetchone()
-                if row and row[0] and row[1] and row[2]:
+                if row:
                     return row[0], row[1], row[2]
-                return "Chưa có thông tin."
     except Exception:
-        logger.exception("[fetch_thoi_gian_dao_tao] Lỗi khi truy vấn chương trình khung")
-    return None
+        logger.exception("[fetch_thoi_gian_dao_tao] Lỗi khi truy vấn")
+    return row
 
 class ActionXemThoiLuong(Action):
     def name(self) -> Text:
@@ -286,19 +285,29 @@ class ActionXemThoiLuong(Action):
             dispatcher.utter_message(response="utter_ask_khoa_hoc")
             return []
 
-        result = fetch_chuong_trinh_khung(khoa_hoc)
+        result = fetch_thoi_gian_dao_tao(khoa_hoc)
         if result:
             ten, thoi_luong, thoi_gian_hoc = result
-            dispatcher.utter_message(
-                text=(
-                    f"{ten} được đào tạo: {thoi_gian_hoc}, với tổng cộng {thoi_luong} học."
+            if not thoi_luong and not thoi_gian_hoc:
+                dispatcher.utter_message(
+                    text=f"{ten} hiện chưa có thông tin về thời lượng và thời gian học."
                 )
-            )
+            elif not thoi_luong:
+                dispatcher.utter_message(
+                    text=f"{ten} được đào tạo <b>{thoi_gian_hoc}</b>, nhưng chưa có thông tin về thời lượng học."
+                )
+            elif not thoi_gian_hoc:
+                dispatcher.utter_message(
+                    text=f"{ten} có tổng cộng <b>{thoi_luong} học</b>, nhưng chưa có thông tin về thời gian học."
+                )
+            else:
+                dispatcher.utter_message(
+                    text=f"{ten} được đào tạo: <b>{thoi_gian_hoc}</b>, với tổng cộng <b>{thoi_luong} học</b>."
+                )
         else:
             dispatcher.utter_message(
                 text=(
-                    f"Không tìm thấy chương trình khung phù hợp."
-                    "Vui lòng kiểm tra lại mã hoặc tên."
+                    f"Chưa có thông tin về thời gian của khóa học này. Vui lòng liên hệ trực tiếp trung tâm để biết thêm chi tiết."
                 )
             )
 
