@@ -103,6 +103,7 @@ class ValidateFormChuongTrinhGiangDay(FormValidationAction):
             return {"khoa_hoc": None}
         # Nếu cần, thêm kiểm tra tồn tại trong DB ở đây rồi normalize tên
         return {"khoa_hoc": khoa_hoc}
+
 def fetch_chuong_trinh_giang_day(khoa_hoc: str) -> str | None:
 
     try:
@@ -125,6 +126,7 @@ def fetch_chuong_trinh_giang_day(khoa_hoc: str) -> str | None:
     except Exception:
         logger.exception("Lỗi khi truy vấn chương trình giảng dạy")
     return None
+
 class ActionXemChuongTrinhGiangDay(Action):
     def name(self) -> Text:
         return "action_xem_chuong_trinh_giang_day"
@@ -168,6 +170,7 @@ class ValidateFormChuongTrinhKhung(FormValidationAction):
             dispatcher.utter_message(text="Bạn vui lòng cung cấp mã hoặc tên chương trình khung nhé!")
             return {"khoa_hoc": None}
         return {"khoa_hoc": khoa_hoc}
+
 def fetch_chuong_trinh_khung(khoa_hoc: str) -> Optional[Tuple[str, str, str]]:
     normalized = khoa_hoc.strip()
     try:
@@ -191,6 +194,7 @@ def fetch_chuong_trinh_khung(khoa_hoc: str) -> Optional[Tuple[str, str, str]]:
     except Exception:
         logger.exception("[fetch_chuong_trinh_khung] Lỗi khi truy vấn chương trình khung")
     return None
+
 class ActionXemChuongTrinhKhung(Action):
     def name(self) -> Text:
         return "action_xem_chuong_trinh_khung"
@@ -242,6 +246,7 @@ class ValidateFormThoiGianDaoTao(FormValidationAction):
             dispatcher.utter_message(text="Bạn vui lòng cung cấp mã hoặc tên chương trình khung nhé!")
             return {"khoa_hoc": None}
         return {"khoa_hoc": khoa_hoc}
+
 def fetch_thoi_gian_dao_tao(khoa_hoc: str) -> Optional[Tuple[str, str, str]]:
     normalized = khoa_hoc.strip()
     try:
@@ -259,12 +264,12 @@ def fetch_thoi_gian_dao_tao(khoa_hoc: str) -> Optional[Tuple[str, str, str]]:
                     (f"%{normalized}%",),
                 )
                 row = cursor.fetchone()
-                if row and row[0] and row[1] and row[2]:
+                if row:
                     return row[0], row[1], row[2]
-                return "Chưa có thông tin."
     except Exception:
         logger.exception("[fetch_thoi_gian_dao_tao] Lỗi khi truy vấn")
-    return None
+    return row
+
 class ActionXemThoiLuong(Action):
     def name(self) -> Text:
         return "action_xem_thoi_luong"
@@ -283,16 +288,26 @@ class ActionXemThoiLuong(Action):
         result = fetch_thoi_gian_dao_tao(khoa_hoc)
         if result:
             ten, thoi_luong, thoi_gian_hoc = result
-            dispatcher.utter_message(
-                text=(
-                    f"{ten} được đào tạo: {thoi_gian_hoc}, với tổng cộng {thoi_luong} học."
+            if not thoi_luong and not thoi_gian_hoc:
+                dispatcher.utter_message(
+                    text=f"{ten} hiện chưa có thông tin về thời lượng và thời gian học."
                 )
-            )
+            elif not thoi_luong:
+                dispatcher.utter_message(
+                    text=f"{ten} được đào tạo <b>{thoi_gian_hoc}</b>, nhưng chưa có thông tin về thời lượng học."
+                )
+            elif not thoi_gian_hoc:
+                dispatcher.utter_message(
+                    text=f"{ten} có tổng cộng <b>{thoi_luong} học</b>, nhưng chưa có thông tin về thời gian học."
+                )
+            else:
+                dispatcher.utter_message(
+                    text=f"{ten} được đào tạo: <b>{thoi_gian_hoc}</b>, với tổng cộng <b>{thoi_luong} học</b>."
+                )
         else:
             dispatcher.utter_message(
                 text=(
-                    f"Không tìm thấy chương trình khung phù hợp."
-                    "Vui lòng kiểm tra lại mã hoặc tên."
+                    f"Chưa có thông tin về thời gian của khóa học này. Vui lòng liên hệ trực tiếp trung tâm để biết thêm chi tiết."
                 )
             )
 
@@ -388,6 +403,7 @@ class ActionXemDanhSachQuyDinh(Action):
 
         dispatcher.utter_message(text=message)
         return []
+
 class ActionXemQuyDinhChiTiet(Action):
     def name(self) -> Text:
         return "action_tra_cuu_thong_tin_chi_tiet_quy_dinh"
@@ -431,7 +447,6 @@ class ActionXemQuyDinhChiTiet(Action):
 
         return []
 
-
 class validate_form_dieu_kien_bao_luu(FormValidationAction):
     def name(self) -> Text:
         return "validate_form_dieu_kien_bao_luu"
@@ -443,6 +458,7 @@ class validate_form_dieu_kien_bao_luu(FormValidationAction):
             return {"khoa_hoc": slot_value}
         dispatcher.utter_message(text="Bạn vui lòng cung cấp chính xác tên khóa học nhé!")
         return {"khoa_hoc": None}
+
 class ActionTraCuuDieuKienBaoLuu(Action):
     def name(self) -> Text:
         return "action_tra_cuu_dieu_kien_bao_luu"

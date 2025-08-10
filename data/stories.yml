@@ -53,13 +53,13 @@ stories:
   - intent: hoi_chuong_trinh_khung
   - action: action_xem_chuong_trinh_khung
 
-- story: thoi gian dao tao
+- story: Thời gian đào tạo
   steps:
-  - intent: hoi_thoi_luong
-  - action: form_thoi_gian_dao_tao
-  - active_loop: form_thoi_gian_dao_tao
-  - active_loop: null
-  - action: action_xem_thoi_luong
+    - intent: hoi_thoi_luong
+    - action: form_thoi_gian_dao_tao
+    - active_loop: form_thoi_gian_dao_tao
+    - active_loop: null
+    - action: action_xem_thoi_luong
 
 - story: chuan dau ra
   steps:
