@@ -51,6 +51,9 @@ stories:
 - story: Xem chương trình khung
   steps:
   - intent: hoi_chuong_trinh_khung
+  - action: form_chuong_trinh_khung
+  - active_loop: form_chuong_trinh_khung
+  - active_loop: null
   - action: action_xem_chuong_trinh_khung
 
 - story: thoi gian dao tao
@@ -64,7 +67,26 @@ stories:
 - story: chuan dau ra
   steps:
   - intent: hoi_chuan_dau_ra
+  - action: form_chuan_dau_ra
+  - active_loop: form_chuan_dau_ra
+  - active_loop: null
   - action: action_tra_cuu_chuan_dau_ra
+
+- story: hoc phi
+  steps:
+  - intent: hoi_hoc_phi
+  - action: form_hoc_phi
+  - active_loop: form_hoc_phi
+  - active_loop: null
+  - action: action_tra_cuu_hoc_phi
+
+- story: lệ phí thi lại
+  steps:
+  - intent: hoi_phi_thi_lai
+  - action: form_phi_thi_lai
+  - active_loop: form_phi_thi_lai
+  - active_loop: null
+  - action: action_tra_cuu_phi_thi_lai
 
 - story: xem_danh_sach_quy_dinh
   steps:
@@ -75,3 +97,19 @@ stories:
   steps:
   - intent: xem_quy_dinh_chi_tiet
   - action: action_tra_cuu_thong_tin_chi_tiet_quy_dinh
+
+- story: hoi dieu kien du thi
+  steps:
+  - intent: hoi_dieu_kien_du_thi
+  - action: form_dieu_kien_du_thi
+  - active_loop: form_dieu_kien_du_thi
+  - active_loop: null
+  - action: action_tra_cuu_dieu_kien_du_thi
+
+- story: tra cuu lich dao tao
+  steps:
+  - intent: hoi_lich_dao_tao
+  - action: form_tra_cuu_lich_dao_tao
+  - active_loop: form_tra_cuu_lich_dao_tao
+  - active_loop: null
+  - action: action_tra_cuu_lich_dao_tao

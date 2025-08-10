@@ -30,15 +30,12 @@ intents:
   - hoi_hoc_phi
   - hoi_phi_thi_lai
   - hoi_dieu_kien_du_thi
-  - hoi_xu_ly_vi_pham
-  - xem_chi_tiet_xu_ly_vi_pham
   - inform
 
 entities:
   - khoa_hoc
   - chi_tiet_quy_dinh
   - lien_he
-  - vi_pham
   - danh_sach_quy_dinh
 
 slots:
@@ -48,6 +45,7 @@ slots:
     mappings:
       - type: from_entity
         entity: khoa_hoc
+      - type: from_text
 
   danh_sach_quy_dinh:
     type: text
@@ -118,6 +116,21 @@ forms:
   form_thoi_gian_dao_tao:
     required_slots:
       - khoa_hoc
+  form_chuan_dau_ra:
+    required_slots:
+      - khoa_hoc
+  form_hoc_phi:
+    required_slots:
+      - khoa_hoc
+  form_phi_thi_lai:
+    required_slots:
+      - khoa_hoc
+  form_dieu_kien_du_thi:
+    required_slots:
+      - khoa_hoc
+  form_tra_cuu_lich_dao_tao:
+    required_slots:
+      - khoa_hoc
 
 actions:
   - action_check_postgre_connection
@@ -131,12 +144,20 @@ actions:
   - action_xem_thoi_luong
   - validate_form_chuan_dau_ra
   - action_tra_cuu_chuan_dau_ra
+  - validate_form_hoc_phi
+  - action_tra_cuu_hoc_phi
+  - validate_form_phi_thi_lai
+  - action_tra_cuu_phi_thi_lai
   - action_xem_danh_sach_quy_dinh
   - action_tra_cuu_thong_tin_chi_tiet_quy_dinh
   - validate_form_dieu_kien_bao_luu
   - action_tra_cuu_dieu_kien_bao_luu
+  - validate_form_dieu_kien_du_thi
+  - action_tra_cuu_dieu_kien_du_thi
+  - validate_form_tra_cuu_lich_dao_tao
+  - action_tra_cuu_lich_dao_tao
 
-Session_config:
+session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 
