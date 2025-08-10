@@ -42,6 +42,7 @@ entities:
   - chi_tiet_quy_dinh
   - lien_he
   - vi_pham
+  - danh_sach_quy_dinh
 
 slots:
   khoa_hoc:
@@ -51,6 +52,12 @@ slots:
       - type: from_entity
         entity: khoa_hoc
 
+  danh_sach_quy_dinh:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: danh_sach_quy_dinh
 #  gioi_thieu_trung_tam:
 #    type: text
 #    influence_conversation: true
@@ -125,6 +132,8 @@ actions:
   - action_xem_chuong_trinh_khung
   - validate_form_thoi_gian_dao_tao
   - action_xem_thoi_luong
+  - validate_form_chuan_dau_ra
+  - action_tra_cuu_chuan_dau_ra
   - action_xem_danh_sach_quy_dinh
   - action_tra_cuu_thong_tin_chi_tiet_quy_dinh
   - validate_form_dieu_kien_bao_luu

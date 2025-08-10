@@ -103,7 +103,6 @@ class ValidateFormChuongTrinhGiangDay(FormValidationAction):
             return {"khoa_hoc": None}
         # Nếu cần, thêm kiểm tra tồn tại trong DB ở đây rồi normalize tên
         return {"khoa_hoc": khoa_hoc}
-
 def fetch_chuong_trinh_giang_day(khoa_hoc: str) -> str | None:
 
     try:
@@ -126,7 +125,6 @@ def fetch_chuong_trinh_giang_day(khoa_hoc: str) -> str | None:
     except Exception:
         logger.exception("Lỗi khi truy vấn chương trình giảng dạy")
     return None
-
 class ActionXemChuongTrinhGiangDay(Action):
     def name(self) -> Text:
         return "action_xem_chuong_trinh_giang_day"
@@ -170,7 +168,6 @@ class ValidateFormChuongTrinhKhung(FormValidationAction):
             dispatcher.utter_message(text="Bạn vui lòng cung cấp mã hoặc tên chương trình khung nhé!")
             return {"khoa_hoc": None}
         return {"khoa_hoc": khoa_hoc}
-
 def fetch_chuong_trinh_khung(khoa_hoc: str) -> Optional[Tuple[str, str, str]]:
     normalized = khoa_hoc.strip()
     try:
@@ -194,7 +191,6 @@ def fetch_chuong_trinh_khung(khoa_hoc: str) -> Optional[Tuple[str, str, str]]:
     except Exception:
         logger.exception("[fetch_chuong_trinh_khung] Lỗi khi truy vấn chương trình khung")
     return None
-
 class ActionXemChuongTrinhKhung(Action):
     def name(self) -> Text:
         return "action_xem_chuong_trinh_khung"
@@ -246,7 +242,6 @@ class ValidateFormThoiGianDaoTao(FormValidationAction):
             dispatcher.utter_message(text="Bạn vui lòng cung cấp mã hoặc tên chương trình khung nhé!")
             return {"khoa_hoc": None}
         return {"khoa_hoc": khoa_hoc}
-
 def fetch_thoi_gian_dao_tao(khoa_hoc: str) -> Optional[Tuple[str, str, str]]:
     normalized = khoa_hoc.strip()
     try:
@@ -268,9 +263,8 @@ def fetch_thoi_gian_dao_tao(khoa_hoc: str) -> Optional[Tuple[str, str, str]]:
                     return row[0], row[1], row[2]
                 return "Chưa có thông tin."
     except Exception:
-        logger.exception("[fetch_thoi_gian_dao_tao] Lỗi khi truy vấn chương trình khung")
+        logger.exception("[fetch_thoi_gian_dao_tao] Lỗi khi truy vấn")
     return None
-
 class ActionXemThoiLuong(Action):
     def name(self) -> Text:
         return "action_xem_thoi_luong"
@@ -286,7 +280,7 @@ class ActionXemThoiLuong(Action):
             dispatcher.utter_message(response="utter_ask_khoa_hoc")
             return []
 
-        result = fetch_chuong_trinh_khung(khoa_hoc)
+        result = fetch_thoi_gian_dao_tao(khoa_hoc)
         if result:
             ten, thoi_luong, thoi_gian_hoc = result
             dispatcher.utter_message(
@@ -305,6 +299,60 @@ class ActionXemThoiLuong(Action):
         return [SlotSet("khoa_hoc", None)]
 
 
+class validate_form_chuan_dau_ra(FormValidationAction):
+    def name(self) -> Text:
+        return "validate_form_chuan_dau_ra"
+
+    def validate_khoa_hoc(self, slot_value: Any, dispatcher: CollectingDispatcher,
+                          tracker: Tracker, domain: Dict) -> Dict[Text, Any]:
+        # Kiểm tra nếu khóa học hợp lệ (giả định có hàm kiểm tra DB)
+        if slot_value:
+            return {"khoa_hoc": slot_value}
+        dispatcher.utter_message(text="Bạn vui lòng cung cấp chính xác tên khóa học nhé!")
+        return {"khoa_hoc": None}
+class ActionTraCuuDieuKienBaoLuu(Action):
+    def name(self) -> Text:
+        return "action_tra_cuu_chuan_dau_ra"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[
+        Dict[Text, Any]]:
+        khoa_hoc = tracker.get_slot("khoa_hoc")
+
+        if not khoa_hoc:
+            dispatcher.utter_message(text="Tôi chưa nhận được thông tin về khóa học bạn muốn hỏi.")
+            return []
+
+        try:
+            conn = get_db_connection()
+            cursor = conn.cursor()
+
+            cursor.execute("""
+                SELECT noi_dung
+                FROM hoi_chuan_dau_ra
+                WHERE ma_chuong_trinh ILIKE %s
+            """, (f"%{khoa_hoc}%",))
+
+            result = cursor.fetchone()
+
+            if result and result[0]:
+                #dispatcher.utter_message(text=f"{khoa_hoc}: {result[0]}")
+                dispatcher.utter_message(text=f"{result[0]}")
+                return [SlotSet("khoa_hoc", None)]
+            else:
+                dispatcher.utter_message(
+                    text=f"Hiện tại chưa có thông tin cho khóa học {khoa_hoc}.")
+                return [SlotSet("khoa_hoc", None)]
+        except Exception as e:
+            dispatcher.utter_message(text=f"Đã xảy ra lỗi khi truy vấn CSDL: {e}")
+
+        finally:
+            if 'cursor' in locals():
+                cursor.close()
+            if 'conn' in locals():
+                conn.close()
+
+        return []
+
 class ActionXemDanhSachQuyDinh(Action):
     def name(self):
         return "action_xem_danh_sach_quy_dinh"
@@ -319,7 +367,7 @@ class ActionXemDanhSachQuyDinh(Action):
             cursor = conn.cursor()
 
             # Truy vấn danh sách các quy định
-            cursor.execute("SELECT ten_quy_dinh FROM danh_sach_quy_dinh ORDER BY ten_quy_dinh ASC")
+            cursor.execute("SELECT ten_qui_dinh FROM danh_sach_qui_dinh ORDER BY ten_qui_dinh ASC")
             results = cursor.fetchall()
 
             if results:
@@ -340,7 +388,6 @@ class ActionXemDanhSachQuyDinh(Action):
 
         dispatcher.utter_message(text=message)
         return []
-
 class ActionXemQuyDinhChiTiet(Action):
     def name(self) -> Text:
         return "action_tra_cuu_thong_tin_chi_tiet_quy_dinh"
@@ -384,6 +431,7 @@ class ActionXemQuyDinhChiTiet(Action):
 
         return []
 
+
 class validate_form_dieu_kien_bao_luu(FormValidationAction):
     def name(self) -> Text:
         return "validate_form_dieu_kien_bao_luu"
@@ -395,7 +443,6 @@ class validate_form_dieu_kien_bao_luu(FormValidationAction):
             return {"khoa_hoc": slot_value}
         dispatcher.utter_message(text="Bạn vui lòng cung cấp chính xác tên khóa học nhé!")
         return {"khoa_hoc": None}
-
 class ActionTraCuuDieuKienBaoLuu(Action):
     def name(self) -> Text:
         return "action_tra_cuu_dieu_kien_bao_luu"
