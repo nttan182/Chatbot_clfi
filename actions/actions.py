@@ -1,4 +1,3 @@
-from datetime import datetime, date
 from typing import Any, Text, Dict, List, Optional, Tuple
 from rasa_sdk import FormValidationAction, logger
 from rasa_sdk import Action, Tracker
@@ -12,7 +11,7 @@ def get_db_connection():
         host="localhost",
         database="chatbot_clfi",
         user="postgres",
-        password="2101235"
+        password="13051989"
     )
 
 
@@ -197,6 +196,7 @@ def fetch_chuong_trinh_khung(khoa_hoc: str) -> Optional[Tuple[str, str]]:
     except Exception:
         logger.exception("[fetch_chuong_trinh_khung] Lỗi khi truy vấn chương trình khung")
     return None
+
 class ActionXemChuongTrinhKhung(Action):
     def name(self) -> Text:
         return "action_xem_chuong_trinh_khung"
@@ -248,6 +248,7 @@ class ValidateFormThoiGianDaoTao(FormValidationAction):
             dispatcher.utter_message(text="Bạn vui lòng cung cấp tên chương trình nhé!")
             return {"khoa_hoc": None}
         return {"khoa_hoc": khoa_hoc}
+
 def fetch_thoi_gian_dao_tao(khoa_hoc: str) -> Optional[Tuple[str, str, str]]:
     normalized = khoa_hoc.strip()
     try:
@@ -270,6 +271,7 @@ def fetch_thoi_gian_dao_tao(khoa_hoc: str) -> Optional[Tuple[str, str, str]]:
     except Exception:
         logger.exception("[fetch_thoi_gian_dao_tao] Lỗi khi truy vấn")
     return row
+
 class ActionXemThoiLuong(Action):
     def name(self) -> Text:
         return "action_xem_thoi_luong"
@@ -633,6 +635,7 @@ class ActionXemDanhSachQuyDinh(Action):
 
         dispatcher.utter_message(text=message)
         return []
+
 class ActionXemQuyDinhChiTiet(Action):
     def name(self) -> Text:
         return "action_tra_cuu_thong_tin_chi_tiet_quy_dinh"
