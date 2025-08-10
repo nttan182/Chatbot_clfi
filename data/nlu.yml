@@ -299,6 +299,7 @@ nlu:
 
 - intent: hoi_danh_sach_quy_dinh
   examples: |
+    - danh sách quy định
     - tôi muốn biết trung tâm có các quy định gì
     - danh sách các quy định của trung tâm
     - trung tâm có những quy định nào
@@ -928,56 +929,6 @@ nlu:
     - tôi muốn biết điều kiện dự thi
     - có những yêu cầu gì để đủ điều kiện dự thi
 
-- intent: hoi_xu_ly_vi_pham
-  examples: |
-    - xử lý vi phạm như thế nào
-    - tôi muốn biết cách xử lý vi phạm
-    - có quy định gì về xử lý vi phạm không
-    - tôi cần biết quy trình xử lý vi phạm
-    - các mức độ vi phạm
-
-- intent: xem_chi_tiet_xu_ly_vi_pham
-  examples: |
-    - [không được dự thi](vi_pham)
-    - xử lý vi phạm [không được dự thi](vi_pham) như thế nào
-    - tôi muốn biết cách xử lý vi phạm [không được dự thi](vi_pham)
-    - có quy định gì về xử lý vi phạm [không được dự thi](vi_pham) không
-    - tôi cần biết quy trình xử lý vi phạm [không được dự thi](vi_pham)
-    - [khiển trách](vi_pham)
-    - xử lý vi phạm [khiển trách](vi_pham) như thế nào
-    - tôi muốn biết cách xử lý vi phạm [khiển trách](vi_pham)
-    - có quy định gì về xử lý vi phạm [khiển trách](vi_pham) không
-    - tôi cần biết quy trình xử lý vi phạm [khiển trách](vi_pham)
-    - [cảnh cáo](vi_pham)
-    - xử lý vi phạm [cảnh cáo](vi_pham) như thế nào
-    - tôi muốn biết cách xử lý vi phạm [cảnh cáo](vi_pham)
-    - có quy định gì về xử lý vi phạm [cảnh cáo](vi_pham) không
-    - tôi cần biết quy trình xử lý vi phạm [cảnh cáo](vi_pham)
-    - [đình chỉ kiểm tra](vi_pham)
-    - xử lý vi phạm [đình chỉ kiểm tra](vi_pham) như thế nào
-    - tôi muốn biết cách xử lý vi phạm [đình chỉ kiểm tra](vi_pham)
-    - có quy định gì về xử lý vi phạm [đình chỉ kiểm tra](vi_pham) không
-    - tôi cần biết quy trình xử lý vi phạm [đình chỉ kiểm tra](vi_pham)
-    - [trừ điểm bài kiểm tra](vi_pham)
-    - xử lý vi phạm [trừ điểm bài kiểm tra](vi_pham) như thế nào
-    - tôi muốn biết cách xử lý vi phạm [trừ điểm bài kiểm tra](vi_pham)
-    - có quy định gì về xử lý vi phạm [trừ điểm bài kiểm tra](vi_pham) không
-    - tôi cần biết quy trình xử lý vi phạm [trừ điểm bài kiểm tra](vi_pham)
-    - [cho điểm 0](vi_pham)
-    - xử lý vi phạm [cho điểm 0](vi_pham) như thế nào
-    - tôi muốn biết cách xử lý vi phạm [cho điểm 0](vi_pham)
-    - có quy định gì về xử lý vi phạm [cho điểm 0](vi_pham) không
-    - tôi cần biết quy trình xử lý vi phạm [cho điểm 0](vi_pham)
-    - [hủy kết quả bài kiểm tra](vi_pham)
-    - xử lý vi phạm [hủy kết quả bài kiểm tra](vi_pham) như thế nào
-    - tôi muốn biết cách xử lý vi phạm [hủy kết quả bài kiểm tra](vi_pham)
-    - có quy định gì về xử lý vi phạm [hủy kết quả bài kiểm tra](vi_pham) không
-    - tôi cần biết quy trình xử lý vi phạm [hủy kết quả bài kiểm tra](vi_pham)
-    - [các vi phạm khác](vi_pham)
-    - xử lý vi phạm [các vi phạm khác](vi_pham) như thế nào
-    - tôi muốn biết cách xử lý vi phạm [các vi phạm khác](vi_pham)
-    - có quy định gì về xử lý vi phạm [các vi phạm khác](vi_pham) không
-    - tôi cần biết quy trình xử lý vi phạm [các vi phạm khác](vi_pham)
 
 - intent: inform
   examples: |
