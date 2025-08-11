@@ -120,12 +120,11 @@ def fetch_chuong_trinh_giang_day(khoa_hoc: str) -> str | Optional[Tuple[str, str
                     (f"%{khoa_hoc.strip()}%",),
                 )
                 row = cursor.fetchone()
-                if row and row[0] and row[1]:
+                if row:
                     return row[0], row[1]
-                return row[0], "Liên hệ trực tiếp trung tâm để biết thêm chi tiết."
     except Exception:
         logger.exception("Lỗi khi truy vấn chương trình giảng dạy")
-    return None
+    return row
 class ActionXemChuongTrinhGiangDay(Action):
     def name(self) -> Text:
         return "action_xem_chuong_trinh_giang_day"
@@ -142,11 +141,13 @@ class ActionXemChuongTrinhGiangDay(Action):
             dispatcher.utter_message(response="utter_ask_khoa_hoc")
             return []
 
-        ten, noi_dung = fetch_chuong_trinh_giang_day(khoa_hoc)
-        if noi_dung:
-            dispatcher.utter_message(
-                text=f"{ten}: {noi_dung}"
-            )
+        result = fetch_chuong_trinh_giang_day(khoa_hoc)
+        if result:
+            ten, noi_dung = fetch_chuong_trinh_giang_day(khoa_hoc)
+            if noi_dung:
+                dispatcher.utter_message(
+                        text=f"{ten}: {noi_dung}"
+                    )
         else:
             dispatcher.utter_message(text="Không tìm thấy chương trình nào.")
         return [SlotSet("khoa_hoc", None)]
@@ -772,6 +773,7 @@ class ActionTraCuuDieuKienDuThi(Action):
 #     return None
 # class ActionTraCuuLichDaoTao(Action):
 #     def name(self) -> Text:
+
 #         return "action_tra_cuu_lich_dao_tao"
 #
 #     def run(
