@@ -45,7 +45,7 @@ slots:
     mappings:
       - type: from_entity
         entity: khoa_hoc
-      - type: from_text
+#      - type: from_text
 
   danh_sach_quy_dinh:
     type: text
