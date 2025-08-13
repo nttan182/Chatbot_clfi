@@ -88,6 +88,30 @@ stories:
   - active_loop: null
   - action: action_tra_cuu_phi_thi_lai
 
+- story: chuan dau ra
+  steps:
+  - intent: hoi_chuan_dau_ra
+  - action: form_chuan_dau_ra
+  - active_loop: form_chuan_dau_ra
+  - active_loop: null
+  - action: action_tra_cuu_chuan_dau_ra
+
+- story: hoc phi
+  steps:
+  - intent: hoi_hoc_phi
+  - action: form_hoc_phi
+  - active_loop: form_hoc_phi
+  - active_loop: null
+  - action: action_tra_cuu_hoc_phi
+
+- story: lệ phí thi lại
+  steps:
+  - intent: hoi_phi_thi_lai
+  - action: form_phi_thi_lai
+  - active_loop: form_phi_thi_lai
+  - active_loop: null
+  - action: action_tra_cuu_phi_thi_lai
+
 - story: xem_danh_sach_quy_dinh
   steps:
   - intent: hoi_danh_sach_quy_dinh
