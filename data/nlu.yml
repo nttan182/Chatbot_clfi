@@ -90,8 +90,8 @@ nlu:
     - cho tôi biết các chương trình học của trung tâm
     - trung tâm dạy những khóa nào
     - có những lớp học nào
-    - danh sách chương trình giảng dạy ở trung tâm
-    - chương trình giảng dạy của trung tâm như thế nào
+    - danh sách chương trình ở trung tâm
+    - chương trình của trung tâm như thế nào
     - chương trình đào tạo của trung tâm như thế nào
 
 - intent: hoi_chuong_trinh_giang_day
@@ -351,6 +351,16 @@ nlu:
     - cho tôi xem lịch đào tạo
     - lịch đào tạo của khóa học
     - lịch đào tạo của trung tâm là gì
+    - lịch khai giảng sắp tới
+    - cho tôi biết ngày khai giảng
+    - tôi muốn hỏi ngày khai giảng
+    - ngày khai giảng gần đây nhất
+    - cho tôi xem ngày khai giảng
+    - khi nào khóa học bắt đầu khai giảng
+    - ngày khai giảng tiếp theo là bao giờ
+    - ngày khai giảng của khóa học là ngày nào
+    - hỏi xem ngày khai giảng là khi nào
+    - tôi muốn xem lịch khai giảng
 
 - intent: lich_dao_tao_theo_chuong_trinh
   examples: |
@@ -394,6 +404,46 @@ nlu:
     - lịch đào tạo [ud cntt nc](khoa_hoc)
     - cho tôi xem lịch đào tạo [ud cntt nc](khoa_hoc) gần đây
     - lịch đào tạo [ud cntt nc](khoa_hoc) gần đây nhất
+    - ngày khai giảng [a2 ctut](khoa_hoc) là khi nào
+    - cho tôi biết ngày khai giảng [a2 ctut](khoa_hoc)
+    - lịch khai giảng [a2 ctut](khoa_hoc) sắp tới
+    - ngày khai giảng [a2 ctut](khoa_hoc) gần đây nhất
+    - ngày khai giảng [b1 ctut](khoa_hoc) là khi nào
+    - cho tôi biết ngày khai giảng [b1 ctut](khoa_hoc)
+    - lịch khai giảng [b1 ctut](khoa_hoc) sắp tới
+    - ngày khai giảng [b1 ctut](khoa_hoc) gần đây nhất
+    - ngày khai giảng [n4 ctut](khoa_hoc) là khi nào
+    - cho tôi biết ngày khai giảng [n4 ctut](khoa_hoc)
+    - lịch khai giảng [n4 ctut](khoa_hoc) sắp tới
+    - ngày khai giảng [n4 ctut](khoa_hoc) gần đây nhất
+    - ngày khai giảng [n4 jlpt](khoa_hoc) là khi nào
+    - cho tôi biết ngày khai giảng [n4 jlpt](khoa_hoc)
+    - lịch khai giảng [n4 jlpt](khoa_hoc) sắp tới
+    - ngày khai giảng [n4 jlpt](khoa_hoc) gần đây nhất
+    - ngày khai giảng [toeic 250](khoa_hoc) là khi nào
+    - cho tôi biết ngày khai giảng [toeic 250](khoa_hoc)
+    - lịch khai giảng [toeic 250](khoa_hoc) sắp tới
+    - ngày khai giảng [toeic 250](khoa_hoc) gần đây nhất
+    - ngày khai giảng [toeic 350](khoa_hoc) là khi nào
+    - cho tôi biết ngày khai giảng [toeic 350](khoa_hoc)
+    - lịch khai giảng [toeic 350](khoa_hoc) sắp tới
+    - ngày khai giảng [toeic 350](khoa_hoc) gần đây nhất
+    - ngày khai giảng [toeic 450](khoa_hoc) là khi nào
+    - cho tôi biết ngày khai giảng [toeic 450](khoa_hoc)
+    - lịch khai giảng [toeic 450](khoa_hoc) sắp tới
+    - ngày khai giảng [toeic 450](khoa_hoc) gần đây nhất
+    - ngày khai giảng [toeic ctut](khoa_hoc) là khi nào
+    - cho tôi biết ngày khai giảng [toeic ctut](khoa_hoc)
+    - lịch khai giảng [toeic ctut](khoa_hoc) sắp tới
+    - ngày khai giảng [toeic ctut](khoa_hoc) gần đây nhất
+    - ngày khai giảng [ud cntt cb](khoa_hoc) là khi nào
+    - cho tôi biết ngày khai giảng [ud cntt cb](khoa_hoc)
+    - lịch khai giảng [ud cntt cb](khoa_hoc) sắp tới
+    - ngày khai giảng [ud cntt cb](khoa_hoc) gần đây nhất
+    - ngày khai giảng [ud cntt nc](khoa_hoc) là khi nào
+    - cho tôi biết ngày khai giảng [ud cntt nc](khoa_hoc)
+    - lịch khai giảng [ud cntt nc](khoa_hoc) sắp tới
+    - ngày khai giảng [ud cntt nc](khoa_hoc) gần đây nhất
 
 - intent: hoi_diem_thi
   examples: |
@@ -535,62 +585,6 @@ nlu:
     - tôi muốn biết điểm thi [k45 toeic ctut](khoa)
     - tra điểm thi [k45 toeic ctut](khoa)
     - kết quả thi [k45 toeic ctut](khoa) thế nào
-
-- intent: hoi_ngay_khai_giang
-  examples: |
-    - lịch khai giảng sắp tới
-    - cho tôi biết ngày khai giảng
-    - tôi muốn hỏi ngày khai giảng
-    - ngày khai giảng gần đây nhất
-    - cho tôi xem ngày khai giảng
-    - khi nào khóa học bắt đầu khai giảng
-    - ngày khai giảng tiếp theo là bao giờ
-    - ngày khai giảng của khóa học là ngày nào
-    - hỏi xem ngày khai giảng là khi nào
-    - tôi muốn xem lịch khai giảng
-
-- intent: ngay_khai_giang_theo_chuong_trinh
-  examples: |
-    - ngày khai giảng [a2 ctut](khoa_hoc) là khi nào
-    - cho tôi biết ngày khai giảng [a2 ctut](khoa_hoc)
-    - lịch khai giảng [a2 ctut](khoa_hoc) sắp tới
-    - ngày khai giảng [a2 ctut](khoa_hoc) gần đây nhất
-    - ngày khai giảng [b1 ctut](khoa_hoc) là khi nào
-    - cho tôi biết ngày khai giảng [b1 ctut](khoa_hoc)
-    - lịch khai giảng [b1 ctut](khoa_hoc) sắp tới
-    - ngày khai giảng [b1 ctut](khoa_hoc) gần đây nhất
-    - ngày khai giảng [n4 ctut](khoa_hoc) là khi nào
-    - cho tôi biết ngày khai giảng [n4 ctut](khoa_hoc)
-    - lịch khai giảng [n4 ctut](khoa_hoc) sắp tới
-    - ngày khai giảng [n4 ctut](khoa_hoc) gần đây nhất
-    - ngày khai giảng [n4 jlpt](khoa_hoc) là khi nào
-    - cho tôi biết ngày khai giảng [n4 jlpt](khoa_hoc)
-    - lịch khai giảng [n4 jlpt](khoa_hoc) sắp tới
-    - ngày khai giảng [n4 jlpt](khoa_hoc) gần đây nhất
-    - ngày khai giảng [toeic 250](khoa_hoc) là khi nào
-    - cho tôi biết ngày khai giảng [toeic 250](khoa_hoc)
-    - lịch khai giảng [toeic 250](khoa_hoc) sắp tới
-    - ngày khai giảng [toeic 250](khoa_hoc) gần đây nhất
-    - ngày khai giảng [toeic 350](khoa_hoc) là khi nào
-    - cho tôi biết ngày khai giảng [toeic 350](khoa_hoc)
-    - lịch khai giảng [toeic 350](khoa_hoc) sắp tới
-    - ngày khai giảng [toeic 350](khoa_hoc) gần đây nhất
-    - ngày khai giảng [toeic 450](khoa_hoc) là khi nào
-    - cho tôi biết ngày khai giảng [toeic 450](khoa_hoc)
-    - lịch khai giảng [toeic 450](khoa_hoc) sắp tới
-    - ngày khai giảng [toeic 450](khoa_hoc) gần đây nhất
-    - ngày khai giảng [toeic ctut](khoa_hoc) là khi nào
-    - cho tôi biết ngày khai giảng [toeic ctut](khoa_hoc)
-    - lịch khai giảng [toeic ctut](khoa_hoc) sắp tới
-    - ngày khai giảng [toeic ctut](khoa_hoc) gần đây nhất
-    - ngày khai giảng [ud cntt cb](khoa_hoc) là khi nào
-    - cho tôi biết ngày khai giảng [ud cntt cb](khoa_hoc)
-    - lịch khai giảng [ud cntt cb](khoa_hoc) sắp tới
-    - ngày khai giảng [ud cntt cb](khoa_hoc) gần đây nhất
-    - ngày khai giảng [ud cntt nc](khoa_hoc) là khi nào
-    - cho tôi biết ngày khai giảng [ud cntt nc](khoa_hoc)
-    - lịch khai giảng [ud cntt nc](khoa_hoc) sắp tới
-    - ngày khai giảng [ud cntt nc](khoa_hoc) gần đây nhất
 
 - intent: hoi_ngay_thi
   examples: |

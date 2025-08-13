@@ -148,6 +148,10 @@ class ActionXemChuongTrinhGiangDay(Action):
                 dispatcher.utter_message(
                         text=f"{ten}: {noi_dung}"
                     )
+            else:
+                dispatcher.utter_message(
+                    text=f"Chưa có thông tin về {ten}"
+                )
         else:
             dispatcher.utter_message(text="Không tìm thấy chương trình nào.")
         return [SlotSet("khoa_hoc", None)]
@@ -672,6 +676,7 @@ class ActionXemQuyDinhChiTiet(Action):
 
         return [SlotSet("chi_tiet_quy_dinh", None)]
 
+
 class ValidateFormDieuKienDuThi(FormValidationAction):
     def name(self) -> Text:
         return "validate_form_dieu_kien_du_thi"
@@ -734,73 +739,6 @@ class ActionTraCuuDieuKienDuThi(Action):
 
         return [SlotSet("khoa_hoc", None)]
 
-# class ValidateTraCuuLichDaoTao(FormValidationAction):
-#     def name(self) -> Text:
-#         return "validate_form_tra_cuu_lich_dao_tao"
-#
-#     def validate_khoa_hoc(
-#         self,
-#         slot_value: Any,
-#         dispatcher: CollectingDispatcher,
-#         tracker: Tracker,
-#         domain: DomainDict,
-#     ) -> Dict[Text, Any]:
-#         khoa_hoc = (slot_value or "").strip()
-#         if not khoa_hoc:
-#             dispatcher.utter_message(text="Bạn vui lòng cung cấp chính xác tên khóa học nhé!")
-#             return {"khoa_hoc": None}
-#         return {"khoa_hoc": khoa_hoc}
-# def fetch_lich_dao_tao(khoa_hoc: str) -> Optional[Tuple[str, str, str]]:
-#     normalized = khoa_hoc.strip()
-#     try:
-#         with get_db_connection() as conn:
-#             with conn.cursor() as cursor:
-#                 cursor.execute(
-#                     """
-#                     SELECT dt.ten_chuong_trinh, ld.ngay_bat_dau, ld.ngay_ket_thuc
-#                       FROM hoi_lich_dao_tao ld
-#                       JOIN hoi_chuong_trinh_dao_tao dt
-#                         ON dt.ma_chuong_trinh = ld.ma_chuong_trinh
-#                      WHERE ld.ma_chuong_trinh ILIKE %s
-#                     """,
-#                     (f"%{normalized}%",),
-#                 )
-#                 row = cursor.fetchone()
-#                 if row and row[0] and row[1] and row[2]:
-#                     return row[0], row[1], row[2]
-#     except Exception:
-#         logger.exception("[fetch_lich_dao_tao] Lỗi khi truy vấn lịch đào tạo")
-#     return None
-# class ActionTraCuuLichDaoTao(Action):
-#     def name(self) -> Text:
-
-#         return "action_tra_cuu_lich_dao_tao"
-#
-#     def run(
-#         self,
-#         dispatcher: CollectingDispatcher,
-#         tracker: Tracker,
-#         domain: DomainDict,
-#     ) -> List[Dict[Text, Any]]:
-#         khoa_hoc = tracker.get_slot("khoa_hoc")
-#         if not khoa_hoc:
-#             dispatcher.utter_message(response="utter_ask_khoa_hoc")
-#             return []
-#
-#         result = fetch_lich_dao_tao(khoa_hoc)
-#         if result:
-#             ten, ngay_bat_dau, ngay_ket_thuc = result
-#             dispatcher.utter_message(
-#                 text=f"{ten} bắt đầu từ <b>{ngay_bat_dau}</b> đến <b>{ngay_ket_thuc}</b>."
-#             )
-#         else:
-#             dispatcher.utter_message(
-#                 text=(
-#                     f"Vui lòng liên hệ trực tiếp trung tâm để biết thêm chi tiết về lịch đào tạo."
-#                 )
-#             )
-#
-#         return [SlotSet("khoa_hoc", None)]
 
 class ValidateTraCuuLichDaoTao(FormValidationAction):
     def name(self) -> Text:
@@ -830,23 +768,22 @@ def fetch_lich_dao_tao(khoa_hoc: str) -> Optional[Dict[str, Any]]:
                            ld.khoa_dao_tao,
                            ld.ngay_khai_giang,
                            ld.ngay_thi
-                      FROM hoi_lich_dao_tao ld
+                      FROM lich_dao_tao ld
                       JOIN hoi_chuong_trinh_dao_tao dt
                         ON dt.ma_chuong_trinh = ld.ma_chuong_trinh
                      WHERE ld.ma_chuong_trinh ILIKE %s
-                        OR dt.ten_chuong_trinh ILIKE %s
+                        OR dt.ghi_chu ILIKE %s
                         OR ld.ma_khoa_hoc ILIKE %s
                      ORDER BY ld.ngay_khai_giang NULLS LAST,
                               ld.ngay_thi       NULLS LAST,
                               ld.id ASC
-                     LIMIT 20;
+                     LIMIT 5;
                     """,
                     (f"%{normalized}%", f"%{normalized}%", f"%{normalized}%"),
                 )
                 rows = cursor.fetchall()
                 if not rows:
                     return None
-
                 ten = rows[0][0] or normalized
                 items = []
                 for r in rows:
@@ -859,8 +796,6 @@ def fetch_lich_dao_tao(khoa_hoc: str) -> Optional[Dict[str, Any]]:
     except Exception:
         logger.exception("[fetch_lich_dao_tao] Lỗi khi truy vấn lịch đào tạo")
     return None
-
-
 class ActionTraCuuLichDaoTao(Action):
     def name(self) -> Text:
         return "action_tra_cuu_lich_dao_tao"
@@ -886,8 +821,8 @@ class ActionTraCuuLichDaoTao(Action):
             return []
 
         data = fetch_lich_dao_tao(khoa_hoc)
+        print (data)
         if not data:
-            # Không có bản ghi nào khớp hoàn toàn → thông điệp chung
             dispatcher.utter_message(
                 text="Mình chưa tìm thấy lịch đào tạo phù hợp với từ khóa bạn cung cấp. Bạn vui lòng kiểm tra lại tên/mã khóa học hoặc liên hệ Trung tâm để được hỗ trợ nhé."
             )
@@ -905,7 +840,7 @@ class ActionTraCuuLichDaoTao(Action):
             year = datetime.now().year
             dispatcher.utter_message(
                 text=(
-                    f"Thông tin lịch khai giảng các lớp <b>{ten}</b> trong năm <b>{year}</b> chưa có, do đó bạn nên liên hệ chi tiết thông tin mở lớp qua số điện thoại của Trung tâm hoặc Facebook để tìm hiểu thông tin chính xác hơn."
+                    f"Thông tin lịch khai giảng các lớp <b>{ten}</b> trong năm {year} chưa có, do đó bạn nên liên hệ chi tiết thông tin mở lớp qua số điện thoại của Trung tâm hoặc Facebook để tìm hiểu thông tin chính xác hơn."
                 )
             )
             return [SlotSet("khoa_hoc", None)]
@@ -928,7 +863,7 @@ class ActionTraCuuLichDaoTao(Action):
                     thi = self._fmt_date(it["thi"])
                     lines.append(f"• <b>{khoa_show}</b>: Khai giảng {kg}, Thi {thi}")
                 dispatcher.utter_message(
-                    text=f"<b>Lịch {ten} (tối đa 5 khóa):</b><br>" + "<br>".join(lines)
+                    text=f"<b>Lịch {ten}:</b><br>" + "<br>".join(lines)
                 )
             else:
                 year = datetime.now().year
@@ -950,7 +885,7 @@ class ActionTraCuuLichDaoTao(Action):
             lines.append(f"• <b>{khoa_show}</b>: Khai giảng {kg}, Thi {thi}")
 
         dispatcher.utter_message(
-            text=f"<b>Lịch {ten} (tối đa 5 khóa):</b><br>" + "<br>".join(lines)
+            text=f"<b>Lịch {ten}:</b><br>" + "<br>".join(lines) +"<br>Tuy nhiên, Trung tâm luôn mở các Khóa liên tục theo nhu cầu thực tế do đó bạn nên liên hệ chi tiết thông tin mở lớp qua số điện thoại của Trung tâm hoặc Facebook để tìm hiểu thông tin chính xác hơn nhé."
         )
 
         return [SlotSet("khoa_hoc", None)]
