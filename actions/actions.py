@@ -1,4 +1,5 @@
 from typing import Any, Text, Dict, List, Optional, Tuple
+from datetime import datetime, date
 from rasa_sdk import FormValidationAction, logger
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
@@ -11,7 +12,7 @@ def get_db_connection():
         host="localhost",
         database="chatbot_clfi",
         user="postgres",
-        password="13051989"
+        password="2101235"
     )
 
 
@@ -85,7 +86,6 @@ class ActionXemChuongTrinhDaoTao(Action):
         dispatcher.utter_message(text=message)
         return []
 
-
 class ValidateFormChuongTrinhGiangDay(FormValidationAction):
     def name(self) -> Text:
         return "validate_form_chuong_trinh_giang_day"
@@ -98,11 +98,10 @@ class ValidateFormChuongTrinhGiangDay(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
         khoa_hoc = (slot_value or "").strip()
-        if not khoa_hoc:
-            dispatcher.utter_message(text="Bạn vui lòng cung cấp tên chương trình nhé!")
-            return {"khoa_hoc": None}
-        # Nếu cần, thêm kiểm tra tồn tại trong DB ở đây rồi normalize tên
-        return {"khoa_hoc": khoa_hoc}
+        if khoa_hoc:
+            return {"khoa_hoc": khoa_hoc}
+        dispatcher.utter_message(text="Bạn vui lòng cung cấp chính xác tên khóa học nhé!")
+        return {"khoa_hoc": None}
 def fetch_chuong_trinh_giang_day(khoa_hoc: str) -> str | Optional[Tuple[str, str]]:
 
     try:
@@ -192,7 +191,6 @@ def fetch_chuong_trinh_khung(khoa_hoc: str) -> Optional[Tuple[str, str]]:
     except Exception:
         logger.exception("[fetch_chuong_trinh_khung] Lỗi khi truy vấn chương trình khung")
     return None
-
 class ActionXemChuongTrinhKhung(Action):
     def name(self) -> Text:
         return "action_xem_chuong_trinh_khung"
@@ -225,7 +223,6 @@ class ActionXemChuongTrinhKhung(Action):
             )
 
         return [SlotSet("khoa_hoc", None)]
-
 
 class ValidateFormThoiGianDaoTao(FormValidationAction):
     def name(self) -> Text:
@@ -311,7 +308,6 @@ class ActionXemThoiLuong(Action):
 
         return [SlotSet("khoa_hoc", None)]
 
-
 class ValidateFormChuanDauRa(FormValidationAction):
     def name(self) -> Text:
         return "validate_form_chuan_dau_ra"
@@ -384,7 +380,6 @@ class ActionTraChuanDauRa(Action):
 
         return [SlotSet("khoa_hoc", None)]
 
-
 class ValidateFormHocPhi(FormValidationAction):
     def name(self) -> Text:
         return "validate_form_hoc_phi"
@@ -440,6 +435,12 @@ class ActionTraCuuHocPhi(Action):
         result = fetch_hoc_phi(khoa_hoc)
         if result:
             ten, hoc_phi, ghi_chu = result
+
+            try:
+                hoc_phi_fmt = f"{int(float(hoc_phi)):,}".replace(",", ".")
+            except Exception:
+                hoc_phi_fmt = str(hoc_phi)
+
             if not hoc_phi and not ghi_chu:
                 dispatcher.utter_message(
                     text=f"{ten} hiện chưa có thông tin về học phí."
@@ -447,13 +448,13 @@ class ActionTraCuuHocPhi(Action):
             elif not ghi_chu:
                 dispatcher.utter_message(
                     text=(
-                        f"Học phí cho chương trình <b>{ten}</b> là <b>{hoc_phi} đồng</b>."
+                        f"Học phí cho chương trình <b>{ten}</b> là <b>{hoc_phi_fmt} đồng</b>."
                     )
                 )
             else:
                 dispatcher.utter_message(
                     text=(
-                        f"Học phí cho chương trình <b>{ten}</b> là <b>{hoc_phi} đồng</b> ({ghi_chu})"
+                        f"Học phí cho chương trình <b>{ten}</b> là <b>{hoc_phi_fmt} đồng</b> ({ghi_chu})"
                     )
                 )
         else:
@@ -464,7 +465,6 @@ class ActionTraCuuHocPhi(Action):
             )
 
         return [SlotSet("khoa_hoc", None)]
-
 
 class ValidateFormPhiThiLai(FormValidationAction):
     def name(self) -> Text:
@@ -521,10 +521,16 @@ class ActionTraCuuPhiThiLai(Action):
         result = fetch_phi_thi_lai(khoa_hoc)
         if result:
             ten, phi_thi_lai = result
+
+            try:
+                phi_fmt = f"{int(float(phi_thi_lai)):,}".replace(",", ".")
+            except Exception:
+                phi_fmt = str(phi_thi_lai)
+
             if ten and phi_thi_lai:
                 dispatcher.utter_message(
                     text=(
-                        f"Phí thi lại cho chương trình <b>{ten}</b> là <b>{phi_thi_lai} đồng/lần thi</b>."
+                        f"Phí thi lại cho chương trình <b>{ten}</b> là <b>{phi_fmt} đồng/lần thi</b>."
                     )
                 )
             else:
@@ -539,7 +545,6 @@ class ActionTraCuuPhiThiLai(Action):
             )
 
         return [SlotSet("khoa_hoc", None)]
-
 
 class validate_form_dieu_kien_bao_luu(FormValidationAction):
     def name(self) -> Text:
@@ -595,7 +600,6 @@ class ActionTraCuuDieuKienBaoLuu(Action):
 
         return []
 
-
 class ActionXemDanhSachQuyDinh(Action):
     def name(self):
         return "action_xem_danh_sach_quy_dinh"
@@ -631,7 +635,6 @@ class ActionXemDanhSachQuyDinh(Action):
 
         dispatcher.utter_message(text=message)
         return []
-
 class ActionXemQuyDinhChiTiet(Action):
     def name(self) -> Text:
         return "action_tra_cuu_thong_tin_chi_tiet_quy_dinh"
@@ -737,74 +740,6 @@ class ActionTraCuuDieuKienDuThi(Action):
 
         return [SlotSet("khoa_hoc", None)]
 
-# class ValidateTraCuuLichDaoTao(FormValidationAction):
-#     def name(self) -> Text:
-#         return "validate_form_tra_cuu_lich_dao_tao"
-#
-#     def validate_khoa_hoc(
-#         self,
-#         slot_value: Any,
-#         dispatcher: CollectingDispatcher,
-#         tracker: Tracker,
-#         domain: DomainDict,
-#     ) -> Dict[Text, Any]:
-#         khoa_hoc = (slot_value or "").strip()
-#         if not khoa_hoc:
-#             dispatcher.utter_message(text="Bạn vui lòng cung cấp chính xác tên khóa học nhé!")
-#             return {"khoa_hoc": None}
-#         return {"khoa_hoc": khoa_hoc}
-# def fetch_lich_dao_tao(khoa_hoc: str) -> Optional[Tuple[str, str, str]]:
-#     normalized = khoa_hoc.strip()
-#     try:
-#         with get_db_connection() as conn:
-#             with conn.cursor() as cursor:
-#                 cursor.execute(
-#                     """
-#                     SELECT dt.ten_chuong_trinh, ld.ngay_bat_dau, ld.ngay_ket_thuc
-#                       FROM hoi_lich_dao_tao ld
-#                       JOIN hoi_chuong_trinh_dao_tao dt
-#                         ON dt.ma_chuong_trinh = ld.ma_chuong_trinh
-#                      WHERE ld.ma_chuong_trinh ILIKE %s
-#                     """,
-#                     (f"%{normalized}%",),
-#                 )
-#                 row = cursor.fetchone()
-#                 if row and row[0] and row[1] and row[2]:
-#                     return row[0], row[1], row[2]
-#     except Exception:
-#         logger.exception("[fetch_lich_dao_tao] Lỗi khi truy vấn lịch đào tạo")
-#     return None
-# class ActionTraCuuLichDaoTao(Action):
-#     def name(self) -> Text:
-
-#         return "action_tra_cuu_lich_dao_tao"
-#
-#     def run(
-#         self,
-#         dispatcher: CollectingDispatcher,
-#         tracker: Tracker,
-#         domain: DomainDict,
-#     ) -> List[Dict[Text, Any]]:
-#         khoa_hoc = tracker.get_slot("khoa_hoc")
-#         if not khoa_hoc:
-#             dispatcher.utter_message(response="utter_ask_khoa_hoc")
-#             return []
-#
-#         result = fetch_lich_dao_tao(khoa_hoc)
-#         if result:
-#             ten, ngay_bat_dau, ngay_ket_thuc = result
-#             dispatcher.utter_message(
-#                 text=f"{ten} bắt đầu từ <b>{ngay_bat_dau}</b> đến <b>{ngay_ket_thuc}</b>."
-#             )
-#         else:
-#             dispatcher.utter_message(
-#                 text=(
-#                     f"Vui lòng liên hệ trực tiếp trung tâm để biết thêm chi tiết về lịch đào tạo."
-#                 )
-#             )
-#
-#         return [SlotSet("khoa_hoc", None)]
-
 class ValidateTraCuuLichDaoTao(FormValidationAction):
     def name(self) -> Text:
         return "validate_form_tra_cuu_lich_dao_tao"
@@ -862,8 +797,6 @@ def fetch_lich_dao_tao(khoa_hoc: str) -> Optional[Dict[str, Any]]:
     except Exception:
         logger.exception("[fetch_lich_dao_tao] Lỗi khi truy vấn lịch đào tạo")
     return None
-
-
 class ActionTraCuuLichDaoTao(Action):
     def name(self) -> Text:
         return "action_tra_cuu_lich_dao_tao"
