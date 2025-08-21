@@ -1,5 +1,5 @@
 import re
-
+from underthesea import word_tokenize
 
 def load_replacement_data(filename):
     """
@@ -53,10 +53,9 @@ def load_stopwords(filename):
         print(f"Không tìm thấy file {filename}")
     except Exception as e:
         print(f"Lỗi khi đọc file {filename}: {e}")
-
     return stopwords
 
-def replace_words(text, replacements, stopwords=None):
+def replace_words(text, replacements, stopwords):
     """
     Hàm thay thế và lọc stopword trong văn bản
 
@@ -69,7 +68,8 @@ def replace_words(text, replacements, stopwords=None):
         str: Văn bản đã được thay thế
     """
     # Loại bỏ ký tự không phải chữ cái, số hoặc khoảng trắng
-    text = re.sub(r'[^\w\s]', ' ', text, flags=re.UNICODE)
+    text = re.sub(r'[^\w\s]', '', text)
+    text = re.sub(r'[\r\n\t]', ' ', text)
     replaced_text = text
 
     # Thay thế từ theo dictionary
@@ -79,11 +79,9 @@ def replace_words(text, replacements, stopwords=None):
         # Sử dụng regex để tìm và thay thế từ
         # \b đảm bảo chỉ thay thế từ hoàn chỉnh, không phải một phần của từ khác
         pattern = r'\b' + re.escape(word) + r'\b'
-        replaced_text = re.sub(pattern, replacements[word], replaced_text, flags=re.IGNORECASE)
-
+        replaced_text = re.sub(pattern, replacements[word.lower()], replaced_text, flags=re.IGNORECASE)
     # Tách từ để xử lý stopword
-    words = replaced_text.split()
+    words = word_tokenize(replaced_text)
     if stopwords:
         words = [word for word in words if word.lower() not in stopwords]
-
     return ' '.join(words)

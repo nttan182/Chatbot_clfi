@@ -13,15 +13,11 @@ def index():
 
 @app.route("/send_message", methods=["POST"])
 def send_message():
-    # replacements = load_replacement_data('data/standardization.txt')
-    # stopwords = load_stopwords('data/stopwords.txt')
-    # user_message = request.form.get("message")
-    # replaced = replace_words(user_message, replacements, stopwords)
-    # print(f"Replaced message: {replaced}")
-    # payload = {"sender": "user", "message": replaced}
-
+    replacements = load_replacement_data('data/standardization.txt')
+    stopwords = load_stopwords('data/stopwords.txt')
     user_message = request.form.get("message")
-    payload = {"sender": "user", "message": user_message}
+    replaced = replace_words(user_message, replacements, stopwords)
+    payload = {"sender": "user", "message": replaced}
 
     try:
         response = requests.post(RASA_URL, json=payload)
