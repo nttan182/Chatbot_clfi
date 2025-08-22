@@ -56,13 +56,37 @@ stories:
   - active_loop: null
   - action: action_xem_chuong_trinh_khung
 
-- story: Thời gian đào tạo
+- story: thoi gian dao tao
   steps:
-    - intent: hoi_thoi_luong
-    - action: form_thoi_gian_dao_tao
-    - active_loop: form_thoi_gian_dao_tao
-    - active_loop: null
-    - action: action_xem_thoi_luong
+  - intent: hoi_thoi_luong
+  - action: form_thoi_gian_dao_tao
+  - active_loop: form_thoi_gian_dao_tao
+  - active_loop: null
+  - action: action_xem_thoi_luong
+
+- story: chuan dau ra
+  steps:
+  - intent: hoi_chuan_dau_ra
+  - action: form_chuan_dau_ra
+  - active_loop: form_chuan_dau_ra
+  - active_loop: null
+  - action: action_tra_cuu_chuan_dau_ra
+
+- story: hoc phi
+  steps:
+  - intent: hoi_hoc_phi
+  - action: form_hoc_phi
+  - active_loop: form_hoc_phi
+  - active_loop: null
+  - action: action_tra_cuu_hoc_phi
+
+- story: lệ phí thi lại
+  steps:
+  - intent: hoi_phi_thi_lai
+  - action: form_phi_thi_lai
+  - active_loop: form_phi_thi_lai
+  - active_loop: null
+  - action: action_tra_cuu_phi_thi_lai
 
 - story: chuan dau ra
   steps:

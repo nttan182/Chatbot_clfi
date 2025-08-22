@@ -1,3 +1,4 @@
+from datetime import datetime, date
 from typing import Any, Text, Dict, List, Optional, Tuple
 from datetime import datetime, date
 from rasa_sdk import FormValidationAction, logger
@@ -86,6 +87,7 @@ class ActionXemChuongTrinhDaoTao(Action):
         dispatcher.utter_message(text=message)
         return []
 
+
 class ValidateFormChuongTrinhGiangDay(FormValidationAction):
     def name(self) -> Text:
         return "validate_form_chuong_trinh_giang_day"
@@ -146,6 +148,10 @@ class ActionXemChuongTrinhGiangDay(Action):
                 dispatcher.utter_message(
                         text=f"{ten}: {noi_dung}"
                     )
+            else:
+                dispatcher.utter_message(
+                    text=f"Chưa có thông tin về {ten}"
+                )
         else:
             dispatcher.utter_message(text="Không tìm thấy chương trình nào.")
         return [SlotSet("khoa_hoc", None)]
@@ -223,6 +229,7 @@ class ActionXemChuongTrinhKhung(Action):
             )
 
         return [SlotSet("khoa_hoc", None)]
+
 
 class ValidateFormThoiGianDaoTao(FormValidationAction):
     def name(self) -> Text:
@@ -306,6 +313,7 @@ class ActionXemThoiLuong(Action):
 
         return [SlotSet("khoa_hoc", None)]
 
+
 class ValidateFormChuanDauRa(FormValidationAction):
     def name(self) -> Text:
         return "validate_form_chuan_dau_ra"
@@ -377,6 +385,7 @@ class ActionTraChuanDauRa(Action):
             )
 
         return [SlotSet("khoa_hoc", None)]
+
 
 class ValidateFormHocPhi(FormValidationAction):
     def name(self) -> Text:
@@ -464,6 +473,7 @@ class ActionTraCuuHocPhi(Action):
 
         return [SlotSet("khoa_hoc", None)]
 
+
 class ValidateFormPhiThiLai(FormValidationAction):
     def name(self) -> Text:
         return "validate_form_phi_thi_lai"
@@ -544,6 +554,7 @@ class ActionTraCuuPhiThiLai(Action):
 
         return [SlotSet("khoa_hoc", None)]
 
+
 class validate_form_dieu_kien_bao_luu(FormValidationAction):
     def name(self) -> Text:
         return "validate_form_dieu_kien_bao_luu"
@@ -597,6 +608,7 @@ class ActionTraCuuDieuKienBaoLuu(Action):
                 conn.close()
 
         return []
+
 
 class ActionXemDanhSachQuyDinh(Action):
     def name(self):
@@ -775,7 +787,7 @@ def fetch_lich_dao_tao(khoa_hoc: str) -> Optional[Dict[str, Any]]:
                      ORDER BY ld.ngay_khai_giang NULLS LAST,
                               ld.ngay_thi       NULLS LAST,
                               ld.id ASC
-                     LIMIT 20;
+                     LIMIT 5;
                     """,
                     (f"%{normalized}%", f"%{normalized}%", f"%{normalized}%"),
                 )
@@ -795,6 +807,8 @@ def fetch_lich_dao_tao(khoa_hoc: str) -> Optional[Dict[str, Any]]:
     except Exception:
         logger.exception("[fetch_lich_dao_tao] Lỗi khi truy vấn lịch đào tạo")
     return None
+
+
 class ActionTraCuuLichDaoTao(Action):
     def name(self) -> Text:
         return "action_tra_cuu_lich_dao_tao"
@@ -839,7 +853,7 @@ class ActionTraCuuLichDaoTao(Action):
             year = datetime.now().year
             dispatcher.utter_message(
                 text=(
-                    f"Thông tin lịch khai giảng các lớp <b>{ten}</b> trong năm <b>{year}</b> chưa có, do đó bạn nên liên hệ chi tiết thông tin mở lớp qua số điện thoại của Trung tâm hoặc Facebook để tìm hiểu thông tin chính xác hơn."
+                    f"Thông tin lịch khai giảng các lớp <b>{ten}</b> trong năm {year} chưa có, do đó bạn nên liên hệ chi tiết thông tin mở lớp qua số điện thoại của Trung tâm hoặc Facebook để tìm hiểu thông tin chính xác hơn."
                 )
             )
             return [SlotSet("khoa_hoc", None)]
@@ -885,6 +899,7 @@ class ActionTraCuuLichDaoTao(Action):
 
         dispatcher.utter_message(
             text=f"<b>Lịch {ten}:</b><br>" + "<br>".join(lines)
+            text=f"<b>Lịch {ten}:</b><br>" + "<br>".join(lines) +"<br>Tuy nhiên, Trung tâm luôn mở các Khóa liên tục theo nhu cầu thực tế do đó bạn nên liên hệ chi tiết thông tin mở lớp qua số điện thoại của Trung tâm hoặc Facebook để tìm hiểu thông tin chính xác hơn nhé."
         )
 
         return [SlotSet("khoa_hoc", None)]
