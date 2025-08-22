@@ -113,3 +113,27 @@ stories:
   - active_loop: form_tra_cuu_lich_dao_tao
   - active_loop: null
   - action: action_tra_cuu_lich_dao_tao
+
+- story: tra cuu ngay khai giang
+  steps:
+  - intent: hoi_ngay_khai_giang
+  - action: form_tra_cuu_ngay_khai_giang
+  - active_loop: form_tra_cuu_ngay_khai_giang
+  - active_loop: null
+  - action: action_tra_cuu_ngay_khai_giang
+
+- story: tra cuu ngaythi
+  steps:
+    - intent: hoi_ngay_thi
+    - action: form_tra_cuu_ngay_thi
+    - active_loop: form_tra_cuu_ngay_thi
+    - active_loop: null
+    - action: action_tra_cuu_ngay_thi
+
+- story: xem diem thi
+  steps:
+      - intent: hoi_diem_thi
+      - action: form_tra_cuu_diem_thi
+      - active_loop: form_tra_cuu_diem_thi
+      - active_loop: null
+      - action: action_tra_cuu_diem_thi
