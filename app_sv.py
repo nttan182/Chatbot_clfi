@@ -18,7 +18,7 @@ def get_sender_id() -> str:
     1) Header X-User-Id do frontend gửi (nếu bạn đã có user id khi đăng nhập)
     2) session cookie của Flask (tạo mới nếu chưa có)
     """
-    sender_id = request.headers.get("X-User-Id")
+    sender_id = request.form.get("sender_id")
     if not sender_id:
         sender_id = session.get("sender_id")
         if not sender_id:
