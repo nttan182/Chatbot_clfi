@@ -82,6 +82,7 @@ def replace_words(text, replacements, stopwords):
         replaced_text = re.sub(pattern, replacements[word.lower()], replaced_text, flags=re.IGNORECASE)
     # Tách từ để xử lý stopword
     words = word_tokenize(replaced_text)
+    print("token: ", words)
     if stopwords:
         words = [word for word in words if word.lower() not in stopwords]
     return ' '.join(words)

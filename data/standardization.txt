@@ -1,7 +1,18 @@
-trung tâm: cơ sở, nơi học, chỗ học, tt, TT, trungtam
+# ===== KHÓA / CHƯƠNG TRÌNH =====
+a2 ctut: a2 nội bộ, a2 noi bo, a2 trường, a2 truong, tieng anh a2, tiếng anh a2, anh văn a2, anh van a2
+b1 ctut: b1 nội bộ, b1 noi bo, b1 trường, b1 truong, tieng anh b1, tiếng anh b1, anh van b1, anh văn b1
+n4 ctut: n4 nội bộ, n4 noi bo, n4 trường, n4 truong, tieng nhat n4, tiếng nhật n4, tieng nhat cap n4, tiếng nhật cấp n4
+n4 jlpt: jlpt n4, Japanese Language Proficiency Test N4, japanese language proficiency test n4, jlptn4
+toeic 250: toeic250, tiếng anh 250, tieng anh 250, tiếng anh toeic 250, tieng anh toeic 250, anh văn 250, anh van 250, anh văn toeic 250, anh van toeic 250
+toeic 350: toeic350, tiếng anh 350, tieng anh 350, tiếng anh toeic 350, tieng anh toeic 350, anh văn 350, anh van 350, anh văn toeic 350, anh van toeic 350
+toeic 450: toeic450, tiếng anh 450, tieng anh 450, tiếng anh toeic 450, tieng anh toeic 450, anh văn 450, anh van 450, anh văn toeic 450, anh van toeic 450
+toeic ctut: toeic nội bộ, toeic noi bo, toeic trường, toeic truong, tieng anh toeic, tiếng anh toeic, anh văn toeic, anh van toeic
+ud: ứng dụng, ung dung, ưd, ứd, u d, ư d, ứ d
+cntt: công nghệ thông tin, cong nghe thong tin, c n t t, công nghệ tt, cn thông tin, cong nghe tt, cn thong tin
+cb: cơ bản, căn bản, co ban, can ban, c b
+nc: nâng cao, nang cao, n c
 
-điều kiện: tiêu chí, tiêu chuẩn, yêu cầu cần có, ràng buộc, đk, dk, dieu kien, đìu kiện, điều kiên, điều kiện bắt buộc
-
-toeic ctut: toeic trường, toeic trường ctut, toeic dhktcn , toeic bắt buộc, toeic đầu ra, toeic tốt nghiệp, toeic nội bộ, toeic nội bộ ctut, toeic trường cấp, toeic nội bộ trường, chứng nhận toeic, thi toeic nội bộ, thi toeic ở trường, thi ta tốt nghiệp, thi ta ctut, thi ta dau ra, thi ta tot nghiep, tiếng anh nội bộ
-
-đăng ký: đăng kí
+# ===== LỊCH / THỜI GIAN =====
+lịch đào tạo: lịch học, lich hoc, lich dao tao, thời khóa biểu, thoi khoa bieu, schedule học, schedule hoc
+khai giảng: ngay khai giang, ngày khai giảng, lich khai giang, lịch khai giảng, mở lớp, mo lop, bắt đầu học, bat dau hoc
+ngày thi: ngay thi, lịch thi, lich thi, thi khi nao, bao gio thi, ngay thi tiep theo, ngày thi tiếp theo

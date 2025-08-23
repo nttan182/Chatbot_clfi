@@ -17,6 +17,7 @@ def send_message():
     stopwords = load_stopwords('data/stopwords.txt')
     user_message = request.form.get("message")
     replaced = replace_words(user_message, replacements, stopwords)
+    print(f"Replaced message: {replaced}")
     payload = {"sender": "user", "message": replaced}
 
     try:
