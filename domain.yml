@@ -41,7 +41,13 @@ slots:
     mappings:
       - type: from_entity
         entity: khoa_hoc
-#      - type: from_text
+
+  lien_he:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: lien_he
 
   danh_sach_quy_dinh:
     type: text

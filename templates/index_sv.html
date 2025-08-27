@@ -112,21 +112,21 @@
         const messageInput = document.getElementById("user-input"); // Ô nhập liệu tin nhắn
         const sendButton = document.getElementById("send-button"); // Nút gửi tin nhắn
         const suggestionContainer = document.getElementById("suggestion-container");
-          const senderId = (() => {
-            try {
-              const existed = localStorage.getItem("chat_uid");
-              if (existed) return existed;
-              const v = (window.crypto && crypto.randomUUID)
-                ? crypto.randomUUID()
-                : (Math.random().toString(36).slice(2) + Date.now());
-              localStorage.setItem("chat_uid", v);
-              return v;
-            } catch {
-              return (window.crypto && crypto.randomUUID)
-                ? crypto.randomUUID()
-                : (Math.random().toString(36).slice(2) + Date.now());
-            }
-          })();
+        const senderId = (() => {
+        try {
+          const existed = localStorage.getItem("chat_uid");
+          if (existed) return existed;
+          const v = (window.crypto && crypto.randomUUID)
+            ? crypto.randomUUID()
+            : (Math.random().toString(36).slice(2) + Date.now());
+          localStorage.setItem("chat_uid", v);
+          return v;
+        } catch {
+          return (window.crypto && crypto.randomUUID)
+            ? crypto.randomUUID()
+            : (Math.random().toString(36).slice(2) + Date.now());
+        }
+        })();
         // Các câu hỏi gợi ý ban đầu
         const initialSuggestions = [
             "Chương trình đào tạo",

@@ -86,12 +86,13 @@ nlu:
 
 - intent: hoi_chuong_trinh_dao_tao
   examples: |
+    - chương trình đào tạo
     - trung tâm có những chương trình đào tạo nào
     - cho tôi biết các chương trình học của trung tâm
     - trung tâm dạy những khóa nào
     - có những lớp học nào
-    - danh sách chương trình ở trung tâm
-    - chương trình của trung tâm như thế nào
+    - danh sách chương trình giảng dạy ở trung tâm
+    - chương trình giảng dạy của trung tâm như thế nào
     - chương trình đào tạo của trung tâm như thế nào
 
 - intent: hoi_chuong_trinh_giang_day
@@ -342,6 +343,7 @@ nlu:
     - [quy định về xử lý vi phạm](chi_tiet_quy_dinh) như thế nào
     - muốn biết [quy định về xử lý vi phạm](chi_tiet_quy_dinh)
 
+
 - intent: hoi_lich_dao_tao
   examples: |
     - lịch đào tạo của trung tâm
@@ -351,19 +353,6 @@ nlu:
     - cho tôi xem lịch đào tạo
     - lịch đào tạo của khóa học
     - lịch đào tạo của trung tâm là gì
-    - lịch khai giảng sắp tới
-    - cho tôi biết ngày khai giảng
-    - tôi muốn hỏi ngày khai giảng
-    - ngày khai giảng gần đây nhất
-    - cho tôi xem ngày khai giảng
-    - khi nào khóa học bắt đầu khai giảng
-    - ngày khai giảng tiếp theo là bao giờ
-    - ngày khai giảng của khóa học là ngày nào
-    - hỏi xem ngày khai giảng là khi nào
-    - tôi muốn xem lịch khai giảng
-
-- intent: lich_dao_tao_theo_chuong_trinh
-  examples: |
     - tôi muốn biết lịch đào tạo [a2 ctut](khoa_hoc)
     - lịch đào tạo [a2 ctut](khoa_hoc)
     - cho tôi xem lịch đào tạo [a2 ctut](khoa_hoc) gần đây
@@ -404,6 +393,21 @@ nlu:
     - lịch đào tạo [ud cntt nc](khoa_hoc)
     - cho tôi xem lịch đào tạo [ud cntt nc](khoa_hoc) gần đây
     - lịch đào tạo [ud cntt nc](khoa_hoc) gần đây nhất
+
+
+
+- intent: hoi_ngay_khai_giang
+  examples: |
+    - lịch khai giảng sắp tới
+    - cho tôi biết ngày khai giảng
+    - tôi muốn hỏi ngày khai giảng
+    - ngày khai giảng gần đây nhất
+    - cho tôi xem ngày khai giảng
+    - khi nào khóa học bắt đầu khai giảng
+    - ngày khai giảng tiếp theo là bao giờ
+    - ngày khai giảng của khóa học là ngày nào
+    - hỏi xem ngày khai giảng là khi nào
+    - tôi muốn xem lịch khai giảng
     - ngày khai giảng [a2 ctut](khoa_hoc) là khi nào
     - cho tôi biết ngày khai giảng [a2 ctut](khoa_hoc)
     - lịch khai giảng [a2 ctut](khoa_hoc) sắp tới
@@ -445,146 +449,6 @@ nlu:
     - lịch khai giảng [ud cntt nc](khoa_hoc) sắp tới
     - ngày khai giảng [ud cntt nc](khoa_hoc) gần đây nhất
 
-- intent: hoi_diem_thi
-  examples: |
-    - tôi muốn biết điểm thi
-    - điểm thi của tôi là bao nhiêu
-    - kết quả thi của tôi thế nào
-    - điểm thi gần đây nhất của tôi
-    - tôi muốn tra điểm thi
-    - kết quả thi của tôi ra sao
-    - điểm thi của tôi có thể xem ở đâu
-    - điểm thi của tôi đã được cập nhật chưa
-
-- intent: diem_thi_theo_chuong_trinh
-  examples: |
-    - tôi muốn biết điểm thi [a2 ctut](khoa_hoc)
-    - tra điểm thi [a2 ctut](khoa_hoc)
-    - cho tôi xem điểm thi [a2 ctut](khoa_hoc) gần đây
-    - kết quả thi [a2 ctut](khoa_hoc) thế nào
-    - tôi muốn biết điểm thi [b1 ctut](khoa_hoc)
-    - tra điểm thi [b1 ctut](khoa_hoc)
-    - cho tôi xem điểm thi [b1 ctut](khoa_hoc) gần đây
-    - kết quả thi [b1 ctut](khoa_hoc) thế nào
-    - tôi muốn biết điểm thi [n4 ctut](khoa_hoc)
-    - tra điểm thi [n4 ctut](khoa_hoc)
-    - cho tôi xem điểm thi [n4 ctut](khoa_hoc) gần đây
-    - kết quả thi [n4 ctut](khoa_hoc) thế nào
-    - tôi muốn biết điểm thi [n4 jlpt](khoa_hoc)
-    - tra điểm thi [n4 jlpt](khoa_hoc)
-    - cho tôi xem điểm thi [n4 jlpt](khoa_hoc) gần đây
-    - kết quả thi [n4 jlpt](khoa_hoc) thế nào
-    - tôi muốn biết điểm thi [toeic 250](khoa_hoc)
-    - tra điểm thi [toeic 250](khoa_hoc)
-    - cho tôi xem điểm thi [toeic 250](khoa_hoc) gần đây
-    - kết quả thi [toeic 250](khoa_hoc) thế nào
-    - tôi muốn biết điểm thi [toeic 350](khoa_hoc)
-    - tra điểm thi [toeic 350](khoa_hoc)
-    - cho tôi xem điểm thi [toeic 350](khoa_hoc) gần đây
-    - kết quả thi [toeic 350](khoa_hoc) thế nào
-    - tôi muốn biết điểm thi [toeic 450](khoa_hoc)
-    - tra điểm thi [toeic 450](khoa_hoc)
-    - cho tôi xem điểm thi [toeic 450](khoa_hoc) gần đây
-    - kết quả thi [toeic 450](khoa_hoc) thế nào
-    - tôi muốn biết điểm thi [toeic ctut](khoa_hoc)
-    - tra điểm thi [toeic ctut](khoa_hoc)
-    - cho tôi xem điểm thi [toeic ctut](khoa_hoc) gần đây
-    - kết quả thi [toeic ctut](khoa_hoc) thế nào
-    - tôi muốn biết điểm thi [ud cntt cb](khoa_hoc)
-    - tra điểm thi [ud cntt cb](khoa_hoc)
-    - cho tôi xem điểm thi [ud cntt cb](khoa_hoc) gần đây
-    - kết quả thi [ud cntt cb](khoa_hoc) thế nào
-    - tôi muốn biết điểm thi [ud cntt nc](khoa_hoc)
-    - tra điểm thi [ud cntt nc](khoa_hoc)
-    - cho tôi xem điểm thi [ud cntt nc](khoa_hoc) gần đây
-    - kết quả thi [ud cntt nc](khoa_hoc) thế nào
-
-- intent: diem_thi_theo_khoa
-  examples: |
-    - điểm thi [k55 ud cntt cb](khoa)
-    - tôi muốn biết điểm thi [k55 ud cntt cb](khoa)
-    - tra điểm thi [k55 ud cntt cb](khoa)
-    - kết quả thi [k55 ud cntt cb](khoa) thế nào
-    - điểm thi [k56 ud cntt cb](khoa)
-    - tôi muốn biết điểm thi [k56 ud cntt cb](khoa)
-    - tra điểm thi [k56 ud cntt cb](khoa)
-    - kết quả thi [k56 ud cntt cb](khoa) thế nào
-    - điểm thi [k57 ud cntt cb](khoa)
-    - tôi muốn biết điểm thi [k57 ud cntt cb](khoa)
-    - tra điểm thi [k57 ud cntt cb](khoa)
-    - kết quả thi [k57 ud cntt cb](khoa) thế nào
-    - điểm thi [k58 ud cntt cb](khoa)
-    - tôi muốn biết điểm thi [k58 ud cntt cb](khoa)
-    - tra điểm thi [k58 ud cntt cb](khoa)
-    - kết quả thi [k58 ud cntt cb](khoa) thế nào
-    - điểm thi [k59 ud cntt cb](khoa)
-    - tôi muốn biết điểm thi [k59 ud cntt cb](khoa)
-    - tra điểm thi [k59 ud cntt cb](khoa)
-    - kết quả thi [k59 ud cntt cb](khoa) thế nào
-    - điểm thi [k60 ud cntt cb](khoa)
-    - tôi muốn biết điểm thi [k60 ud cntt cb](khoa)
-    - tra điểm thi [k60 ud cntt cb](khoa)
-    - kết quả thi [k60 ud cntt cb](khoa) thế nào
-    - điểm thi [k61 ud cntt cb](khoa)
-    - tôi muốn biết điểm thi [k61 ud cntt cb](khoa)
-    - tra điểm thi [k61 ud cntt cb](khoa)
-    - kết quả thi [k61 ud cntt cb](khoa) thế nào
-    - điểm thi [k62 ud cntt cb](khoa)
-    - tôi muốn biết điểm thi [k62 ud cntt cb](khoa)
-    - tra điểm thi [k62 ud cntt cb](khoa)
-    - kết quả thi [k62 ud cntt cb](khoa) thế nào
-    - điểm thi [k63 ud cntt cb](khoa)
-    - tôi muốn biết điểm thi [k63 ud cntt cb](khoa)
-    - tra điểm thi [k63 ud cntt cb](khoa)
-    - kết quả thi [k63 ud cntt cb](khoa) thế nào
-    - điểm thi [k64 ud cntt cb](khoa)
-    - tôi muốn biết điểm thi [k64 ud cntt cb](khoa)
-    - tra điểm thi [k64 ud cntt cb](khoa)
-    - kết quả thi [k64 ud cntt cb](khoa) thế nào
-    - điểm thi [k65 ud cntt cb](khoa)
-    - tôi muốn biết điểm thi [k65 ud cntt cb](khoa)
-    - tra điểm thi [k65 ud cntt cb](khoa)
-    - kết quả thi [k65 ud cntt cb](khoa) thế nào
-    - điểm thi [k36 toeic ctut](khoa)
-    - tôi muốn biết điểm thi [k36 toeic ctut](khoa)
-    - tra điểm thi [k36 toeic ctut](khoa)
-    - kết quả thi [k36 toeic ctut](khoa) thế nào
-    - điểm thi [k37 toeic ctut](khoa)
-    - tôi muốn biết điểm thi [k37 toeic ctut](khoa)
-    - tra điểm thi [k37 toeic ctut](khoa)
-    - kết quả thi [k37 toeic ctut](khoa) thế nào
-    - điểm thi [k38 toeic ctut](khoa)
-    - tôi muốn biết điểm thi [k38 toeic ctut](khoa)
-    - tra điểm thi [k38 toeic ctut](khoa)
-    - kết quả thi [k38 toeic ctut](khoa) thế nào
-    - điểm thi [k39 toeic ctut](khoa)
-    - tôi muốn biết điểm thi [k39 toeic ctut](khoa)
-    - tra điểm thi [k39 toeic ctut](khoa)
-    - kết quả thi [k39 toeic ctut](khoa) thế nào
-    - điểm thi [k40 toeic ctut](khoa)
-    - tôi muốn biết điểm thi [k40 toeic ctut](khoa)
-    - tra điểm thi [k40 toeic ctut](khoa)
-    - kết quả thi [k40 toeic ctut](khoa) thế nào
-    - điểm thi [k41 toeic ctut](khoa)
-    - tôi muốn biết điểm thi [k41 toeic ctut](khoa)
-    - tra điểm thi [k41 toeic ctut](khoa)
-    - kết quả thi [k41 toeic ctut](khoa) thế nào
-    - điểm thi [k42 toeic ctut](khoa)
-    - tôi muốn biết điểm thi [k42 toeic ctut](khoa)
-    - tra điểm thi [k42 toeic ctut](khoa)
-    - kết quả thi [k42 toeic ctut](khoa) thế nào
-    - điểm thi [k43 toeic ctut](khoa)
-    - tôi muốn biết điểm thi [k43 toeic ctut](khoa)
-    - tra điểm thi [k43 toeic ctut](khoa)
-    - kết quả thi [k43 toeic ctut](khoa) thế nào
-    - điểm thi [k44 toeic ctut](khoa)
-    - tôi muốn biết điểm thi [k44 toeic ctut](khoa)
-    - tra điểm thi [k44 toeic ctut](khoa)
-    - kết quả thi [k44 toeic ctut](khoa) thế nào
-    - điểm thi [k45 toeic ctut](khoa)
-    - tôi muốn biết điểm thi [k45 toeic ctut](khoa)
-    - tra điểm thi [k45 toeic ctut](khoa)
-    - kết quả thi [k45 toeic ctut](khoa) thế nào
 
 - intent: hoi_ngay_thi
   examples: |
@@ -597,9 +461,6 @@ nlu:
     - ngày thi của khóa học là ngày nào
     - hỏi xem ngày thi là khi nào
     - tôi muốn xem lịch thi
-
-- intent: ngay_thi_theo_chuong_trinh
-  examples: |
     - ngày thi [a2 ctut](khoa_hoc) là khi nào
     - cho tôi biết ngày thi [a2 ctut](khoa_hoc)
     - lịch thi [a2 ctut](khoa_hoc) sắp tới
@@ -641,6 +502,59 @@ nlu:
     - lịch thi [ud cntt nc](khoa_hoc) sắp tới
     - ngày thi [ud cntt nc](khoa_hoc) gần đây nhất
 
+
+
+- intent: hoi_diem_thi
+  examples: |
+    - tôi muốn biết điểm thi
+    - điểm thi của tôi là bao nhiêu
+    - kết quả thi của tôi thế nào
+    - điểm thi gần đây nhất của tôi
+    - tôi muốn tra điểm thi
+    - kết quả thi của tôi ra sao
+    - điểm thi của tôi có thể xem ở đâu
+    - điểm thi của tôi đã được cập nhật chưa
+    - tôi muốn biết điểm thi [a2 ctut](khoa_hoc)
+    - tra điểm thi [a2 ctut](khoa_hoc)
+    - cho tôi xem điểm thi [a2 ctut](khoa_hoc) gần đây
+    - kết quả thi [a2 ctut](khoa_hoc) thế nào
+    - tôi muốn biết điểm thi [b1 ctut](khoa_hoc)
+    - tra điểm thi [b1 ctut](khoa_hoc)
+    - cho tôi xem điểm thi [b1 ctut](khoa_hoc) gần đây
+    - kết quả thi [b1 ctut](khoa_hoc) thế nào
+    - tôi muốn biết điểm thi [n4 ctut](khoa_hoc)
+    - tra điểm thi [n4 ctut](khoa_hoc)
+    - cho tôi xem điểm thi [n4 ctut](khoa_hoc) gần đây
+    - kết quả thi [n4 ctut](khoa_hoc) thế nào
+    - tôi muốn biết điểm thi [n4 jlpt](khoa_hoc)
+    - tra điểm thi [n4 jlpt](khoa_hoc)
+    - cho tôi xem điểm thi [n4 jlpt](khoa_hoc) gần đây
+    - kết quả thi [n4 jlpt](khoa_hoc) thế nào
+    - tôi muốn biết điểm thi [toeic 250](khoa_hoc)
+    - tra điểm thi [toeic 250](khoa_hoc)
+    - cho tôi xem điểm thi [toeic 250](khoa_hoc) gần đây
+    - kết quả thi [toeic 250](khoa_hoc) thế nào
+    - tôi muốn biết điểm thi [toeic 350](khoa_hoc)
+    - tra điểm thi [toeic 350](khoa_hoc)
+    - cho tôi xem điểm thi [toeic 350](khoa_hoc) gần đây
+    - kết quả thi [toeic 350](khoa_hoc) thế nào
+    - tôi muốn biết điểm thi [toeic 450](khoa_hoc)
+    - tra điểm thi [toeic 450](khoa_hoc)
+    - cho tôi xem điểm thi [toeic 450](khoa_hoc) gần đây
+    - kết quả thi [toeic 450](khoa_hoc) thế nào
+    - tôi muốn biết điểm thi [toeic ctut](khoa_hoc)
+    - tra điểm thi [toeic ctut](khoa_hoc)
+    - cho tôi xem điểm thi [toeic ctut](khoa_hoc) gần đây
+    - kết quả thi [toeic ctut](khoa_hoc) thế nào
+    - tôi muốn biết điểm thi [ud cntt cb](khoa_hoc)
+    - tra điểm thi [ud cntt cb](khoa_hoc)
+    - cho tôi xem điểm thi [ud cntt cb](khoa_hoc) gần đây
+    - kết quả thi [ud cntt cb](khoa_hoc) thế nào
+    - tôi muốn biết điểm thi [ud cntt nc](khoa_hoc)
+    - tra điểm thi [ud cntt nc](khoa_hoc)
+    - cho tôi xem điểm thi [ud cntt nc](khoa_hoc) gần đây
+    - kết quả thi [ud cntt nc](khoa_hoc) thế nào
+
 - intent: hoi_thong_tin_lien_he
   examples: |
     - [địa chỉ](thong_tin_lien_he) của trung tâm là gì
@@ -668,6 +582,7 @@ nlu:
     - có cách nào để liên hệ với trung tâm không
     - trung tâm cung cấp thông tin liên hệ ở đâu
     - làm sao để nhận được thông tin liên hệ của trung tâm
+
 
 - intent: hoi_cach_dang_ky
   examples: |

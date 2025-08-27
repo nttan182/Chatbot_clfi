@@ -1,5 +1,5 @@
-from typing import Any, Text, Dict, List, Optional, Tuple
 from datetime import datetime, date
+from typing import Any, Text, Dict, List, Optional, Tuple
 from rasa_sdk import FormValidationAction, logger
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
@@ -12,7 +12,7 @@ def get_db_connection():
         host="localhost",
         database="chatbot_clfi",
         user="postgres",
-        password="2101235"
+        password="13051989"
     )
 
 
@@ -146,6 +146,10 @@ class ActionXemChuongTrinhGiangDay(Action):
                 dispatcher.utter_message(
                         text=f"{ten}: {noi_dung}"
                     )
+            else:
+                dispatcher.utter_message(
+                    text=f"Chưa có thông tin về {ten}"
+                )
         else:
             dispatcher.utter_message(text="Không tìm thấy chương trình nào.")
         return [SlotSet("khoa_hoc", None)]
@@ -612,7 +616,7 @@ class ActionXemDanhSachQuyDinh(Action):
             cursor = conn.cursor()
 
             # Truy vấn danh sách các quy định
-            cursor.execute("SELECT ten_qui_dinh FROM danh_sach_quy_dinh ORDER BY ten_qui_dinh ASC")
+            cursor.execute("SELECT ten_quy_dinh FROM danh_sach_quy_dinh ORDER BY ten_quy_dinh ASC")
             results = cursor.fetchall()
 
             if results:
@@ -652,7 +656,7 @@ class ActionXemQuyDinhChiTiet(Action):
             cursor.execute("""
                 SELECT mo_ta
                 FROM danh_sach_quy_dinh
-                WHERE ten_qui_dinh ILIKE %s
+                WHERE ten_quy_dinh ILIKE %s
             """, (f"%{chi_tiet_quy_dinh}%",))
 
             result = cursor.fetchone()
@@ -675,6 +679,7 @@ class ActionXemQuyDinhChiTiet(Action):
                 conn.close()
 
         return [SlotSet("chi_tiet_quy_dinh", None)]
+
 
 class ValidateFormDieuKienDuThi(FormValidationAction):
     def name(self) -> Text:
@@ -775,7 +780,7 @@ def fetch_lich_dao_tao(khoa_hoc: str) -> Optional[Dict[str, Any]]:
                      ORDER BY ld.ngay_khai_giang NULLS LAST,
                               ld.ngay_thi       NULLS LAST,
                               ld.id ASC
-                     LIMIT 20;
+                     LIMIT 5;
                     """,
                     (f"%{normalized}%", f"%{normalized}%", f"%{normalized}%"),
                 )
@@ -820,8 +825,8 @@ class ActionTraCuuLichDaoTao(Action):
             return []
 
         data = fetch_lich_dao_tao(khoa_hoc)
+        print (data)
         if not data:
-            # Không có bản ghi nào khớp hoàn toàn → thông điệp chung
             dispatcher.utter_message(
                 text="Mình chưa tìm thấy lịch đào tạo phù hợp với từ khóa bạn cung cấp. Bạn vui lòng kiểm tra lại tên/mã khóa học hoặc liên hệ Trung tâm để được hỗ trợ nhé."
             )
@@ -839,7 +844,7 @@ class ActionTraCuuLichDaoTao(Action):
             year = datetime.now().year
             dispatcher.utter_message(
                 text=(
-                    f"Thông tin lịch khai giảng các lớp <b>{ten}</b> trong năm <b>{year}</b> chưa có, do đó bạn nên liên hệ chi tiết thông tin mở lớp qua số điện thoại của Trung tâm hoặc Facebook để tìm hiểu thông tin chính xác hơn."
+                    f"Thông tin lịch khai giảng các lớp <b>{ten}</b> trong năm {year} chưa có, do đó bạn nên liên hệ chi tiết thông tin mở lớp qua số điện thoại của Trung tâm hoặc Facebook để tìm hiểu thông tin chính xác hơn."
                 )
             )
             return [SlotSet("khoa_hoc", None)]
@@ -884,7 +889,7 @@ class ActionTraCuuLichDaoTao(Action):
             lines.append(f"• <b>{khoa_show}</b>: Khai giảng {kg}, Thi {thi}")
 
         dispatcher.utter_message(
-            text=f"<b>Lịch {ten}:</b><br>" + "<br>".join(lines)
+            text=f"<b>Lịch {ten}:</b><br>" + "<br>".join(lines) +"<br>Tuy nhiên, Trung tâm luôn mở các Khóa liên tục theo nhu cầu thực tế do đó bạn nên liên hệ chi tiết thông tin mở lớp qua số điện thoại của Trung tâm hoặc Facebook để tìm hiểu thông tin chính xác hơn nhé."
         )
 
         return [SlotSet("khoa_hoc", None)]
@@ -921,7 +926,7 @@ def fetch_ngay_khai_giang(khoa_hoc: str) -> Optional[Dict[str, Any]]:
                      ORDER BY ldt.ngay_khai_giang ASC
                      LIMIT 5;
                     """,
-                    (f"%{normalized}%",),   # <-- chỉ 1 tham số, phải có dấu phẩy để thành tuple
+                    (f"%{normalized}%",),
                 )
                 rows = cursor.fetchall()
                 if not rows:

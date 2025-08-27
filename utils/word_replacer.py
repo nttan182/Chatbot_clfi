@@ -1,5 +1,6 @@
 import re
 from underthesea import word_tokenize
+from rapidfuzz import process, fuzz
 
 def load_replacement_data(filename):
     """
@@ -54,6 +55,35 @@ def load_stopwords(filename):
     except Exception as e:
         print(f"Lỗi khi đọc file {filename}: {e}")
     return stopwords
+
+def fuzzy_replace(text, replacements, threshold=80):
+    """
+    Hàm thay thế từ sử dụng fuzzy matching
+
+    Args:
+        text (str): Văn bản cần thay thế
+        replacements (dict): Dictionary chứa các từ cần thay thế
+        threshold (int): Ngưỡng điểm để xác định một từ được thay thế
+
+    Returns:
+        str: Văn bản đã được thay thế
+    """
+    print("-----------fuzzy replace-----------")
+    words = word_tokenize(text)
+    # print("token: ", words)
+    replaced_words = []
+    sorted_words = sorted(replacements.keys(), key=len, reverse=True)
+    # print(sorted_words)
+    for word in words:
+        # Tìm từ gần nhất trong danh sách từ cần thay thế
+        print(process.extractOne(word, replacements.keys(), scorer=fuzz.ratio))
+        match, score, _ = process.extractOne(word, replacements.keys(), scorer=fuzz.ratio)
+        if score >= threshold:
+            replaced_words.append(replacements[match])
+        else:
+            replaced_words.append(word)
+
+    return ' '.join(replaced_words)
 
 def replace_words(text, replacements, stopwords):
     """
