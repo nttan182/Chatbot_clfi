@@ -898,7 +898,6 @@ class ActionTraCuuLichDaoTao(Action):
             lines.append(f"• <b>{khoa_show}</b>: Khai giảng {kg}, Thi {thi}")
 
         dispatcher.utter_message(
-            text=f"<b>Lịch {ten}:</b><br>" + "<br>".join(lines)
             text=f"<b>Lịch {ten}:</b><br>" + "<br>".join(lines) +"<br>Tuy nhiên, Trung tâm luôn mở các Khóa liên tục theo nhu cầu thực tế do đó bạn nên liên hệ chi tiết thông tin mở lớp qua số điện thoại của Trung tâm hoặc Facebook để tìm hiểu thông tin chính xác hơn nhé."
         )
 
@@ -936,7 +935,7 @@ def fetch_ngay_khai_giang(khoa_hoc: str) -> Optional[Dict[str, Any]]:
                      ORDER BY ldt.ngay_khai_giang ASC
                      LIMIT 5;
                     """,
-                    (f"%{normalized}%",),   # <-- chỉ 1 tham số, phải có dấu phẩy để thành tuple
+                    (f"%{normalized}%",),
                 )
                 rows = cursor.fetchall()
                 if not rows:
