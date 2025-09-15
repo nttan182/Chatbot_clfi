@@ -204,6 +204,7 @@ nlu:
     - nội dung chính trong chương trình khung [ud cntt nc](khoa_hoc) là gì
     - kỹ năng nào được phát triển trong [ud cntt nc](khoa_hoc)
 
+
 - intent: hoi_thoi_luong
   examples: |
     - thời lượng đào tạo của các khóa học là bao lâu
