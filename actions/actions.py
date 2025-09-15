@@ -219,8 +219,10 @@ class ValidateFormChuongTrinhKhung(FormValidationAction):
     ) -> Dict[Text, Any]:
         # Dùng same slot tên "khoa_hoc" để nhận input mã hoặc tên chương trình khung
         khoa_hoc = (slot_value or "").strip()
+        print("khóa học trước khi xử lý: ",khoa_hoc)
         if not khoa_hoc:
             dispatcher.utter_message(text="Bạn vui lòng cung cấp chính xác tên khóa học nhé!")
+            print("khóa học không tồn tại")
             return {"khoa_hoc": None}
         canonical_list = load_canonical_from_table("hoi_chuong_trinh_dao_tao")
         best = _pick_canonical(khoa_hoc, canonical_list, cutoff=85)
@@ -463,8 +465,10 @@ class ValidateFormHocPhi(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
         khoa_hoc = (slot_value or "").strip()
+        print("khóa học trước xử lý: ", khoa_hoc)
         if not khoa_hoc:
             dispatcher.utter_message(text="Bạn vui lòng cung cấp chính xác tên chương trình nhé!")
+            print("khóa học không tồn tại")
             return {"khoa_hoc": None}
         canonical_list = load_canonical_from_table("hoi_chuong_trinh_dao_tao")
         best = _pick_canonical(khoa_hoc, canonical_list, cutoff=85)
