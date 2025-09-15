@@ -7,7 +7,6 @@ toeic 250: toeic250, tiếng anh 250, tiếng anh toeic 250, anh văn 250, anh v
 toeic 350: toeic350, tiếng anh 350, tiếng anh toeic 350, anh văn 350, anh văn toeic 350
 toeic 450: toeic450, tiếng anh 450, tiếng anh toeic 450, anh văn 450, anh văn toeic 450
 toeic ctut: toeic nội bộ, toeic trường, tiếng anh toeic, anh văn toeic
-ctut: ctutt, cttutt, cttut
 ud: ứng dụng, ưd, ứd, u d, ư d, ứ d
 cntt: công nghệ thông tin, c n t t, công nghệ tt, cn thông tin
 cb: cơ bản, căn bản, c b

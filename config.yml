@@ -32,9 +32,9 @@ pipeline:
 - name: EntitySynonymMapper
   epochs: 100
   constrain_similarities: true
-- name: FallbackClassifier
-  threshold: 0.8
-  ambiguity_threshold: 0.1
+#- name: FallbackClassifier
+#  threshold: 0.8
+#  ambiguity_threshold: 0.1
 
 #     constrain_similarities: true
 policies: null

@@ -115,4 +115,4 @@ def replace_words(text, replacements, stopwords):
     print("token: ", words)
     if stopwords:
         words = [word for word in words if word.lower() not in stopwords]
-    return ' '.join(words)
+    return ' '.join(words).lower()
