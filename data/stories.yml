@@ -120,6 +120,9 @@ stories:
 - story: xem_chi tiet_quy_dinh
   steps:
   - intent: xem_quy_dinh_chi_tiet
+  - action: form_quy_dinh_chi_tiet
+  - active_loop: form_quy_dinh_chi_tiet
+  - active_loop: null
   - action: action_tra_cuu_thong_tin_chi_tiet_quy_dinh
 
 - story: hoi dieu kien du thi
@@ -161,3 +164,11 @@ stories:
       - active_loop: form_tra_cuu_diem_thi
       - active_loop: null
       - action: action_tra_cuu_diem_thi
+
+- story: tra cuu cach dang ky
+  steps:
+      - intent: hoi_cach_dang_ky
+      - action: form_cach_dang_ky
+      - active_loop: form_cach_dang_ky
+      - active_loop: null
+      - action: action_tra_cuu_cach_dang_ky

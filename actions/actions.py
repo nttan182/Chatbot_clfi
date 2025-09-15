@@ -1,6 +1,5 @@
-from datetime import datetime, date
+from datetime import datetime
 from typing import Any, Text, Dict, List, Optional, Tuple
-from datetime import datetime, date
 from rasa_sdk import FormValidationAction, logger
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
@@ -86,7 +85,6 @@ class ActionXemChuongTrinhDaoTao(Action):
 
         dispatcher.utter_message(text=message)
         return []
-
 
 class ValidateFormChuongTrinhGiangDay(FormValidationAction):
     def name(self) -> Text:
@@ -230,7 +228,6 @@ class ActionXemChuongTrinhKhung(Action):
 
         return [SlotSet("khoa_hoc", None)]
 
-
 class ValidateFormThoiGianDaoTao(FormValidationAction):
     def name(self) -> Text:
         return "validate_form_thoi_gian_dao_tao"
@@ -313,7 +310,6 @@ class ActionXemThoiLuong(Action):
 
         return [SlotSet("khoa_hoc", None)]
 
-
 class ValidateFormChuanDauRa(FormValidationAction):
     def name(self) -> Text:
         return "validate_form_chuan_dau_ra"
@@ -385,7 +381,6 @@ class ActionTraChuanDauRa(Action):
             )
 
         return [SlotSet("khoa_hoc", None)]
-
 
 class ValidateFormHocPhi(FormValidationAction):
     def name(self) -> Text:
@@ -473,7 +468,6 @@ class ActionTraCuuHocPhi(Action):
 
         return [SlotSet("khoa_hoc", None)]
 
-
 class ValidateFormPhiThiLai(FormValidationAction):
     def name(self) -> Text:
         return "validate_form_phi_thi_lai"
@@ -554,60 +548,122 @@ class ActionTraCuuPhiThiLai(Action):
 
         return [SlotSet("khoa_hoc", None)]
 
+# class validate_form_dieu_kien_bao_luu(FormValidationAction):
+#     def name(self) -> Text:
+#         return "validate_form_dieu_kien_bao_luu"
+#
+#     def validate_khoa_hoc(self, slot_value: Any, dispatcher: CollectingDispatcher,
+#                           tracker: Tracker, domain: Dict) -> Dict[Text, Any]:
+#         # Kiểm tra nếu khóa học hợp lệ (giả định có hàm kiểm tra DB)
+#         if slot_value:
+#             return {"khoa_hoc": slot_value}
+#         dispatcher.utter_message(text="Bạn vui lòng cung cấp chính xác tên khóa học nhé!")
+#         return {"khoa_hoc": None}
+# class ActionTraCuuDieuKienBaoLuu(Action):
+#     def name(self) -> Text:
+#         return "action_tra_cuu_dieu_kien_bao_luu"
+#
+#     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[
+#         Dict[Text, Any]]:
+#         khoa_hoc = tracker.get_slot("khoa_hoc")
+#
+#         if not khoa_hoc:
+#             dispatcher.utter_message(text="Tôi chưa nhận được thông tin về khóa học bạn muốn hỏi.")
+#             return []
+#
+#         try:
+#             conn = get_db_connection()
+#             cursor = conn.cursor()
+#
+#             cursor.execute("""
+#                 SELECT mo_ta
+#                 FROM hoi_dieu_kien_bao_luu
+#                 WHERE ma_chuong_trinh ILIKE %s
+#             """, (f"%{khoa_hoc}%",))
+#
+#             result = cursor.fetchone()
+#
+#             if result and result[0]:
+#                 #dispatcher.utter_message(text=f"{khoa_hoc}: {result[0]}")
+#                 dispatcher.utter_message(text=f"{result[0]}")
+#                 return [SlotSet("khoa_hoc", None)]
+#             else:
+#                 dispatcher.utter_message(
+#                     text=f"Hiện tại chưa có thông tin cho khóa học {khoa_hoc}.")
+#                 return [SlotSet("khoa_hoc", None)]
+#         except Exception as e:
+#             dispatcher.utter_message(text=f"Đã xảy ra lỗi khi truy vấn CSDL: {e}")
+#
+#         finally:
+#             if 'cursor' in locals():
+#                 cursor.close()
+#             if 'conn' in locals():
+#                 conn.close()
+#
+#         return []
 
 class validate_form_dieu_kien_bao_luu(FormValidationAction):
     def name(self) -> Text:
         return "validate_form_dieu_kien_bao_luu"
 
-    def validate_khoa_hoc(self, slot_value: Any, dispatcher: CollectingDispatcher,
-                          tracker: Tracker, domain: Dict) -> Dict[Text, Any]:
-        # Kiểm tra nếu khóa học hợp lệ (giả định có hàm kiểm tra DB)
-        if slot_value:
-            return {"khoa_hoc": slot_value}
-        dispatcher.utter_message(text="Bạn vui lòng cung cấp chính xác tên khóa học nhé!")
-        return {"khoa_hoc": None}
+    def validate_khoa_hoc(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+        khoa_hoc = (slot_value or "").strip()
+        if not khoa_hoc:
+            dispatcher.utter_message(text="Bạn vui lòng cung cấp chính xác tên khóa học nhé!")
+            return {"khoa_hoc": None}
+        return {"khoa_hoc": khoa_hoc}
+
+def fetch_dieu_kien_bao_luu(khoa_hoc: str) -> Optional[str]:
+    normalized = khoa_hoc.strip()
+    try:
+        with get_db_connection() as conn:
+            with conn.cursor() as cursor:
+                cursor.execute(
+                    """
+                    SELECT mo_ta
+#                 FROM hoi_dieu_kien_bao_luu
+#                 WHERE ma_chuong_trinh ILIKE %s
+                    """,
+                    (f"%{normalized}%",),
+                )
+                row = cursor.fetchone()
+                if row and row[0]:
+                    return row[0]
+    except Exception:
+        logger.exception("[fetch_dieu_kien_bao_luu] Lỗi khi truy vấn điều kiện bảo lưu")
+    return None
 class ActionTraCuuDieuKienBaoLuu(Action):
     def name(self) -> Text:
         return "action_tra_cuu_dieu_kien_bao_luu"
 
-    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[
-        Dict[Text, Any]]:
+    def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> List[Dict[Text, Any]]:
         khoa_hoc = tracker.get_slot("khoa_hoc")
-
         if not khoa_hoc:
-            dispatcher.utter_message(text="Tôi chưa nhận được thông tin về khóa học bạn muốn hỏi.")
+            dispatcher.utter_message(response="utter_ask_khoa_hoc")
             return []
 
-        try:
-            conn = get_db_connection()
-            cursor = conn.cursor()
+        result = fetch_dieu_kien_bao_luu(khoa_hoc)
+        if result:
+            dispatcher.utter_message(text=result)
+        else:
+            dispatcher.utter_message(
+                text=(
+                    f"Vui lòng liên hệ trực tiếp trung tâm để biết thêm chi tiết về điều kiện bảo lưu."
+                )
+            )
 
-            cursor.execute("""
-                SELECT mo_ta 
-                FROM hoi_dieu_kien_bao_luu 
-                WHERE ma_chuong_trinh ILIKE %s
-            """, (f"%{khoa_hoc}%",))
-
-            result = cursor.fetchone()
-
-            if result and result[0]:
-                #dispatcher.utter_message(text=f"{khoa_hoc}: {result[0]}")
-                dispatcher.utter_message(text=f"{result[0]}")
-                return [SlotSet("khoa_hoc", None)]
-            else:
-                dispatcher.utter_message(
-                    text=f"Hiện tại chưa có thông tin cho khóa học {khoa_hoc}.")
-                return [SlotSet("khoa_hoc", None)]
-        except Exception as e:
-            dispatcher.utter_message(text=f"Đã xảy ra lỗi khi truy vấn CSDL: {e}")
-
-        finally:
-            if 'cursor' in locals():
-                cursor.close()
-            if 'conn' in locals():
-                conn.close()
-
-        return []
+        return [SlotSet("khoa_hoc", None)]
 
 
 class ActionXemDanhSachQuyDinh(Action):
@@ -624,7 +680,7 @@ class ActionXemDanhSachQuyDinh(Action):
             cursor = conn.cursor()
 
             # Truy vấn danh sách các quy định
-            cursor.execute("SELECT ten_qui_dinh FROM danh_sach_quy_dinh ORDER BY ten_qui_dinh ASC")
+            cursor.execute("SELECT ten_quy_dinh FROM danh_sach_quy_dinh ORDER BY ten_quy_dinh ASC")
             results = cursor.fetchall()
 
             if results:
@@ -645,48 +701,117 @@ class ActionXemDanhSachQuyDinh(Action):
 
         dispatcher.utter_message(text=message)
         return []
-class ActionXemQuyDinhChiTiet(Action):
+# class ActionXemQuyDinhChiTiet(Action):
+#     def name(self) -> Text:
+#         return "action_tra_cuu_thong_tin_chi_tiet_quy_dinh"
+#
+#     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[
+#         Dict[Text, Any]]:
+#         chi_tiet_quy_dinh = tracker.get_slot("chi_tiet_quy_dinh")
+#
+#         if not chi_tiet_quy_dinh:
+#             dispatcher.utter_message(text="Tôi chưa nhận được thông tin về quy định bạn muốn hỏi.")
+#             return []
+#         try:
+#             conn = get_db_connection()
+#             cursor = conn.cursor()
+#
+#             cursor.execute("""
+#                 SELECT mo_ta
+#                 FROM danh_sach_quy_dinh
+#                 WHERE ten_quy_dinh ILIKE %s
+#             """, (f"%{chi_tiet_quy_dinh}%",))
+#
+#             result = cursor.fetchone()
+#
+#             if result and result[0]:
+#                 dispatcher.utter_message(text=f"{result[0]}")
+#                 return [SlotSet("chi_tiet_quy_dinh", None)]
+#             else:
+#                 dispatcher.utter_message(
+#                     text=f"Hiện tại chưa có thông tin cho quy định bạn đang hỏi.")
+#                 return [SlotSet("chi_tiet_quy_dinh", None)]
+#         except Exception as e:
+#             dispatcher.utter_message(text=f"Đã xảy ra lỗi khi truy vấn CSDL: {e}")
+#
+#         finally:
+#             if 'cursor' in locals():
+#                 cursor.close()
+#             if 'conn' in locals():
+#                 conn.close()
+#
+#         return [SlotSet("chi_tiet_quy_dinh", None)]
+
+class ValidateFormQuyDinhChiTiet(FormValidationAction):
+    def name(self) -> Text:
+        return "validate_form_quy_dinh_chi_tiet"
+
+    def validate_chi_tiet_quy_dinh(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+        raw = (slot_value or "").strip()
+        if not raw:
+            dispatcher.utter_message(text="Bạn vui lòng cho biết tên quy định bạn muốn xem chi tiết?")
+            return {"chi_tiet_quy_dinh": None}
+
+        normalized = " ".join(raw.split())
+        return {"chi_tiet_quy_dinh": normalized}
+
+def fetch_quy_dinh_chi_tiet(ten_quy_dinh: str) -> Optional[str]:
+    normalized = (ten_quy_dinh or "").strip()
+    if not normalized:
+        return None
+
+    try:
+        with get_db_connection() as conn:
+            with conn.cursor() as cursor:
+                cursor.execute(
+                    """
+                    SELECT mo_ta
+                    FROM danh_sach_quy_dinh
+                    WHERE ten_quy_dinh ILIKE %s
+                    LIMIT 1
+                    """,
+                    (f"%{normalized}%",),
+                )
+                row = cursor.fetchone()
+                if row and row[0]:
+                    return row[0]
+    except Exception:
+        logger.exception("[fetch_quy_dinh_chi_tiet] Lỗi khi truy vấn CSDL")
+    return None
+
+class ActionTraCuuQuyDinhChiTiet(Action):
     def name(self) -> Text:
         return "action_tra_cuu_thong_tin_chi_tiet_quy_dinh"
 
-    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[
-        Dict[Text, Any]]:
+    def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
         chi_tiet_quy_dinh = tracker.get_slot("chi_tiet_quy_dinh")
 
         if not chi_tiet_quy_dinh:
-            dispatcher.utter_message(text="Tôi chưa nhận được thông tin về quy định bạn muốn hỏi.")
+            dispatcher.utter_message(response="utter_ask_chi_tiet_quy_dinh")
             return []
 
-        try:
-            conn = get_db_connection()
-            cursor = conn.cursor()
+        result = fetch_quy_dinh_chi_tiet(chi_tiet_quy_dinh)
 
-            cursor.execute("""
-                SELECT mo_ta
-                FROM danh_sach_quy_dinh
-                WHERE ten_qui_dinh ILIKE %s
-            """, (f"%{chi_tiet_quy_dinh}%",))
-
-            result = cursor.fetchone()
-
-            if result and result[0]:
-                #dispatcher.utter_message(text=f"{khoa_hoc}: {result[0]}")
-                dispatcher.utter_message(text=f"{result[0]}")
-                # return [SlotSet("danh_sach_quy_dinh", None)]
-            else:
-                dispatcher.utter_message(
-                    text=f"Hiện tại chưa có thông tin cho quy định bạn đang hỏi.")
-                # return [SlotSet("danh_sach_quy_dinh", None)]
-        except Exception as e:
-            dispatcher.utter_message(text=f"Đã xảy ra lỗi khi truy vấn CSDL: {e}")
-
-        finally:
-            if 'cursor' in locals():
-                cursor.close()
-            if 'conn' in locals():
-                conn.close()
+        if result:
+            dispatcher.utter_message(text=result)
+        else:
+            dispatcher.utter_message(
+                text="Hiện tại chưa có thông tin chi tiết cho quy định này. Vui lòng liên hệ trung tâm để biết thêm."
+            )
 
         return [SlotSet("chi_tiet_quy_dinh", None)]
+
 
 class ValidateFormDieuKienDuThi(FormValidationAction):
     def name(self) -> Text:
@@ -807,8 +932,6 @@ def fetch_lich_dao_tao(khoa_hoc: str) -> Optional[Dict[str, Any]]:
     except Exception:
         logger.exception("[fetch_lich_dao_tao] Lỗi khi truy vấn lịch đào tạo")
     return None
-
-
 class ActionTraCuuLichDaoTao(Action):
     def name(self) -> Text:
         return "action_tra_cuu_lich_dao_tao"
@@ -835,7 +958,6 @@ class ActionTraCuuLichDaoTao(Action):
 
         data = fetch_lich_dao_tao(khoa_hoc)
         if not data:
-            # Không có bản ghi nào khớp hoàn toàn → thông điệp chung
             dispatcher.utter_message(
                 text="Mình chưa tìm thấy lịch đào tạo phù hợp với từ khóa bạn cung cấp. Bạn vui lòng kiểm tra lại tên/mã khóa học hoặc liên hệ Trung tâm để được hỗ trợ nhé."
             )
@@ -1110,7 +1232,7 @@ class ActionTraCuuNgayThi(Action):
             dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: DomainDict,
-    ) -> List[Dict[Text, Any]]:
+    it=None) -> List[Dict[Text, Any]]:
 
         khoa_hoc = tracker.get_slot("khoa_hoc")
         if not khoa_hoc:
@@ -1301,3 +1423,79 @@ class ValidateCachDangKy(FormValidationAction):
             return {"khoa_hoc": khoa_hoc}
         dispatcher.utter_message(text="Bạn vui lòng cung cấp chính xác tên khóa học nhé!")
         return {"khoa_hoc": None}
+
+def fetch_cach_dang_ky(khoa_hoc: str) -> Optional[Dict[str, Any]]:
+    normalized = (khoa_hoc or "").strip()
+    try:
+        with get_db_connection() as conn:
+            with conn.cursor() as cursor:
+                cursor.execute(
+                    """
+                    SELECT dt.ghi_chu, cd.mo_ta
+                      FROM public.hoi_cach_dang_ky AS cd
+                      JOIN public.hoi_chuong_trinh_dao_tao AS dt
+                        ON dt.ma_chuong_trinh = cd.ma_chuong_trinh
+                     WHERE cd.ma_chuong_trinh ILIKE %s
+                    """,
+                    (f"%{normalized}%",),
+                )
+                rows = cursor.fetchall() or []
+                if not rows:
+                    return None
+                ten = rows[0][0] or normalized
+                items: List[Dict[str, str]] = []
+                for r in rows:
+                    items.append({
+                        "noi_dung": r[1],
+                    })
+                return {"ten": ten, "items": items}
+    except Exception:
+        logger.exception("[fetch_cach_dang_ky] Lỗi khi truy vấn cách đăng ký")
+    return None
+
+class ActionTraCuuCachDangKy(Action):
+    def name(self) -> Text:
+        return "action_tra_cuu_cach_dang_ky"
+
+    def run(
+            self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: DomainDict,
+    ) -> List[Dict[Text, Any]]:
+
+        khoa_hoc = tracker.get_slot("khoa_hoc")
+        if not khoa_hoc:
+            dispatcher.utter_message(response="utter_ask_khoa_hoc")
+            return []
+
+        data = fetch_cach_dang_ky(khoa_hoc)
+        if not data:
+            dispatcher.utter_message(
+                text="Mình chưa tìm thấy thông tin cách đăng ký phù hợp với từ khóa bạn cung cấp. Bạn vui lòng kiểm tra lại tên/mã khóa học hoặc liên hệ Trung tâm để được hỗ trợ nhé."
+            )
+            return [SlotSet("khoa_hoc", None)]
+
+        ten = data["ten"]
+        items = data["items"]
+
+        if not items:
+            year = datetime.now().year
+            dispatcher.utter_message(
+                text=(
+                    f"Thông tin cách đăng ký cho lớp <b>{ten}</b> trong năm <b>{year}</b> chưa có, do đó bạn nên liên hệ chi tiết thông tin qua số điện thoại của Trung tâm hoặc xem tại <a href='https://phongctct.ctuet.edu.vn/sinh-vien/' target='_blank'>xem tại đây</a>.."
+                )
+            )
+            return [SlotSet("khoa_hoc", None)]
+
+        lines = []
+        for it in items:
+            noi_dung = it["noi_dung"] or "Không có thông tin"
+            lines.append(f"• {noi_dung}")
+
+        dispatcher.utter_message(
+            text=f"<b>Cách đăng ký cho lớp {ten}:</b><br>" + "<br>".join(lines)
+        )
+
+        return [SlotSet("khoa_hoc", None)]
+

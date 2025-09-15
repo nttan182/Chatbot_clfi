@@ -67,6 +67,9 @@ responses:
   utter_ask_khoa_hoc:
   - text: 'Bạn muốn hỏi khóa học nào? (Ví dụ: TOEIC CTUT, B1 CTUT, UD CNTT CB, N4 CTUT...)'
 
+  utter_ask_chi_tiet_quy_dinh:
+  - text: "Bạn muốn xem chi tiết quy định nào?"
+
   utter_chao_hoi:
   - text: Chào bạn.
   - text: Xin chào.
@@ -136,6 +139,12 @@ forms:
   form_tra_cuu_diem_thi:
     required_slots:
       - khoa_hoc
+  form_cach_dang_ky:
+      required_slots:
+        - khoa_hoc
+  form_quy_dinh_chi_tiet:
+    required_slots:
+      - chi_tiet_quy_dinh
 
 actions:
   - action_check_postgre_connection
@@ -154,6 +163,7 @@ actions:
   - validate_form_phi_thi_lai
   - action_tra_cuu_phi_thi_lai
   - action_xem_danh_sach_quy_dinh
+  - validate_form_quy_dinh_chi_tiet
   - action_tra_cuu_thong_tin_chi_tiet_quy_dinh
   - validate_form_dieu_kien_bao_luu
   - action_tra_cuu_dieu_kien_bao_luu
@@ -167,6 +177,8 @@ actions:
   - action_tra_cuu_ngay_thi
   - validate_form_tra_cuu_diem_thi
   - action_tra_cuu_diem_thi
+  - validate_form_cach_dang_ky
+  - action_tra_cuu_cach_dang_ky
 
 session_config:
   session_expiration_time: 60

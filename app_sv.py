@@ -4,7 +4,6 @@ import requests
 from utils.word_replacer import load_replacement_data, replace_words, load_stopwords
 
 app = Flask(__name__, static_folder='public')
-
 RASA_URL = "http://localhost:5005/webhooks/rest/webhook"
 
 @app.route("/")
@@ -13,15 +12,12 @@ def index():
 
 @app.route("/send_message", methods=["POST"])
 def send_message():
-    # replacements = load_replacement_data('data/standardization.txt')
-    # stopwords = load_stopwords('data/stopwords.txt')
-    # user_message = request.form.get("message")
-    # replaced = replace_words(user_message, replacements, stopwords)
-    # print(f"Replaced message: {replaced}")
-    # payload = {"sender": "user", "message": replaced}
-
+    sender_id = request.form.get("sender_id")
+    replacements = load_replacement_data('data/standardization.txt')
+    stopwords = load_stopwords('data/stopwords.txt')
     user_message = request.form.get("message")
-    payload = {"sender": "user", "message": user_message}
+    replaced = replace_words(user_message, replacements, stopwords)
+    payload = {"sender": sender_id, "message": replaced}
 
     try:
         response = requests.post(RASA_URL, json=payload)

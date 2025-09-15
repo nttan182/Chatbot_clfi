@@ -1,5 +1,6 @@
 import re
-
+from underthesea import word_tokenize
+from rapidfuzz import process, fuzz
 
 def load_replacement_data(filename):
     """
@@ -53,10 +54,38 @@ def load_stopwords(filename):
         print(f"Không tìm thấy file {filename}")
     except Exception as e:
         print(f"Lỗi khi đọc file {filename}: {e}")
-
     return stopwords
 
-def replace_words(text, replacements, stopwords=None):
+def fuzzy_replace(text, replacements, threshold=80):
+    """
+    Hàm thay thế từ sử dụng fuzzy matching
+
+    Args:
+        text (str): Văn bản cần thay thế
+        replacements (dict): Dictionary chứa các từ cần thay thế
+        threshold (int): Ngưỡng điểm để xác định một từ được thay thế
+
+    Returns:
+        str: Văn bản đã được thay thế
+    """
+    print("-----------fuzzy replace-----------")
+    words = word_tokenize(text)
+    # print("token: ", words)
+    replaced_words = []
+    sorted_words = sorted(replacements.keys(), key=len, reverse=True)
+    # print(sorted_words)
+    for word in words:
+        # Tìm từ gần nhất trong danh sách từ cần thay thế
+        print(process.extractOne(word, replacements.keys(), scorer=fuzz.ratio))
+        match, score, _ = process.extractOne(word, replacements.keys(), scorer=fuzz.ratio)
+        if score >= threshold:
+            replaced_words.append(replacements[match])
+        else:
+            replaced_words.append(word)
+
+    return ' '.join(replaced_words)
+
+def replace_words(text, replacements, stopwords):
     """
     Hàm thay thế và lọc stopword trong văn bản
 
@@ -69,7 +98,8 @@ def replace_words(text, replacements, stopwords=None):
         str: Văn bản đã được thay thế
     """
     # Loại bỏ ký tự không phải chữ cái, số hoặc khoảng trắng
-    text = re.sub(r'[^\w\s]', ' ', text, flags=re.UNICODE)
+    text = re.sub(r'[^\w\s]', '', text)
+    text = re.sub(r'[\r\n\t]', ' ', text)
     replaced_text = text
 
     # Thay thế từ theo dictionary
@@ -79,11 +109,10 @@ def replace_words(text, replacements, stopwords=None):
         # Sử dụng regex để tìm và thay thế từ
         # \b đảm bảo chỉ thay thế từ hoàn chỉnh, không phải một phần của từ khác
         pattern = r'\b' + re.escape(word) + r'\b'
-        replaced_text = re.sub(pattern, replacements[word], replaced_text, flags=re.IGNORECASE)
-
+        replaced_text = re.sub(pattern, replacements[word.lower()], replaced_text, flags=re.IGNORECASE)
     # Tách từ để xử lý stopword
-    words = replaced_text.split()
+    words = word_tokenize(replaced_text)
+    print("token: ", words)
     if stopwords:
         words = [word for word in words if word.lower() not in stopwords]
-
     return ' '.join(words)
