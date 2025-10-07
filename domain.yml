@@ -62,12 +62,17 @@ slots:
       - type: from_entity
         entity: chi_tiet_quy_dinh
 
+
+
 responses:
   utter_ask_khoa_hoc:
   - text: 'Bạn muốn hỏi khóa học nào? (Ví dụ: TOEIC CTUT, B1 CTUT, UD CNTT CB, N4 CTUT...)'
 
   utter_ask_chi_tiet_quy_dinh:
   - text: "Bạn muốn xem chi tiết quy định nào?"
+
+  utter_ask_lien_he:
+      - text: "Bạn muốn xem thông tin nào? (địa chỉ / số điện thoại / email / facebook)"
 
   utter_chao_hoi:
   - text: Chào bạn.
@@ -98,8 +103,6 @@ responses:
 
   utter_iamabot:
   - text: Mình là hệ thống Hỏi đáp các nội dung về hoạt động của Trung tâm Ngoại ngữ - Tin học.
-#  utter_default:
-#  - text: "Tôi không hiểu ý bạn hoặc nội dung của bạn hỏi chưa được cập nhật. Bạn thử đặt câu hỏi lại bằng cách khác nhé."
 
 forms:
   form_dieu_kien_bao_luu:
@@ -144,6 +147,9 @@ forms:
   form_quy_dinh_chi_tiet:
     required_slots:
       - chi_tiet_quy_dinh
+  form_hoi_thong_tin_lien_he:
+    required_slots:
+      - lien_he
 
 actions:
   - action_check_postgre_connection
@@ -178,6 +184,8 @@ actions:
   - action_tra_cuu_diem_thi
   - validate_form_cach_dang_ky
   - action_tra_cuu_cach_dang_ky
+  - validate_form_hoi_thong_tin_lien_he
+  - action_hoi_thong_tin_lien_he
 
 session_config:
   session_expiration_time: 60

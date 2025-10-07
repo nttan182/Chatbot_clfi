@@ -16,3 +16,12 @@ nc: nâng cao, n c
 lịch đào tạo: lịch học, lich dao tao, thời khóa biểu, thoi khoa bieu, schedule học, schedule hoc
 khai giảng: ngay khai giang, ngày khai giảng, lich khai giang, lịch khai giảng, mở lớp, mo lop, bắt đầu học, bat dau hoc
 ngày thi: ngay thi, lịch thi, lich thi, thi khi nao, bao gio thi, ngay thi tiep theo, ngày thi tiếp theo
+
+# ===== THÔNG TIN LIÊN HỆ =====
+địa chỉ: dia chi, address, địa điểm, chi nhánh
+số điện thoại: so dien thoai, điện thoại, hotline, phone
+email: mail
+facebook: fb, fanpage
+thời gian làm việc: giờ làm việc, gio hanh chinh
+giám đốc: giam doc
+phó giám đốc: pho giam doc

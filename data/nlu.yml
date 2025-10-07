@@ -558,10 +558,10 @@ nlu:
 
 - intent: hoi_thong_tin_lien_he
   examples: |
-    - [địa chỉ](thong_tin_lien_he) của trung tâm là gì
-    - [số điện thoại](thong_tin_lien_he) của trung tâm là bao nhiêu
-    - [email](thong_tin_lien_he) liên hệ của trung tâm là gì
-    - [facebook](thong_tin_lien_he) của trung tâm là gì
+    - [địa chỉ](lien_he) của trung tâm là gì
+    - [số điện thoại](lien_he) của trung tâm là bao nhiêu
+    - [email](lien_he) liên hệ của trung tâm là gì
+    - [facebook](lien_he) của trung tâm là gì
     - [địa chỉ](lien_he) cụ thể của trung tâm nằm ở đâu
     - [số điện thoại](lien_he) liên lạc của trung tâm là gì
     - trung tâm có [địa chỉ](lien_he) nào gần đây không

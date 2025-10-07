@@ -172,3 +172,11 @@ stories:
       - active_loop: form_cach_dang_ky
       - active_loop: null
       - action: action_tra_cuu_cach_dang_ky
+
+- story: hỏi thông tin liên hệ
+  steps:
+    - intent: hoi_thong_tin_lien_he
+    - action: form_hoi_thong_tin_lien_he
+    - active_loop: form_hoi_thong_tin_lien_he
+    - active_loop: null
+    - action: action_hoi_thong_tin_lien_he
