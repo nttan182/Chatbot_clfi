@@ -614,6 +614,7 @@ nlu:
 
 - intent: hoi_cach_dang_ky
   examples: |
+    - hồ sơ đăng ký gồm có gì
     - làm sao để đăng ký khóa học
     - tôi muốn biết cách đăng ký khóa học
     - hướng dẫn đăng ký khóa học
@@ -865,6 +866,31 @@ nlu:
     - để dự thi cần có những điều kiện gì
     - tôi muốn biết điều kiện dự thi
     - có những yêu cầu gì để đủ điều kiện dự thi
+
+- intent: hoi_gio_lam_viec
+  examples: |
+    - trung tâm mấy giờ mở cửa
+    - giờ làm việc của trung tâm là từ mấy giờ đến mấy giờ
+    - thời gian làm việc của trung tâm như thế nào
+    - giờ hành chính của trung tâm là gì
+    - trung tâm làm việc vào những ngày nào trong tuần
+    - trung tâm có làm việc vào cuối tuần không
+    - giờ làm việc của trung tâm ngoại ngữ ra sao
+    - trung tâm mấy giờ mở cửa vào ngày thường
+    - giờ làm việc của trung tâm vào ngày lễ như thế nào
+    - trung tâm có làm việc vào buổi tối không
+    - giờ làm việc của trung tâm vào thứ bảy và chủ nhật là gì
+    - trung tâm có làm việc vào ngày nghỉ không
+    - trung tâm có làm việc vào buổi sáng không
+    - trung tâm có làm việc vào buổi chiều không
+    - giờ làm việc của trung tâm vào ngày thường là gì
+    - trung tâm có làm việc vào buổi trưa không
+    - giờ làm việc của trung tâm vào ngày lễ là gì
+    - trung tâm có làm việc vào ban đêm không
+    - giờ làm việc của trung tâm vào thứ bảy là gì
+    - giờ làm việc của trung tâm vào chủ nhật là gì
+    - trung tâm có làm việc vào ngày tết không
+    
 
 
 - intent: inform

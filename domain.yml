@@ -25,12 +25,14 @@ intents:
   - hoi_hoc_phi
   - hoi_phi_thi_lai
   - hoi_dieu_kien_du_thi
+  - hoi_gio_lam_viec
   - inform
 
 entities:
   - khoa_hoc
   - chi_tiet_quy_dinh
   - lien_he
+  - ban_lanh_dao
   - danh_sach_quy_dinh
 
 slots:
@@ -47,6 +49,13 @@ slots:
     mappings:
       - type: from_entity
         entity: lien_he
+
+  ban_lanh_dao:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: ban_lanh_dao
 
   danh_sach_quy_dinh:
     type: text
@@ -73,6 +82,9 @@ responses:
 
   utter_ask_lien_he:
       - text: "Bạn muốn xem thông tin nào? (địa chỉ / số điện thoại / email / facebook)"
+
+  utter_ask_ban_lanh_dao:
+      - text: "Hiện tại, Trung tâm Ngoại ngữ - Tin học có các chức vụ chính như: Giám đốc Trung tâm, Phó Giám đốc"
 
   utter_chao_hoi:
   - text: Chào bạn.
@@ -150,6 +162,9 @@ forms:
   form_hoi_thong_tin_lien_he:
     required_slots:
       - lien_he
+  form_hoi_ban_lanh_dao:
+    required_slots:
+      - ban_lanh_dao
 
 actions:
   - action_check_postgre_connection
@@ -186,6 +201,9 @@ actions:
   - action_tra_cuu_cach_dang_ky
   - validate_form_hoi_thong_tin_lien_he
   - action_hoi_thong_tin_lien_he
+  - validate_form_hoi_ban_lanh_dao
+  - action_hoi_ban_lanh_dao
+  - action_thoi_gian_lam_viec
 
 session_config:
   session_expiration_time: 60

@@ -64,14 +64,6 @@ stories:
   - active_loop: null
   - action: action_xem_thoi_luong
 
-- story: chuan dau ra
-  steps:
-  - intent: hoi_chuan_dau_ra
-  - action: form_chuan_dau_ra
-  - active_loop: form_chuan_dau_ra
-  - active_loop: null
-  - action: action_tra_cuu_chuan_dau_ra
-
 - story: hoc phi
   steps:
   - intent: hoi_hoc_phi
@@ -96,14 +88,6 @@ stories:
   - active_loop: null
   - action: action_tra_cuu_chuan_dau_ra
 
-- story: hoc phi
-  steps:
-  - intent: hoi_hoc_phi
-  - action: form_hoc_phi
-  - active_loop: form_hoc_phi
-  - active_loop: null
-  - action: action_tra_cuu_hoc_phi
-
 - story: lệ phí thi lại
   steps:
   - intent: hoi_phi_thi_lai
@@ -112,7 +96,7 @@ stories:
   - active_loop: null
   - action: action_tra_cuu_phi_thi_lai
 
-- story: xem_danh_sach_quy_dinh
+- story: xem danh sach quy dinh
   steps:
   - intent: hoi_danh_sach_quy_dinh
   - action: action_xem_danh_sach_quy_dinh
@@ -149,7 +133,7 @@ stories:
   - active_loop: null
   - action: action_tra_cuu_ngay_khai_giang
 
-- story: tra cuu ngaythi
+- story: tra cuu ngay thi
   steps:
     - intent: hoi_ngay_thi
     - action: form_tra_cuu_ngay_thi
@@ -180,3 +164,17 @@ stories:
     - active_loop: form_hoi_thong_tin_lien_he
     - active_loop: null
     - action: action_hoi_thong_tin_lien_he
+
+#test từ đây
+- story: hỏi thông tin ban lãnh đạo
+  steps:
+      - intent: hoi_ban_lanh_dao
+      - action: form_hoi_ban_lanh_dao
+      - active_loop: form_hoi_ban_lanh_dao
+      - active_loop: null
+      - action: action_hoi_ban_lanh_dao
+
+- story: hỏi giờ làm việc
+  steps:
+      - intent: hoi_gio_lam_viec
+      - action: action_thoi_gian_lam_viec

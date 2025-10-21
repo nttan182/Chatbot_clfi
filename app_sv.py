@@ -18,9 +18,12 @@ def send_message():
     stopwords = load_stopwords('data/stopwords.txt')
     user_message = request.form.get("message")
     replaced = replace_words(user_message, replacements, stopwords)
-    print(f"Replaced message: {replaced}")
-    payload = {"sender": sender_id, "message": replaced}
-
+    if replaced:
+        print(f"Replaced message: {replaced}")
+        payload = {"sender": sender_id, "message": replaced}
+    else:
+        print(f"Raw message: {user_message}")
+        payload = {"sender": sender_id, "message": user_message}
     try:
         response = requests.post(RASA_URL, json=payload)
         bot_response = response.json()

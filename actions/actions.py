@@ -49,7 +49,7 @@ def load_canonical_from_table(table_name: str) -> List[str]:
             seen.add(k)
             canonical.append(v)
     return canonical
-def _pick_canonical(text: str, canonical_list: List[str], cutoff: int = 85) -> Optional[str]:
+def _pick_canonical(text: str, canonical_list: List[str], cutoff: int = 80) -> Optional[str]:
     """Chọn mục trong canonical_list gần nhất (>= cutoff); None nếu không đủ giống."""
     if not text or not canonical_list:
         return None
@@ -74,8 +74,7 @@ class ActionFallbackReset(Action):
         return [
             # SlotSet("gioi_thieu_trung_tam", None),
             SlotSet("khoa_hoc", None),
-            SlotSet(""
-                    "_quy_dinh", None),
+            SlotSet("chi_tiet_quy_dinh", None),
             UserUtteranceReverted()  # Xóa câu người dùng vừa nhập để hội thoại không bị kẹt
         ]
 
@@ -145,8 +144,8 @@ class ValidateFormChuongTrinhGiangDay(FormValidationAction):
     ) -> Dict[Text, Any]:
         khoa_hoc = (slot_value or "").strip()
         if khoa_hoc:
-            canonical_list = load_canonical_from_table("hoi_chuong_trinh_dao_tao")
-            best = _pick_canonical(khoa_hoc, canonical_list, cutoff=85)
+            canonical_list = load_canonical_from_table("hoi_chuong_trinh_giang_day")
+            best = _pick_canonical(khoa_hoc, canonical_list)
             if best:
                 khoa_hoc = best
             print("Sau chọn khóa gần giống nhất: ", best)
@@ -224,8 +223,8 @@ class ValidateFormChuongTrinhKhung(FormValidationAction):
             dispatcher.utter_message(text="Bạn vui lòng cung cấp chính xác tên khóa học nhé!")
             print("khóa học không tồn tại")
             return {"khoa_hoc": None}
-        canonical_list = load_canonical_from_table("hoi_chuong_trinh_dao_tao")
-        best = _pick_canonical(khoa_hoc, canonical_list, cutoff=85)
+        canonical_list = load_canonical_from_table("hoi_chuong_trinh_khung")
+        best = _pick_canonical(khoa_hoc, canonical_list)
         if best:
             khoa_hoc = best
         print("Sau chọn khóa gần giống nhất: ", best)
@@ -303,8 +302,8 @@ class ValidateFormThoiGianDaoTao(FormValidationAction):
         if not khoa_hoc:
             dispatcher.utter_message(text="Bạn vui lòng cung cấp tên chương trình nhé!")
             return {"khoa_hoc": None}
-        canonical_list = load_canonical_from_table("hoi_chuong_trinh_dao_tao")
-        best = _pick_canonical(khoa_hoc, canonical_list, cutoff=85)
+        canonical_list = load_canonical_from_table("thoi_gian_dao_tao")
+        best = _pick_canonical(khoa_hoc, canonical_list)
         if best:
             khoa_hoc = best
         print("Sau chọn khóa gần giống nhất: ", best)
@@ -391,8 +390,8 @@ class ValidateFormChuanDauRa(FormValidationAction):
         if not khoa_hoc:
             dispatcher.utter_message(text="Bạn vui lòng cung cấp mã hoặc tên chương trình khung nhé!")
             return {"khoa_hoc": None}
-        canonical_list = load_canonical_from_table("hoi_chuong_trinh_dao_tao")
-        best = _pick_canonical(khoa_hoc, canonical_list, cutoff=85)
+        canonical_list = load_canonical_from_table("hoi_chuan_dau_ra")
+        best = _pick_canonical(khoa_hoc, canonical_list)
         if best:
             khoa_hoc = best
         print("Sau chọn khóa gần giống nhất: ", best)
@@ -470,8 +469,8 @@ class ValidateFormHocPhi(FormValidationAction):
             dispatcher.utter_message(text="Bạn vui lòng cung cấp chính xác tên chương trình nhé!")
             print("khóa học không tồn tại")
             return {"khoa_hoc": None}
-        canonical_list = load_canonical_from_table("hoi_chuong_trinh_dao_tao")
-        best = _pick_canonical(khoa_hoc, canonical_list, cutoff=85)
+        canonical_list = load_canonical_from_table("hoi_hoc_phi")
+        best = _pick_canonical(khoa_hoc, canonical_list)
         if best:
             khoa_hoc = best
         print("Sau chọn khóa gần giống nhất: ", best)
@@ -562,8 +561,8 @@ class ValidateFormPhiThiLai(FormValidationAction):
         if not khoa_hoc:
             dispatcher.utter_message(text="Bạn vui lòng cung cấp chính xác tên khóa học nhé!")
             return {"khoa_hoc": None}
-        canonical_list = load_canonical_from_table("hoi_chuong_trinh_dao_tao")
-        best = _pick_canonical(khoa_hoc, canonical_list, cutoff=85)
+        canonical_list = load_canonical_from_table("hoi_phi_thi_lai")
+        best = _pick_canonical(khoa_hoc, canonical_list)
         if best:
             khoa_hoc = best
         print("Sau chọn khóa gần giống nhất: ", best)
@@ -872,8 +871,8 @@ class ValidateFormDieuKienDuThi(FormValidationAction):
         if not khoa_hoc:
             dispatcher.utter_message(text="Bạn vui lòng cung cấp chính xác tên khóa học nhé!")
             return {"khoa_hoc": None}
-        canonical_list = load_canonical_from_table("hoi_chuong_trinh_dao_tao")
-        best = _pick_canonical(khoa_hoc, canonical_list, cutoff=85)
+        canonical_list = load_canonical_from_table("hoi_dieu_kien_du_thi")
+        best = _pick_canonical(khoa_hoc, canonical_list)
         if best:
             khoa_hoc = best
         print("Sau chọn khóa gần giống nhất: ", best)
@@ -939,8 +938,8 @@ class ValidateTraCuuLichDaoTao(FormValidationAction):
         if not khoa_hoc:
             dispatcher.utter_message(text="Bạn vui lòng cung cấp chính xác tên khóa học nhé!")
             return {"khoa_hoc": None}
-        canonical_list = load_canonical_from_table("hoi_chuong_trinh_dao_tao")
-        best = _pick_canonical(khoa_hoc, canonical_list, cutoff=85)
+        canonical_list = load_canonical_from_table("lich_dao_tao")
+        best = _pick_canonical(khoa_hoc, canonical_list)
         if best:
             khoa_hoc = best
         print("Sau chọn khóa gần giống nhất: ", best)
@@ -1092,8 +1091,8 @@ class ValidateTraCuuNgayKhaiGiang(FormValidationAction):
     ) -> Dict[Text, Any]:
         khoa_hoc = (slot_value or "").strip()
         if khoa_hoc:
-            canonical_list = load_canonical_from_table("hoi_chuong_trinh_dao_tao")
-            best = _pick_canonical(khoa_hoc, canonical_list, cutoff=85)
+            canonical_list = load_canonical_from_table("lich_dao_tao")
+            best = _pick_canonical(khoa_hoc, canonical_list)
             if best:
                 khoa_hoc = best
             print("Sau chọn khóa gần giống nhất: ", best)
@@ -1236,8 +1235,8 @@ class ValidateTraCuuNgayThi(FormValidationAction):
     ) -> Dict[Text, Any]:
         khoa_hoc = (slot_value or "").strip()
         if khoa_hoc:
-            canonical_list = load_canonical_from_table("hoi_chuong_trinh_dao_tao")
-            best = _pick_canonical(khoa_hoc, canonical_list, cutoff=85)
+            canonical_list = load_canonical_from_table("lich_dao_tao")
+            best = _pick_canonical(khoa_hoc, canonical_list)
             if best:
                 khoa_hoc = best
             print("Sau chọn khóa gần giống nhất: ", best)
@@ -1303,7 +1302,7 @@ class ActionTraCuuNgayThi(Action):
             dispatcher.utter_message(response="utter_ask_khoa_hoc")
             return []
 
-        data = fetch_lich_dao_tao(khoa_hoc)
+        data = fetch_ngay_thi(khoa_hoc)
         if not data:
             dispatcher.utter_message(
                 text="Mình chưa tìm thấy lịch đào tạo phù hợp với từ khóa bạn cung cấp. Bạn vui lòng kiểm tra lại tên/mã khóa học hoặc liên hệ Trung tâm để được hỗ trợ nhé."
@@ -1333,10 +1332,7 @@ class ActionTraCuuNgayThi(Action):
         ]
 
         if not valid:
-            semi = [
-                       it for it in items
-                       (it["thi"] is not None) or (it["khoa"] is not None)
-                   ][:5]
+            semi = [it for it in items if (it["thi"] is not None) or (it["khoa"] is not None)][:5]
             if semi:
                 lines = []
                 for it in semi:
@@ -1383,8 +1379,8 @@ class ValidateTraCuuDiemThi(FormValidationAction):
     ) -> Dict[Text, Any]:
         khoa_hoc = (slot_value or "").strip()
         if khoa_hoc:
-            canonical_list = load_canonical_from_table("hoi_chuong_trinh_dao_tao")
-            best = _pick_canonical(khoa_hoc, canonical_list, cutoff=85)
+            canonical_list = load_canonical_from_table("diem_thi")
+            best = _pick_canonical(khoa_hoc, canonical_list)
             if best:
                 khoa_hoc = best
             print("Sau chọn khóa gần giống nhất: ", best)
@@ -1489,8 +1485,8 @@ class ValidateCachDangKy(FormValidationAction):
     ) -> Dict[Text, Any]:
         khoa_hoc = (slot_value or "").strip()
         if khoa_hoc:
-            canonical_list = load_canonical_from_table("hoi_chuong_trinh_dao_tao")
-            best = _pick_canonical(khoa_hoc, canonical_list, cutoff=85)
+            canonical_list = load_canonical_from_table("hoi_cach_dang_ky")
+            best = _pick_canonical(khoa_hoc, canonical_list)
             if best:
                 khoa_hoc = best
             print("Sau chọn khóa gần giống nhất: ", best)
@@ -1573,29 +1569,7 @@ class ActionTraCuuCachDangKy(Action):
 
         return [SlotSet("khoa_hoc", None)]
 
-
-class ValidateFormHoiThongTinLienHe(FormValidationAction):
-    def name(self) -> Text:
-        return "validate_form_hoi_thong_tin_lien_he"
-    def validate_lien_he(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: DomainDict,
-    ) -> Dict[Text, Any]:
-        lien_he = (slot_value or "").strip()
-        if lien_he:
-            canonical_list = load_canonical_from_table("cac_y_dinh_khac")
-            best = _pick_canonical(lien_he, canonical_list, cutoff=85)
-            if best:
-                lien_he = best
-            print("Sau chọn khóa gần giống nhất: ", best)
-            return {"lien_he": lien_he}
-        dispatcher.utter_message(text="Bạn muốn biết thông tin liên hệ nào của trung tâm?")
-        return {"lien_he": None}
-
-def fetch_thong_tin_lien_he(field_key: str) -> Optional[str]:
+def fetch_cac_y_dinh_khac(field_key: str) -> Optional[str]:
     normalized = field_key.strip()
     try:
         with get_db_connection() as conn:
@@ -1612,8 +1586,31 @@ def fetch_thong_tin_lien_he(field_key: str) -> Optional[str]:
                 if row and row[0]:
                     return row[0]
     except Exception:
-        logger.exception("[fetch_thong_tin_lien_he] Lỗi khi truy vấn thông tin liên hệ")
+        logger.exception("[fetch_cac_y_dinh_khac] Lỗi khi truy vấn thông tin.")
     return None
+
+class ValidateFormHoiThongTinLienHe(FormValidationAction):
+    def name(self) -> Text:
+        return "validate_form_hoi_thong_tin_lien_he"
+    def validate_lien_he(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+        lien_he = (slot_value or "").strip()
+        if lien_he:
+            canonical_list = load_canonical_from_table("cac_y_dinh_khac")
+            best = _pick_canonical(lien_he, canonical_list)
+            if best:
+                lien_he = best
+            print("Sau chọn khóa gần giống nhất: ", best)
+            return {"lien_he": lien_he}
+        dispatcher.utter_message(text="Bạn muốn biết thông tin liên hệ nào của trung tâm?")
+        return {"lien_he": None}
+
+
 class ActionHoiThongTinLienHe(Action):
     def name(self) -> Text:
         return "action_hoi_thong_tin_lien_he"
@@ -1630,7 +1627,7 @@ class ActionHoiThongTinLienHe(Action):
             dispatcher.utter_message(response="utter_ask_lien_he")
             return []
 
-        result = fetch_thong_tin_lien_he(lien_he)
+        result = fetch_cac_y_dinh_khac(lien_he)
 
         if result:
             dispatcher.utter_message(text=result)
@@ -1641,3 +1638,71 @@ class ActionHoiThongTinLienHe(Action):
 
         return [SlotSet("lien_he", None)]
 
+class ValidateFormHoiBanLanhDao(FormValidationAction):
+    def name(self) -> Text:
+        return "validate_form_hoi_ban_lanh_dao"
+    def validate_ban_lanh_dao(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+        ban_lanh_dao = (slot_value or "").strip()
+        if ban_lanh_dao:
+            canonical_list = load_canonical_from_table("cac_y_dinh_khac")
+            best = _pick_canonical(ban_lanh_dao, canonical_list)
+            if best:
+                chi_tiet_quy_dinh = best
+            print("Sau chọn khóa gần giống nhất: ", best)
+            return {"ban_lanh_dao": ban_lanh_dao}
+        dispatcher.utter_message(text="Bạn muốn biết thông tin về lãnh đạo nào?")
+        return {"ban_lanh_dao": None}
+
+class ActionHoiBanLanhDao(Action):
+    def name(self) -> Text:
+        return "action_hoi_ban_lanh_dao"
+
+    def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> List[Dict[Text, Any]]:
+        ban_lanh_dao = tracker.get_slot("ban_lanh_dao")
+
+        if not ban_lanh_dao:
+            dispatcher.utter_message(response="utter_ask_ban_lanh_dao")
+            return []
+
+        result = fetch_cac_y_dinh_khac(ban_lanh_dao)
+
+        if result:
+            dispatcher.utter_message(text=result)
+        else:
+            dispatcher.utter_message(
+                text="Hiện tại chưa có thông tin về lãnh đạo cho yêu cầu này. Vui lòng liên hệ trung tâm để biết thêm."
+            )
+
+        return [SlotSet("ban_lanh_dao", None)]
+
+class ActionThoiGianLamViec (Action):
+    def name(self) -> Text:
+        return "action_thoi_gian_lam_viec"
+
+    def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> List[Dict[Text, Any]]:
+        result = fetch_cac_y_dinh_khac("Thời gian làm việc")
+
+        if result:
+            dispatcher.utter_message(text=result)
+        else:
+            dispatcher.utter_message(
+                text="Hiện tại chưa có thông tin về thời gian làm việc. Vui lòng liên hệ trung tâm để biết thêm."
+            )
+
+        return []
