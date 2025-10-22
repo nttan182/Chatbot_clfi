@@ -891,7 +891,31 @@ nlu:
     - giờ làm việc của trung tâm vào chủ nhật là gì
     - trung tâm có làm việc vào ngày tết không
     
-
+- intent: hoi_chung_nhan_da_cap
+  examples: |
+    - xem chứng nhận đã cấp các khóa
+    - làm sao để xcem được chứng nhận của tôi
+    - tôi muốn biết về chứng nhận đã cấp
+    - tôi cần xem chứng nhận đã cấp
+    - làm sao để cem được chứng nhận [a2 ctut](khoa_hoc)
+    - tôi muốn biết về chứng nhận đã cấp cho khóa [toeic ctut](khoa_hoc)
+    - tôi cần xem chứng nhận đã cấp cho khóa [ud cntt cb](khoa_hoc)
+    - làm sao để cem được chứng nhận [b1 ctut](khoa_hoc)
+    - tôi muốn biết về chứng nhận đã cấp cho khóa [n4 jlpt](khoa_hoc)
+    - tôi cần xem chứng nhận đã cấp cho khóa [toeic 250](khoa_hoc)
+    - làm sao để cem được chứng nhận [n4 ctut](khoa_hoc)
+    - tôi muốn biết về chứng nhận đã cấp cho khóa [toeic 350](khoa_hoc)
+    - tôi cần xem chứng nhận đã cấp cho khóa [ud cntt nc](khoa_hoc)
+    - làm sao để xem được chứng nhận [toeic 450](khoa_hoc)
+    - tôi muốn biết về chứng nhận đã cấp cho khóa [n4 ctut](khoa_hoc)
+    - tôi cần xem chứng nhận đã cấp cho khóa [b1 ctut](khoa_hoc)
+    - làm sao để cem được chứng nhận [ud cntt nc](khoa_hoc)
+    - tôi muốn biết về chứng nhận đã cấp cho khóa [a2 ctut](khoa_hoc)
+    - tôi cần xem chứng nhận đã cấp cho khóa [toeic ctut](khoa_hoc)
+    - làm sao để cem được chứng nhận [toeic 250](khoa_hoc)
+    - tôi muốn biết về chứng nhận đã cấp cho khóa [ud cntt cb](khoa_hoc)
+    - tôi cần xem chứng nhận đã cấp cho khóa [toeic 450](khoa_hoc)
+    
 
 - intent: inform
   examples: |

@@ -178,3 +178,16 @@ stories:
   steps:
       - intent: hoi_gio_lam_viec
       - action: action_thoi_gian_lam_viec
+
+- story: tra loi khi gap inform
+  steps:
+      - intent: inform
+      - action: action_fallback_reset
+
+- story: hỏi chứng nhận
+  steps:
+      - intent: hoi_chung_nhan_da_cap
+      - action: form_hoi_chung_nhan
+      - active_loop: form_hoi_chung_nhan
+      - active_loop: null
+      - action: action_tra_cuu_chung_nhan

@@ -26,6 +26,7 @@ intents:
   - hoi_phi_thi_lai
   - hoi_dieu_kien_du_thi
   - hoi_gio_lam_viec
+  - hoi_chung_nhan_da_cap
   - inform
 
 entities:
@@ -165,6 +166,9 @@ forms:
   form_hoi_ban_lanh_dao:
     required_slots:
       - ban_lanh_dao
+  form_hoi_chung_nhan:
+    required_slots:
+      - khoa_hoc
 
 actions:
   - action_check_postgre_connection
@@ -204,6 +208,8 @@ actions:
   - validate_form_hoi_ban_lanh_dao
   - action_hoi_ban_lanh_dao
   - action_thoi_gian_lam_viec
+  - validate_form_hoi_chung_nhan
+  - action_tra_cuu_chung_nhan
 
 session_config:
   session_expiration_time: 60

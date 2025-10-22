@@ -1,6 +1,6 @@
 # ===== KHÓA / CHƯƠNG TRÌNH =====
 a2 ctut: a2 nội bộ, a2 trường, tiếng anh a2, anh văn a2
-b1 ctut: b1 nội bộ, b1 trường, tiếng anh b1 anh văn b1
+b1 ctut: b1 nội bộ, b1 trường, tiếng anh b1, anh văn b1
 n4 ctut: n4 nội bộ, n4 trường, tiếng nhật n4, tiếng nhật cấp n4
 n4 jlpt: jlpt n4, japanese language proficiency test n4, jlptn4
 toeic 250: toeic250, tiếng anh 250, tiếng anh toeic 250, anh văn 250, anh văn toeic 250
