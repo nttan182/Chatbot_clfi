@@ -32,11 +32,6 @@ stories:
   - intent: hoi_chuong_trinh_dao_tao
   - action: action_xem_chuong_trinh_dao_tao
 
-- story: Trả lời khi hỏi inform có liên quan chương trình đào tạo
-  steps:
-  - intent: inform
-  - action: action_xem_chuong_trinh_dao_tao
-
 - story: Hỏi điều kiện lưu kết quả form
   steps:
   - intent: hoi_dieu_kien_bao_luu
