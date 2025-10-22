@@ -1,0 +1,49 @@
+{
+  "lien_he": {
+    "precision": 1.0,
+    "recall": 0.9565217391304348,
+    "f1-score": 0.9777777777777777,
+    "support": 23,
+    "confused_with": {}
+  },
+  "chi_tiet_quy_dinh": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 110,
+    "confused_with": {}
+  },
+  "ban_lanh_dao": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 9,
+    "confused_with": {}
+  },
+  "khoa_hoc": {
+    "precision": 0.9899328859060402,
+    "recall": 0.9983079526226735,
+    "f1-score": 0.9941027801179443,
+    "support": 1182,
+    "confused_with": {}
+  },
+  "micro avg": {
+    "precision": 0.9909977494373593,
+    "recall": 0.9977341389728097,
+    "f1-score": 0.994354535190064,
+    "support": 1324
+  },
+  "macro avg": {
+    "precision": 0.99748322147651,
+    "recall": 0.9887074229382771,
+    "f1-score": 0.9929701394739305,
+    "support": 1324
+  },
+  "weighted avg": {
+    "precision": 0.9910125914961779,
+    "recall": 0.9977341389728097,
+    "f1-score": 0.994349225821978,
+    "support": 1324
+  },
+  "accuracy": 0.9969611021069692
+}

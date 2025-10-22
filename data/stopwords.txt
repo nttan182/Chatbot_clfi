@@ -20,7 +20,7 @@ bản thân
 bản ý
 bị
 biết
-biết bao nhiêu
+biết bao
 biết chừng nào
 biết đâu
 biết đâu chừng
@@ -126,7 +126,6 @@ cùng nhau
 cùng với
 cùng ăn
 cùng uống
-của
 của ai
 của mình
 của nó
@@ -236,7 +235,6 @@ là nơi
 là người
 là vì
 là do
-là bao nhiêu
 là bao giờ
 lại
 lại bộ
