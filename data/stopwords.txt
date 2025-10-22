@@ -144,7 +144,6 @@ cũng
 cũng như
 cũng vậy
 cũng thế
-đã
 đã đành
 đã đành rằng
 đã hẳn
@@ -376,6 +375,7 @@ nhìn
 nhìn chung
 nhìn lại
 nhìn nhận
+như thế nào
 những
 những ai
 những khi
@@ -572,6 +572,7 @@ thích
 thích hợp
 thích thú
 thích ý
+tôi
 trên
 trên bộ
 trên dưới

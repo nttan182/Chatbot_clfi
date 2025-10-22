@@ -111,7 +111,7 @@ class ActionXemChuongTrinhDaoTao(Action):
                 message = "Danh sách các chương trình hiện có: <br>"
                 for idx, row in enumerate(results, start=1):
                     message += f"&nbsp &nbsp &nbsp{idx}. {row[0]}<br>"
-                message += "Bạn có thể truy cập để xem chi tiết các thông tin qua liên kết: <a href='https://trungtamnnth.ctuet.edu.vn/'> https://trungtamnnth.ctuet.edu.vn/</a>. Bạn có muốn hỏi thêm chi tiết về chương trình nào không?"
+                message += "Bạn có thể truy cập để xem chi tiết các thông tin qua liên kết: <a href='https://trungtamnnth.ctuet.edu.vn/' class='text-blue-600 hover:text-blue-800 hover:underline transition duration-300 ease-in-out'> https://trungtamnnth.ctuet.edu.vn/</a>. Bạn có muốn hỏi thêm chi tiết về chương trình nào không?"
             else:
                 message = "Hiện chưa có thông tin chương trình bạn đang hỏi."
         except Exception as e:
@@ -764,7 +764,7 @@ class ActionXemDanhSachQuyDinh(Action):
                 message = "Danh sách các quy định, quy chế và các văn bản hiện có: <br>"
                 for idx, row in enumerate(results, start=1):
                     message += f"&nbsp &nbsp &nbsp{idx}. {row[0]}<br>"
-                message += "Bạn có thể truy cập để xem chi tiết các thông tin qua liên kết: <a href='https://phongctct.ctuet.edu.vn/sinh-vien/'> https://phongctct.ctuet.edu.vn/sinh-vien</a>. Bạn có muốn hỏi thêm chi tiết về Quy định, Quy chế hay văn bản nào không?"
+                message += "Bạn có thể truy cập để xem chi tiết các thông tin qua liên kết: <a href='https://phongctct.ctuet.edu.vn/sinh-vien/' class='text-blue-600 hover:text-blue-800 hover:underline transition duration-300 ease-in-out'> https://phongctct.ctuet.edu.vn/sinh-vien</a>. Bạn có muốn hỏi thêm chi tiết về Quy định, Quy chế hay văn bản nào không?"
             else:
                 message = "Hiện chưa có thông tin quy định bạn đang hỏi."
 
@@ -1657,7 +1657,7 @@ class ValidateFormHoiBanLanhDao(FormValidationAction):
             canonical_list = load_canonical_from_table("cac_y_dinh_khac")
             best = _pick_canonical(ban_lanh_dao, canonical_list)
             if best:
-                chi_tiet_quy_dinh = best
+                ban_lanh_dao = best
             print("Sau chọn khóa gần giống nhất: ", best)
             return {"ban_lanh_dao": ban_lanh_dao}
         dispatcher.utter_message(text="Bạn muốn biết thông tin về lãnh đạo nào?")
@@ -1778,7 +1778,7 @@ class ActionTraCuuChungNhan(Action):
             dispatcher.utter_message(
                 text=(
                     f"Bạn có thể xem thông tin <b>chứng nhận {ghi_chu}</b> đã cấp cho học viên tại địa chỉ "
-                    f"<a href='https://quanlychungchi.ctuet.edu.vn'>https://quanlychungchi.ctuet.edu.vn</a>.<br>"
+                    f"<a href='https://quanlychungchi.ctuet.edu.vn' class='text-blue-600 hover:text-blue-800 hover:underline transition duration-300 ease-in-out'>https://quanlychungchi.ctuet.edu.vn</a>.<br>"
                     "Bạn nhập thông tin yêu cầu trên giao diện website để xem chi tiết."
                 )
             )
