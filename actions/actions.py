@@ -694,6 +694,11 @@ class validate_form_dieu_kien_bao_luu(FormValidationAction):
         if not khoa_hoc:
             dispatcher.utter_message(text="Bạn vui lòng cung cấp chính xác tên khóa học nhé!")
             return {"khoa_hoc": None}
+        canonical_list = load_canonical_from_table("hoi_dieu_kien_bao_luu")
+        best = _pick_canonical(khoa_hoc, canonical_list)
+        if best:
+            khoa_hoc = best
+        print("Sau chọn khóa gần giống nhất: ", best)
         return {"khoa_hoc": khoa_hoc}
 
 def fetch_dieu_kien_bao_luu(khoa_hoc: str) -> Optional[str]:
@@ -704,8 +709,8 @@ def fetch_dieu_kien_bao_luu(khoa_hoc: str) -> Optional[str]:
                 cursor.execute(
                     """
                     SELECT mo_ta
-#                 FROM hoi_dieu_kien_bao_luu
-#                 WHERE ma_chuong_trinh ILIKE %s
+                    FROM hoi_dieu_kien_bao_luu
+                    WHERE ma_chuong_trinh ILIKE %s
                     """,
                     (f"%{normalized}%",),
                 )
@@ -1655,7 +1660,7 @@ class ValidateFormHoiBanLanhDao(FormValidationAction):
         ban_lanh_dao = (slot_value or "").strip()
         if ban_lanh_dao:
             canonical_list = load_canonical_from_table("cac_y_dinh_khac")
-            best = _pick_canonical(ban_lanh_dao, canonical_list)
+            best = _pick_canonical(ban_lanh_dao, canonical_list, cutoff=90)
             if best:
                 ban_lanh_dao = best
             print("Sau chọn khóa gần giống nhất: ", best)

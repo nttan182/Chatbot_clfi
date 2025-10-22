@@ -302,6 +302,7 @@ nlu:
 - intent: hoi_danh_sach_quy_dinh
   examples: |
     - danh sách quy định
+    - quy định tại trung tâm
     - tôi muốn biết trung tâm có các quy định gì
     - danh sách các quy định của trung tâm
     - trung tâm có những quy định nào
