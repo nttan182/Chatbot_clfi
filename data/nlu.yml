@@ -72,6 +72,11 @@ nlu:
 
 - intent: hoi_ban_lanh_dao
   examples: |
+    - ai đang phụ trách điều hành trung tâm
+    - trung tâm hiện do ai làm giám đốc
+    - cho tôi xem thông tin về đội ngũ lãnh đạo
+    - lãnh đạo của trung tâm gồm những ai
+    - có bao nhiêu người trong ban lãnh đạo
     - tôi muốn biết về ban lãnh đạo của trung tâm
     - ai là người đứng đầu trung tâm
     - ban lãnh đạo trung tâm là ai
@@ -83,6 +88,30 @@ nlu:
     - tôi muốn biết về [phó giám đốc](ban_lanh_dao)
     - ai là [phó giám đốc](ban_lanh_dao) của trung tâm
     - [phó giám đốc](ban_lanh_dao) của trung tâm là ai
+    - cho tôi biết ai phụ trách trung tâm
+    - trung tâm do ai điều hành
+    - lãnh đạo hiện tại của trung tâm gồm những ai
+    - tôi muốn biết ai là người phụ trách trung tâm
+    - ai đang điều hành trung tâm
+    - ban lãnh đạo hiện tại gồm những ai
+    - cho tôi biết ai là giám đốc của trung tâm
+    - trung tâm do ai điều hành
+    - ai là người đứng đầu trung tâm
+    - ai là người lãnh đạo trung tâm
+    - tôi muốn biết về đội ngũ lãnh đạo
+    - lãnh đạo của trung tâm gồm những ai
+    - ai là người phụ trách chung tại trung tâm
+    - tôi muốn biết về [giám đốc](ban_lanh_dao)
+    - [giám đốc](ban_lanh_dao) hiện tại của trung tâm là ai
+    - ai là [phó giám đốc](ban_lanh_dao)
+    - [phó giám đốc](ban_lanh_dao) trung tâm là ai
+    - ai đang giữ chức vụ [giám đốc](ban_lanh_dao)
+    - cho tôi biết thông tin về [ban giám đốc](ban_lanh_dao)
+    - [ban lãnh đạo](ban_lanh_dao) gồm những ai
+    - trung tâm có bao nhiêu người trong [ban lãnh đạo](ban_lanh_dao)
+    - ai là người điều hành chính tại trung tâm
+    - cho tôi xem thông tin về [ban lãnh đạo](ban_lanh_dao)
+
 
 - intent: hoi_chuong_trinh_dao_tao
   examples: |
@@ -684,6 +713,29 @@ nlu:
 
 - intent: hoi_dieu_kien_bao_luu
   examples: |
+    - điều kiện bảo lưu là gì
+    - khi nào được bảo lưu kết quả học tập
+    - học viên cần đáp ứng điều kiện gì để được bảo lưu
+    - thời hạn bảo lưu kết quả học tập là bao lâu
+    - quy định bảo lưu của trung tâm ra sao
+    - muốn bảo lưu kết quả thì phải làm thế nào
+    - học viên có được bảo lưu khi nghỉ học không
+    - cần những điều kiện nào để bảo lưu
+    - bảo lưu kết quả [toeic ctut](khoa_hoc) trong bao lâu
+    - làm sao được bảo lưu khóa [a2 ctut](khoa_hoc)
+    - điều kiện để bảo lưu khóa [b1 ctut](khoa_hoc)
+    - quy định bảo lưu kết quả khóa [n4 jlpt](khoa_hoc)
+    - trung tâm quy định bảo lưu ra sao cho khóa [ud cntt cb](khoa_hoc)
+    - thời hạn bảo lưu kết quả [ud cntt nc](khoa_hoc) là bao lâu
+    - muốn bảo lưu kết quả [toeic 450](khoa_hoc) thì làm thế nào
+    - học viên nghỉ giữa chừng có được bảo lưu khóa [toeic 350](khoa_hoc) không
+    - cần bao nhiêu điểm để đủ điều kiện bảo lưu
+    - có giới hạn thời gian bảo lưu không
+    - bảo lưu tối đa trong bao lâu
+    - muốn gia hạn thời gian bảo lưu thì phải làm sao
+    - điều kiện học viên được bảo lưu như thế nào
+    - học viên khi nghỉ có được bảo lưu không
+    - trung tâm quy định bảo lưu ra sao
     - điều kiện bảo lưu sao
     - điều kiện bảo lưu như thế nào
     - làm sao mới được bảo lưu

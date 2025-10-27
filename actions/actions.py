@@ -704,8 +704,8 @@ def fetch_dieu_kien_bao_luu(khoa_hoc: str) -> Optional[str]:
                 cursor.execute(
                     """
                     SELECT mo_ta
-#                 FROM hoi_dieu_kien_bao_luu
-#                 WHERE ma_chuong_trinh ILIKE %s
+                    FROM hoi_dieu_kien_bao_luu
+                    WHERE ma_chuong_trinh ILIKE %s
                     """,
                     (f"%{normalized}%",),
                 )
@@ -1657,7 +1657,7 @@ class ValidateFormHoiBanLanhDao(FormValidationAction):
             canonical_list = load_canonical_from_table("cac_y_dinh_khac")
             best = _pick_canonical(ban_lanh_dao, canonical_list)
             if best:
-                chi_tiet_quy_dinh = best
+                ban_lanh_dao = best
             print("Sau chọn khóa gần giống nhất: ", best)
             return {"ban_lanh_dao": ban_lanh_dao}
         dispatcher.utter_message(text="Bạn muốn biết thông tin về lãnh đạo nào?")
